@@ -1,0 +1,39 @@
+html {
+    @apply h-full;
+}
+body {
+    @apply bg-cover bg-fixed;
+    /*background-color: #FAFAFA; */
+}
+%main {
+    margin: 0 auto;
+    @apply w-full px-20 py-10;
+}
+@media (min-width: $sm) {
+    %main {
+        
+    }
+}
+@media (min-width: $lg) {
+    %main {
+        @apply w-10/12;
+    }
+}
+main {
+    @extend %main;
+}
+@media (min-width: $sm) {
+    .full {
+        @apply w-full;
+    }
+}
+@media (min-width: $md) {
+    .full {
+        @apply w-full;
+    }
+}
+@media (min-width: $lg) {
+    .full {
+        @apply w-full;
+    }
+}

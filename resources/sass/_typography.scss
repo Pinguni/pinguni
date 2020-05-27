@@ -1,0 +1,40 @@
+* {
+    @apply text-justify leading-loose tracking-normal;
+    font-family: $font-base;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-fancy;
+}
+h1 {
+    @apply font-bold text-3xl leading-loose;
+}
+@media (min-width: $lg) {
+    h1 {
+        @apply text-4xl;
+    }
+}
+h2 {
+    @apply font-bold text-xl leading-loose mb-2;
+}
+p, 
+li {
+    @apply mb-3;
+}
+a {
+    @apply text-indigo-600;
+}
+a:hover {
+    @apply underline;
+}
+i {
+    @apply mr-2;
+}
+.emoji {
+    width: 1rem;
+    @apply inline-block;
+}

@@ -1,0 +1,78 @@
+.nav-wrapper {
+    background-color: /*#FAFAFA*/ white;
+    @apply text-gray-600 w-full fixed /* border-b border-gray-200 */ shadow-md;
+    
+    nav {
+        @extend %main;
+        @apply py-3 flex;
+        
+        a {
+            @apply text-gray-600;
+        }
+        a:hover {
+            @apply no-underline;
+        }
+        
+        & > div {
+            @apply mr-4;
+        }
+        #user-menu {
+            @apply w-full;
+            
+            & > div {
+                @apply float-right;
+                
+                a {
+                    @apply ml-4;
+                }
+            }
+        }
+        div a:hover {
+            @apply text-gray-700 duration-500;
+        }
+        
+        /* button {
+            @apply text-gray-600 inline-flex items-center;
+        }
+        button:hover {
+            @apply text-gray-700;
+        } */
+    }
+}
+%container-wrap {
+    @apply flex flex-wrap;
+}
+
+
+.sidebar {
+    @apply w-full;
+}
+@media (min-width: $md) {
+    .sidebar {
+        @apply w-1/4 fixed overflow-scroll h-screen p-6 -mt-8 -ml-12 mr-6;
+    }
+    .sidebar::-webkit-scrollbar {
+        @apply w-3 bg-gray-100 rounded-full;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-full;
+    }
+    .sidebar-whitespace {
+        @apply w-1/4;
+    }
+}
+
+.menu-1,
+.menu-1-header {
+    @apply uppercase py-1 px-3;
+}
+.menu-1 {
+    @apply duration-500 text-black;
+}
+.menu-1:hover {
+    @apply text-indigo-600 rounded;
+    cursor: pointer;
+}
+.menu-1-header {
+    @apply text-sm text-gray-700 font-bold;
+}

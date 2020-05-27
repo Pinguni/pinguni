@@ -1,0 +1,161 @@
+/*
+ *
+ *  Imports
+ *
+ */
+@import url('https://fonts.googleapis.com/css2?family=Average+Sans&display=swap');  // Average Sans
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');  // Karla
+
+@import 'variables';      // Variables
+@import 'base';           // Base
+@import 'typography';     // Typography
+@import 'buttons';        // Buttons
+@import 'navigation';     // Navigation
+@import 'forms';          // Forms
+@import 'hero';           // Hero
+@import 'cards';          // Cards
+
+
+
+/*
+ *  Scrollbar
+ */
+body::-webkit-scrollbar {
+    @apply w-3 bg-gray-100;
+}
+body::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+}
+
+
+/*
+ *  Footer
+ */
+footer {
+    @apply bg-black;
+    
+    div {
+        @extend %main;
+        
+        p {
+            @apply text-center text-sm text-gray-100;
+        }  
+    }
+}
+
+
+/*
+ *
+ *  Page Components
+ *
+ */
+%section {
+    @apply mb-6 mt-8;
+}
+.section {
+    @extend %section;
+}
+%container-border {
+    @apply border-gray-200 border-2 rounded-md;
+}
+.box {
+    @extend %section;
+    @apply rounded h-auto;
+}
+.box-p {  /* if there is to be a background color for boxes */
+    @apply py-4 px-8;
+}
+.box-explain {
+    @extend %container-border;
+    @apply p-8 flex;
+    
+    img {
+        @apply w-24 h-24 rounded-full object-cover;
+        margin: 0 auto;
+    }
+    div {
+        @apply pl-6 w-full;
+        h3 {
+            @apply font-semibold text-lg text-left;
+        }
+    }
+}
+@media (min-width: $md)
+{
+    .box-explain {
+        @apply flex;
+    }
+}
+.article {
+    margin: 0 auto;
+    @apply w-full;
+}
+@media (min-width: $md) {
+    .article {
+        @apply w-10/12;
+    }
+}
+@media (min-width: $lg) {
+    .article {
+        @apply w-8/12;
+    }
+}
+.collection-header {
+    @apply mb-10;
+    h2 {
+        /* font-family: $font-family-fancy; */
+        @apply font-bold text-2xl leading-loose;
+    }
+    p {
+        
+    }
+    @media (min-width: $md) {
+        h2 {
+            @apply text-3xl;
+        }
+    }
+}
+.container-wrap {
+    @extend %container-wrap;
+    @apply justify-between;
+}
+%no-decoration {
+    @apply text-black;
+    
+    &:hover {
+        @apply no-underline;
+    }
+}
+.course-header {
+    @apply mt-4 h-auto px-8 py-4 bg-white rounded-md;
+}
+.course-pages {
+    a {
+        @apply font-semibold;
+        @extend %no-decoration;
+        
+        div {
+            @extend %container-border;
+            @apply px-4 pt-4 pb-1 duration-700 w-full mt-3;
+            
+            &:hover {
+                @apply bg-gray-200;
+            }
+            .emoji {
+                @apply mb-1;
+            }
+        }
+    }
+}
+.page-description {
+    @apply text-gray-700 text-sm;
+}
+
+
+
+#tagCrumbs p {
+    @apply inline-block mr-3 rounded px-2 bg-gray-100 text-black;
+}
+
+
+

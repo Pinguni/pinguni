@@ -1,0 +1,36 @@
+#hero {
+    @apply bg-white h-auto bg-cover bg-fixed pb-6;
+    
+    & > div {
+        @extend %main;
+        
+        & > div {
+            @apply w-full;
+            
+            h1 {
+                @apply text-4xl leading-normal mb-4 text-left;
+            }
+            p {
+                @apply text-lg leading-loose text-left;
+            }
+        }
+    }
+}
+@media (min-width: $md) {
+    #hero {
+        & div > div {
+            @apply w-2/3;
+            
+            h1 {
+                @apply text-5xl;
+            }
+        }
+    }
+}
+@media (min-width: $lg) {
+    #hero {
+        h1 {
+            @apply mt-12;
+        }
+    }
+}
