@@ -181,12 +181,6 @@ button.complete {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   display: flex;
-  /* button {
-      @apply text-gray-600 inline-flex items-center;
-  }
-  button:hover {
-      @apply text-gray-700;
-  } */
 }
 
 .nav-wrapper nav a {
@@ -221,6 +215,17 @@ button.complete {
 .container-wrap, form {
   display: flex;
   flex-wrap: wrap;
+}
+
+#logo img {
+  width: 8rem;
+  margin-top: 2px;
+}
+
+@media (min-width: 768px) {
+  #logo img {
+    margin-top: 1px;
+  }
 }
 
 .sidebar {

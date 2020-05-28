@@ -30,17 +30,23 @@
         div a:hover {
             @apply text-gray-700 duration-500;
         }
-        
-        /* button {
-            @apply text-gray-600 inline-flex items-center;
-        }
-        button:hover {
-            @apply text-gray-700;
-        } */
     }
 }
 %container-wrap {
     @apply flex flex-wrap;
+}
+#logo {
+    img {
+        @apply w-32;
+        margin-top: 2px;
+    }
+}
+@media (min-width: $md) {
+    #logo {
+        img {
+            margin-top: 1px;
+        }
+    }
 }
 
 

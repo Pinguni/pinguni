@@ -169,11 +169,11 @@
                 -->
                 <div id = "user-menu">
                     <div>
-                        @guest
-                            <span><a href="{{ route('login') }}">{{ __('Login') }}</a> / <a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
-                        @else
-                            <a href = '{{ url("/u/" . Auth::user()->username) }}'><span>{{ Auth::user()->username }}</span></a>
-                        @endguest
+                        <a href = "{{ url('/') }}">
+                            <button id = "logo" class = "no-decoration uppercase">
+                                <strong><span><img src = "{{ asset('img/logo.png') }}" /></span></strong>
+                            </button>
+                        </a>
                     </div>
                     @guest
                     @else
