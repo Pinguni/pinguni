@@ -17,7 +17,7 @@
 <section class = "article">
     
     <div class = "box">
-        <p>Welcome to <a href = "{{ url('/') }}">Masa HaChaim</a>!  We're excited to have you join us on this wonderful journey of lifelong learning.</p>
+        <p>Welcome to <a href = "{{ url('/') }}">{{ env('APP_NAME') }}</a>!  We're excited to have you join us on this wonderful journey of learning.</p>
     </div>
     
     <div class = "box">
