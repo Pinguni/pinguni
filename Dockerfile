@@ -19,8 +19,8 @@ ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 # Clone new folder
 RUN git clone https://@github.com/klickers/pinguni.git
 
-# Set working directory to mhc
-WORKDIR mhc
+# Set working directory to pinguni
+WORKDIR pinguni
 
 # Install dependencies
 RUN composer install
