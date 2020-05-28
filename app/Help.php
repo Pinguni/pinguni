@@ -38,7 +38,11 @@ class Help
     {        
         $url = '/';
         
-        if ($card->type == 'resource')
+        if ($card->type == 'main')
+        {
+            $url = "/$card->permalink";
+        }
+        else if ($card->type == 'resource')
         {
             $title = str_replace(' ', '-', strtolower($card->title));
             $url = "/resources/search/$title";
