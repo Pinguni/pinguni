@@ -28,6 +28,13 @@ class Card extends Component
      * @var string
      */
     public $height;
+    
+    /**
+     * Defines whether or not card type is hidden.
+     *
+     * @var string
+     */
+    public $hideType;
 
     /**
      * Create the component instance.
@@ -35,12 +42,13 @@ class Card extends Component
      * @param  object  $card
      * @return void
      */
-    public function __construct($card, $width, $height)
+    public function __construct($card, $width, $height, $hideType = '')
     {
         $this->card = json_decode($card);
         
         $this->width = $width;
         $this->height = $height;
+        $this->hideType = $hideType;
     }
 
     /**
