@@ -6,18 +6,13 @@ use Illuminate\Http\Request;
 use App\Card;
 
 class MainController extends Controller
-{
-    /**
-     * Show the application resources page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+{   
     public function index()
     {
-        $collections = Card::where('type', 'main')->get();
+        $resCard = Card::find(14);
         
         return view('index', [
-            'collections' => $collections,
+            'resCard' => $resCard,
         ]);
     }
     
@@ -41,7 +36,6 @@ class MainController extends Controller
         return view('search', [
             'cards' => $cards,
             'word' => $word,
-            //'cap' => $cap,
             'details' => $details,
         ]);
     }

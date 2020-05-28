@@ -52,6 +52,8 @@ Route::get('/u/{username}', 'UserController@profile');
  */
 Route::prefix('resources')->group(function() {
     
+    Route::get('/', 'ResourceController@index');
+    
     /**
      *  Search Routes
      */

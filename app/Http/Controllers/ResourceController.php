@@ -9,6 +9,21 @@ use App\Help;
 class ResourceController extends Controller
 {
     /**
+     * Show the main resources page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        $collections = Card::where('type', 'main')->get();
+        
+        return view('resources.index', [
+            'collections' => $collections,
+        ]);
+    }
+    
+    
+    /**
      * Show the view page for pockets / snippets / links etc.
      *
      * @return \Illuminate\Contracts\Support\Renderable
