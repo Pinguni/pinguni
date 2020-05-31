@@ -32,7 +32,7 @@ Search {{ $word ?? '' }}
 
         <p class = "menu-1-header">Resource Types</p>
         <p class = "menu-1" onclick="getCards('topics')">Topics</p>
-        <p class = "menu-1" onclick="getCards('courses')">Courses</p>
+        <p class = "menu-1" onclick="getCards('guides')">Guides</p>
         <p class = "menu-1" onclick="getCards('pockets')">Pockets</p>
         <p class = "menu-1" onclick="getCards('link')">Links</p>
         <!-- <p class = "menu-1" onclick="getCards('guides')">Guides</p> -->
@@ -163,7 +163,7 @@ Search {{ $word ?? '' }}
         /**
          *  getting the cards with AJAX
          */
-        var url = "/resources/get/cards/$word,"+tags;
+        var url = '{{ secure_url("/resources/get/cards/$word,") }}'+tags;
         
         console.log(url)
         
