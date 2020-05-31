@@ -112,6 +112,13 @@ Route::prefix('dash')->group(function() {
  */
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
     Route::prefix('admin')->group(function() {
-        Route::get('/', 'AdminController@index'); 
+        Route::get('/', 'AdminController@index')->name('admin');
+        Route::prefix('edit')->group(function() {
+            Route::get('/card/{id}', 'AdminController@editCard')->name('editCard');
+            Route::post('/card/{id}/post', 'CardController@update')->name('updateCard');
+        });
     });
 });
+
+
+
