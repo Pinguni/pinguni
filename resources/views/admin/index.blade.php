@@ -8,8 +8,6 @@
     <x-slot name='h1'>
         Admin
     </x-slot>
-    
-    pppppp
 </x-hero>
 @endsection
 
