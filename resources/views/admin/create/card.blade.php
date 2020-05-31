@@ -1,23 +1,22 @@
 @extends('layouts.app')
 
-@section('title', "Edit Card #$card->id | Admin")
+@section('title', "Create Card | Admin")
 
 @section('hero')
 <x-hero bg="subtle_prism_indigo" class="blank">
     <x-slot name='h1'>
-        Edit Card #{{ $card->id }}
+        Create Card
     </x-slot>
-    {{ $card->title }}
 </x-hero>
 @endsection
 
 @section('content')
 
-<form method = "POST" action = "{{ route('updateCard', ['id' => $card->id]) }}">
+<form method = "POST" action = "{{ route('storeCard') }}">
     @csrf
     
     <label for = "icon">Icon</label>
-    <input type = "text" name = "icon" placeholder = "icon" value = "{{ $card->icon }}" />
+    <input type = "text" name = "icon" placeholder = "icon" value="{{ old('icon') }}"/>
     @error('icon')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -25,7 +24,7 @@
     @enderror
     
     <label for = "thumbnail">Thumbnail</label>
-    <input type = "text" name = "thumbnail" placeholder = "thumbnail" value = "{{ $card->thumbnail }}" />
+    <input type = "text" name = "thumbnail" placeholder = "thumbnail" value="{{ old('thumbnail') }}"/>
     @error('thumbnail')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -33,7 +32,7 @@
     @enderror
     
     <label for = "bg">Background</label>
-    <input type = "text" name = "bg" placeholder = "bg" value = "{{ $card->bg }}" />
+    <input type = "text" name = "bg" placeholder = "bg" value="{{ old('bg') }}"/>
     @error('bg')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -41,7 +40,7 @@
     @enderror
     
     <label for = "title">Title</label>
-    <input type = "text" name = "title" placeholder = "title" value = "{{ $card->title }}"  required/>
+    <input type = "text" name = "title" placeholder = "title" required value="{{ old('title') }}"/>
     @error('title')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -49,7 +48,7 @@
     @enderror
     
     <label for = "description">Description</label>
-    <textarea name = "description" required>{!! $card->description !!}</textarea>
+    <textarea name = "description" required>{{ old('description') }}</textarea>
     @error('description')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -58,7 +57,7 @@
     
     <label for = "notes">Notes</label>
     <div class = "editor language-js"></div>
-    <input name = "notes" id = "notes" type = "hidden" />
+    <input name = "notes" id = "notes" type = "hidden" value="{{ old('notes') }}"/>
     @error('notes')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -66,7 +65,7 @@
     @enderror
     
     <label for = "tags">Tags</label>
-    <textarea name = "tags">{!! $card->tags !!}</textarea>
+    <textarea name = "tags">{{ old('tags') }}</textarea>
     @error('tags')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -74,7 +73,7 @@
     @enderror
     
     <label for = "type">Type</label>
-    <input type = "text" name = "type" placeholder = "type" value = "{{ $card->type }}"  required/>
+    <input type = "text" name = "type" placeholder = "type" required value="{{ old('type') }}"/>
     @error('type')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -82,7 +81,7 @@
     @enderror
     
     <label for = "visibility">Visibility</label>
-    <input type = "text" name = "visibility" placeholder = "visibility" value = "{{ $card->visibility }}"  required/>
+    <input type = "text" name = "visibility" placeholder = "visibility" required value="{{ old('visibility') }}"/>
     @error('visibility')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -90,7 +89,7 @@
     @enderror
     
     <label for = "permalink">Permalink</label>
-    <input type = "text" name = "permalink" placeholder = "permalink" value = "{{ $card->permalink }}"  required/>
+    <input type = "text" name = "permalink" placeholder = "permalink" required value="{{ old('permalink') }}"/>
     @error('permalink')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -99,7 +98,7 @@
     
     <br />
     
-    <button type = "submit">Update</button>
+    <button type = "submit">Create</button>
 </form>
 
 
@@ -116,14 +115,13 @@
         hljs.highlightBlock(editor)
     }
     const jar = CodeJar(editor, highlight)
+    jar.updateCode("{{ old('notes') }}")
     
-    jar.updateCode("{{ $card->notes }}")
     var notes = document.getElementById('notes')
-    notes.value = "{{ $card->notes }}"
     
     // Listen to updates
     jar.onUpdate(code => {
-        notes.value = code
+        notes.value = code;
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>

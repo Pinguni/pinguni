@@ -63,7 +63,7 @@ Route::prefix('resources')->group(function() {
     /**
      *  Card Routes
      */
-    Route::get('view/{type}s/{permalink}', 'ResourceController@view');
+    Route::get('view/{type}s/{permalink}', 'ResourceController@view')->name('viewResource');
     Route::prefix('cards')->group(function() {
         Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
         Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
@@ -112,6 +112,18 @@ Route::prefix('dash')->group(function() {
  */
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
     Route::prefix('admin')->group(function() {
-        Route::get('/', 'AdminController@index'); 
+        Route::get('/', 'AdminController@index')->name('admin');
+        Route::prefix('create')->group(function() {
+            Route::get('/card', 'AdminController@createCard')->name('createCard');
+            Route::post('/card/store', 'CardController@store')->name('storeCard');
+        });
+        Route::prefix('edit')->group(function() {
+            Route::post('/card/redirect', 'CardController@redirect')->name('redirectCard');
+            Route::get('/card/{id}', 'AdminController@editCard')->name('editCard');
+            Route::post('/card/{id}/post', 'CardController@update')->name('updateCard');
+        });
     });
 });
+
+
+

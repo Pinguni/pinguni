@@ -23,12 +23,12 @@
 <!--
     Menu for page boxes
 -->
-<section class = "box text-left mb-12">
-    <a href = "#all" class = "mr-2 mb-2"><button id = "allbtn">All</button></a>
-    <a href = "#top" class = "mr-2 mb-2"><button id = "topbtn">Top Resources</button></a>
-    <a href = "#topics" class = "mr-2 mb-2"><button id = "topicsbtn">Topics</button></a>
-    <a href = "#courses" class = "mr-2 mb-2"><button id = "coursesbtn">Courses</button></a>
-    <a href = "#tracks" class = "mr-2 mb-2"><button id = "tracksbtn">Tracks</button></a>
+<section class = "box box-button">
+    <a href = "#all"><button id = "allbtn">All</button></a>
+    <a href = "#top"><button id = "topbtn">Top Resources</button></a>
+    <a href = "#topics"><button id = "topicsbtn">Topics</button></a>
+    <a href = "#courses"><button id = "coursesbtn">Courses</button></a>
+    <a href = "#tracks"><button id = "tracksbtn">Tracks</button></a>
 </section>
 
 <!--

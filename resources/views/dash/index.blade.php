@@ -19,12 +19,10 @@
     </div>
     <div class = "container-wrap">
         @foreach ($cards as $card)
-            @php
-                $card = json_encode($card);
-            @endphp
             <x-card
                   width="horizontal"
                   height="h-short"
+                  hideType="hidden"
                   :card="$card" >
             </x-card>
         @endforeach
