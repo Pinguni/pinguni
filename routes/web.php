@@ -63,7 +63,7 @@ Route::prefix('resources')->group(function() {
     /**
      *  Card Routes
      */
-    Route::get('view/{type}s/{permalink}', 'ResourceController@view');
+    Route::get('view/{type}s/{permalink}', 'ResourceController@view')->name('viewResource');
     Route::prefix('cards')->group(function() {
         Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
         Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
