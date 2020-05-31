@@ -114,6 +114,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::prefix('admin')->group(function() {
         Route::get('/', 'AdminController@index')->name('admin');
         Route::prefix('edit')->group(function() {
+            Route::post('/card/redirect', 'CardController@redirect')->name('redirectCard');
             Route::get('/card/{id}', 'AdminController@editCard')->name('editCard');
             Route::post('/card/{id}/post', 'CardController@update')->name('updateCard');
         });

@@ -50,6 +50,17 @@ class CardController extends Controller
     }
 
     /**
+     * Redirect to the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return 
+     */
+    public function redirect(Request $response)
+    {
+        return redirect()->route('editCard', ['id' => $response->id]);
+    }
+    
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
