@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "$pag->title | $poc->title | $cou->title | Courses")
+@section('title', "$pag->title | $poc->title | $gui->title | Guides")
 
 @section('content')
 <section class = "article">
@@ -9,7 +9,7 @@
         Breadcrumbs
     -->
     <div class = "box">
-        <p><a href = "{{ App\Help::cardUrl($cou) }}">{{ $cou->title }}</a> > <a href = '{{ url("/resources/courses/$cou->permalink/$poc->permalink") }}'>{{ $poc->title }}</a></p>
+        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink") }}'>{{ $poc->title }}</a></p>
     </div>
     
     <!-- 
