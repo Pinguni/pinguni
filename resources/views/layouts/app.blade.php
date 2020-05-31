@@ -11,7 +11,7 @@
         <title>@yield('title') | {{ env('APP_NAME') }}</title>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}"/>
+        <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
 
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous"></script>
