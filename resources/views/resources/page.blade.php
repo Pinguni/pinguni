@@ -161,7 +161,7 @@
             
             // Show All Resources when page opens
             $('#all').show();
-            $('#all').addClass('selected');
+            $('#allbtn').addClass('selected');
             
             $('#allbtn').click(function() {
                 $('button').removeClass('selected');
