@@ -30,6 +30,17 @@ class AdminController extends Controller
     
     
     /**
+     * Show the create card form.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function createCard()
+    {
+        return view('admin.create.card');
+    }
+    
+    
+    /**
      * Show the edit card form.
      *
      * @return \Illuminate\Contracts\Support\Renderable

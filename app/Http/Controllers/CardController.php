@@ -35,7 +35,31 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'icon' => 'max:255',
+            'thumbnail' => 'max:255',
+            'bg' => 'max:255',
+            'title' => 'required|max:100',
+            'description' => 'required|max:150',
+            'type' => 'required|max:15',
+            'visibility' => 'required|max:15',
+            'permalink' => 'required|max:150'
+        ]);
+        
+        $card = new Card;
+        $card->icon = $request->icon;
+        $card->thumbnail = $request->thumbnail;
+        $card->bg = $request->bg;
+        $card->title = $request->title;
+        $card->description = $request->description;
+        $card->notes = $request->notes;
+        $card->tags = $request->tags;
+        $card->type = $request->type;
+        $card->visibility = $request->visibility;
+        $card->permalink = $request->permalink;
+        $card->save();
+        
+        return redirect()->back();
     }
 
     /**

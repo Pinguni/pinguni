@@ -15,6 +15,10 @@
 
 @section('content')
 
+<section class = "box box-button">
+    <a href = "{{ route('createCard') }}"><button>Create Card</button></a>
+</section>
+
 <section class = "box">
     <form method = "POST" action = "{{ route('redirectCard') }}">
         @csrf
@@ -22,4 +26,5 @@
         <button type = "submit" class = "ml-4">Edit Card</button>
     </form>
 </section>
+
 @endsection
