@@ -8,6 +8,7 @@
 @section('hero')
     
     <x-hero :bg="$card->bg" class="blank">
+        @slot('article', 'article hero-header')
         <x-slot name="h1">
             {{ $card->title }}
         </x-slot>
@@ -24,11 +25,11 @@
     Menu for page boxes
 -->
 <section class = "box box-button">
-    <a href = "#all"><button id = "allbtn">All</button></a>
-    <a href = "#top"><button id = "topbtn">Top Resources</button></a>
-    <a href = "#topics"><button id = "topicsbtn">Topics</button></a>
-    <a href = "#courses"><button id = "coursesbtn">Courses</button></a>
-    <a href = "#tracks"><button id = "tracksbtn">Tracks</button></a>
+    <button id = "allbtn">All</button>
+    <button id = "topbtn">Top Resources</button>
+    <button id = "topicsbtn">Topics</button>
+    <button id = "guidesbtn">Guides</button>
+    <button id = "tracksbtn">Tracks</button>
 </section>
 
 <!--
@@ -60,6 +61,7 @@
     <section class = "box can-hide" id = "top">
         <div class = "card-group-header">
             <h2>Top Resources</h2>
+            <p>Our top picks for this topic.</p>
         </div>
         <div class = "card-group-wrapper">
             @foreach ($card->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->notOfType('resource')->notOfType('topic')->get() as $child)
@@ -79,7 +81,7 @@
     <section class = "box can-hide" id = "topics">
         <div class = "card-group-header">
             <h2>Topics</h2>
-            <p>Related topics.</p>
+            <p>Sub-topics and other topics related to {{ $card->title }}.</p>
         </div>
         <div class = "card-group-wrapper">
             @foreach ($card->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->ofType('topic')->get() as $child)
@@ -94,14 +96,15 @@
     </section>
 
     <!--
-        Courses section
+        Guides section
     -->
-    <section class = "box can-hide" id = "courses">
+    <section class = "box can-hide" id = "guides">
         <div class = "card-group-header">
-            <h2>Courses</h2>
+            <h2>Guides</h2>
+            <p>Guides for {{ $card->title }}.</p>
         </div>
         <div class = "card-group-wrapper">
-            @foreach ($card->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->ofType('course')->get() as $child)
+            @foreach ($card->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->ofType('guide')->get() as $child)
                 <x-card
                       width="full"
                       height="h-long"
@@ -113,7 +116,7 @@
     </section>
 
     <!--
-        Course tracks section
+        Guide tracks section
     -->
     <section class = "box can-hide" id = "tracks">
         <div class = "card-group-header">
@@ -155,30 +158,40 @@
     <script>
         $(window).ready(function() {
             $('.can-hide').hide();
+            
+            // Show All Resources when page opens
+            $('#all').show();
+            $('#all').addClass('selected');
+            
+            $('#allbtn').click(function() {
+                $('button').removeClass('selected');
+                $(this).addClass('selected');
+                $('.can-hide').hide();
+                $('#all').show();
+            })
             $('#topbtn').click(function() {
-                $(this).addClass('inprogress');
+                $('button').removeClass('selected');
+                $(this).addClass('selected');
                 $('.can-hide').hide();
                 $('#top').show();
             })
             $('#topicsbtn').click(function() {
-                $(this).addClass('inprogress');
+                $('button').removeClass('selected');
+                $(this).addClass('selected');
                 $('.can-hide').hide();
                 $('#topics').show();
             })
-            $('#coursesbtn').click(function() {
-                $(this).addClass('inprogress');
+            $('#guidesbtn').click(function() {
+                $('button').removeClass('selected');
+                $(this).addClass('selected');
                 $('.can-hide').hide();
-                $('#courses').show();
+                $('#guides').show();
             })
             $('#tracksbtn').click(function() {
-                $(this).addClass('inprogress');
+                $('button').removeClass('selected');
+                $(this).addClass('selected');
                 $('.can-hide').hide();
                 $('#tracks').show();
-            })
-            $('#allbtn').click(function() {
-                $(this).addClass('inprogress');
-                $('.can-hide').hide();
-                $('#all').show();
             })
         })
     </script>

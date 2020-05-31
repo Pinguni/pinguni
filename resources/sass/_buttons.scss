@@ -25,6 +25,9 @@ button.no-decoration {
         background-color: inherit;
     }
 }
+button.selected {
+    @apply bg-purple-700;
+}
 button.inprogress,
 button.complete {
     @apply mt-3 block;
