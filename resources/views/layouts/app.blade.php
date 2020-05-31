@@ -14,7 +14,6 @@
         <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
 
         <!-- Scripts -->
-        <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous"></script>
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             $(window).on('load', function() {
@@ -25,7 +24,9 @@
         <!-- Styles -->
         <link href="/css/base.css" rel="stylesheet">
         <link href="/css/app.css" rel="stylesheet">
-        <link href="/css/utilities.css" rel="stylesheet">
+        <!-- deferred styles -->
+        <link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/css/utilities.css"></noscript>
 
         @yield('head')
     </head>
@@ -149,5 +150,8 @@
 
         </div>
 
+        <!-- Scripts -->
+        <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script>
+        
     </body>
 </html>
