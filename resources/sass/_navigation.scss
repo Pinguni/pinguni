@@ -51,7 +51,7 @@
 
 
 .sidebar {
-    @apply w-full;
+    @apply w-full bg-white;
 }
 @media (min-width: $md) {
     .sidebar {
