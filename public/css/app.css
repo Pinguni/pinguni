@@ -744,7 +744,7 @@ footer div p {
   margin-top: 2rem;
 }
 
-.course-pages a div, .box-explain, .card-wrapper .card {
+.guide-pages a div, .box-explain, .card-wrapper .card {
   --border-opacity: 1;
   border-color: #edf2f7;
   border-color: rgba(237, 242, 247, var(--border-opacity));
@@ -834,17 +834,17 @@ footer div p {
   justify-content: space-between;
 }
 
-.course-pages a, .card-wrapper a {
+.guide-pages a, .card-wrapper a {
   --text-opacity: 1;
   color: #000;
   color: rgba(0, 0, 0, var(--text-opacity));
 }
 
-.course-pages a:hover, .card-wrapper a:hover {
+.guide-pages a:hover, .card-wrapper a:hover {
   text-decoration: none;
 }
 
-.course-header {
+.hero-header {
   margin-top: 1rem;
   height: auto;
   padding-left: 2rem;
@@ -857,11 +857,11 @@ footer div p {
   border-radius: 0.375rem;
 }
 
-.course-pages a {
+.guide-pages a {
   font-weight: 600;
 }
 
-.course-pages a div {
+.guide-pages a div {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 1rem;
@@ -871,13 +871,13 @@ footer div p {
   margin-top: 0.75rem;
 }
 
-.course-pages a div:hover {
+.guide-pages a div:hover {
   --bg-opacity: 1;
   background-color: #edf2f7;
   background-color: rgba(237, 242, 247, var(--bg-opacity));
 }
 
-.course-pages a div .emoji {
+.guide-pages a div .emoji {
   margin-bottom: 0.25rem;
 }
 

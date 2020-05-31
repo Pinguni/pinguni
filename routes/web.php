@@ -75,13 +75,13 @@ Route::prefix('resources')->group(function() {
     Route::get('links/report', 'ResourceController@report');
     
     /**
-     *  Course Routes
+     *  Guide Routes
      */
-    Route::prefix('courses')->group(function() {
-        Route::get('{course}', 'ResourceController@course');
-        Route::get('{course}/{pocket}', 'ResourceController@coursePocket');
-        Route::get('{course}/{pocket}/{page}', 'ResourceController@coursePage');
-        //Route::get('{course}/{pocket}/{page}/complete', 'UsersCardProgressController@coursePage');
+    Route::prefix('guides')->group(function() {
+        Route::get('{guide}', 'ResourceController@guide');
+        Route::get('{guide}/{pocket}', 'ResourceController@guidePocket');
+        Route::get('{guide}/{pocket}/{page}', 'ResourceController@guidePage');
+        //Route::get('{guide}/{pocket}/{page}/complete', 'UsersCardProgressController@guidePage');
     });
     
 });

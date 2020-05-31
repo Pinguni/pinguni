@@ -53,50 +53,50 @@ class ResourceController extends Controller
     
     
     /**
-     * Return main course page
+     * Return main guide page
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function course($course)
+    public function guide($guide)
     {
-        $cou = Card::ofVisibility('public')->where('permalink', $course)->first();
+        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
         
-        return view('resources.courses.index', [
-            'cou' => $cou,
+        return view('resources.guides.index', [
+            'gui' => $gui,
         ]);
     }
     
     
     /**
-     * Return course pocket page
+     * Return guide pocket page
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function coursePocket($course, $pocket)
+    public function guidePocket($guide, $pocket)
     {
-        $cou = Card::ofVisibility('public')->where('permalink', $course)->first();
+        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
         $poc = Card::ofVisibility('public')->where('permalink', $pocket)->first();
         
-        return view('resources.courses.pocket', [
-            'cou' => $cou,
+        return view('resources.guides.pocket', [
+            'gui' => $gui,
             'poc' => $poc,
         ]);
     }
     
     
     /**
-     * Return course page page
+     * Return guide page page
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function coursePage($course, $pocket, $page)
+    public function guidePage($guide, $pocket, $page)
     {
-        $cou = Card::ofVisibility('public')->where('permalink', $course)->first();
+        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
         $poc = Card::ofVisibility('public')->where('permalink', $pocket)->first();
         $pag = Card::ofVisibility('public')->where('permalink', $page)->first();
         
-        return view('resources.courses.page', [
-            'cou' => $cou,
+        return view('resources.guides.page', [
+            'gui' => $gui,
             'poc' => $poc,
             'pag' => $pag,
         ]);
