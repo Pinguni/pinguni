@@ -23,9 +23,9 @@
         </script>
 
         <!-- Styles -->
-        <link href="{{ asset('css/base.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/utilities.css') }}" rel="stylesheet">
+        <link href="/css/base.css" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
+        <link href="/css/utilities.css" rel="stylesheet">
 
         @yield('head')
     </head>
