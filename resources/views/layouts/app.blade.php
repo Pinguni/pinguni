@@ -102,6 +102,11 @@
                         </div>
                         @guest
                         @else
+                        @if (Auth::user()->role == 'admin')
+                        <div>
+                            <a href = '{{ url("/admin") }}'>Admin</a>
+                        </div>
+                        @endif
                         <div>
                             <a href = '{{ url("/dash") }}'>Dashboard</a>
                         </div>
