@@ -191,6 +191,7 @@ button.complete {
 
 .nav-wrapper {
   background-color: white;
+  z-index: 50;
   --text-opacity: 1;
   color: #718096;
   color: rgba(113, 128, 150, var(--text-opacity));
