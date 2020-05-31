@@ -162,7 +162,7 @@ Search {{ $word ?? '' }}
         /**
          *  getting the cards with AJAX
          */
-        var url = '{{ url("/resources/get/cards/$word,") }}'+tags;
+        var url = "/resources/get/cards/$word,"+tags;
         
         console.log(url)
         
