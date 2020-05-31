@@ -42,6 +42,7 @@ Search {{ $word ?? '' }}
         <p class = "menu-1-header">Subjects</p>
         <p class = "menu-1" onclick="getCards('all subjects')">All Subjects</p>
         <p class = "menu-1" onclick="getCards('math')">Math</p>
+        <p class = "menu-1" onclick="getCards('language arts')">Language Arts</p>
         <p class = "menu-1" onclick="getCards('foreign language')">Foreign Language</p>
 
         <br />
