@@ -113,6 +113,10 @@ Route::prefix('dash')->group(function() {
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
     Route::prefix('admin')->group(function() {
         Route::get('/', 'AdminController@index')->name('admin');
+        Route::prefix('create')->group(function() {
+            Route::get('/card', 'AdminController@createCard')->name('createCard');
+            Route::post('/card/store', 'CardController@store')->name('storeCard');
+        });
         Route::prefix('edit')->group(function() {
             Route::post('/card/redirect', 'CardController@redirect')->name('redirectCard');
             Route::get('/card/{id}', 'AdminController@editCard')->name('editCard');
