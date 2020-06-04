@@ -47,9 +47,9 @@ class Help
             $title = str_replace(' ', '-', strtolower($card->title));
             $url = "/resources/search/$title";
         }
-        else if ($card->type == 'course')
+        else if ($card->type == 'guide')
         {
-            $url = "/resources/courses/$card->permalink";
+            $url = "/resources/guides/$card->permalink";
         }
         else
         {
