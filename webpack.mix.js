@@ -3,6 +3,10 @@ const mix = require('laravel-mix');
 // Get TailwindCSS package
 const tailwindcss = require('tailwindcss');
 
+// PurgeCSS
+require('laravel-mix-purgecss');
+
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
