@@ -7,7 +7,7 @@
         @apply py-3 flex;
         
         a {
-            @apply text-gray-600;
+            @apply text-gray-600 text-md;
         }
         a:hover {
             @apply no-underline;

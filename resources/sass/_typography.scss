@@ -22,11 +22,12 @@ h2 {
     @apply font-bold text-xl leading-loose mb-2;
 }
 p, 
-li {
-    @apply mb-3;
+li,
+span {
+    @apply mb-3 text-base;
 }
 a {
-    @apply text-indigo-600;
+    @apply text-indigo-600 text-base;
 }
 a:hover {
     @apply underline;
