@@ -205,6 +205,9 @@ h4,
 h5,
 h6 {
   font-family: "Karla", sans-serif;
+  --text-opacity: 1;
+  color: #0A369D;
+  color: rgba(10, 54, 157, var(--text-opacity));
 }
 
 h1 {

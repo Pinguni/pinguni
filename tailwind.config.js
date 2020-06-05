@@ -17,6 +17,13 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
+        
+      light: '#CFDEE7',           // Beau Blue
+      light2: '#92B4F4',          // French Sky Blue
+      medium: '#6D72C3',          // Violet Blue Crayola
+      dark: '#0A369D',           // Egyptian Blue
+      dark2: '#712F79',           // Maximum Purple
+      
 
       gray: {
         100: '#f7fafc',
