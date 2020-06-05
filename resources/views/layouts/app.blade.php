@@ -86,7 +86,7 @@
                         Search bar
                     -->
                     <div>
-                        <a href = {{ url('/resources/search') }}>Search</a>
+                        <a href = {{ url('/resources/search') }}>Resources</a>
                     </div>
 
 
