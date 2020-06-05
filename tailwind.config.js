@@ -21,7 +21,7 @@ module.exports = {
       light: '#CFDEE7',           // Beau Blue
       light2: '#92B4F4',          // French Sky Blue
       medium: '#6D72C3',          // Violet Blue Crayola
-      dark: '#0A369D',           // Egyptian Blue
+      dark: '#0A369D',            // Egyptian Blue
       dark2: '#712F79',           // Maximum Purple
       
 
@@ -260,8 +260,8 @@ module.exports = {
       xs: '0.75rem',
       sm: '0.875rem',
       md: '1rem',
-      //base: '1rem',
-      base: '16px',
+      base: '1rem',
+      //base: '16px',
       lg: '1.125rem',
       xl: '1.25rem',
       '2xl': '1.5rem',
