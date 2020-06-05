@@ -25,8 +25,9 @@
         <link href="/css/base.css" rel="stylesheet">
         <link href="/css/app.css" rel="stylesheet">
         <!-- deferred styles -->
-        <link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/css/utilities.css"></noscript>
+        <!--<link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/css/utilities.css"></noscript> -->
+        <link rel="stylesheet" href="/css/utilities.css">
 
         @yield('head')
     </head>
@@ -152,6 +153,6 @@
 
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script>
-        
+        <script type="text/javascript" src="/js/app.js"></script>
     </body>
 </html>
