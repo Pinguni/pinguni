@@ -14,6 +14,12 @@
         </x-slot>
         <!-- Include parent topics somewhere -->
         <p>{{ $card->description }}</p>
+        @guest
+        @else
+            @if (Auth::user()->role == 'admin')
+                <a href = "{{ route('editCard', ['id' => $card->id]) }}"><button>Edit</button></a>
+            @endif
+        @endguest
     </x-hero>
 
 @endsection
