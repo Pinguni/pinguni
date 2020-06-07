@@ -15,7 +15,7 @@
 
 <section class = "box card-group">
     <div class = "card-group-header">
-        <h2>Courses Progress</h2>
+        <h2>Guides Progress</h2>
     </div>
     <div class = "container-wrap">
         @foreach ($cards as $card)
@@ -26,12 +26,6 @@
                   :card="$card" >
             </x-card>
         @endforeach
-    </div>
-</section>
-
-<section class = "box card-group">
-    <div class = "card-group-header">
-        <h2>Guides Progress</h2>
     </div>
 </section>
 

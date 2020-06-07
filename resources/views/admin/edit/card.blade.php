@@ -2,6 +2,11 @@
 
 @section('title', "Edit Card #$card->id | Admin")
 
+@section('head')
+    <!-- Include stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+@endsection
+
 @section('hero')
 <x-hero bg="subtle_prism_indigo" class="blank">
     <x-slot name='h1'>
@@ -13,7 +18,7 @@
 
 @section('content')
 
-<form method = "POST" action = "{{ route('updateCard', ['id' => $card->id]) }}">
+<form method = "POST" action = "{{ route('updateCard', ['id' => $card->id]) }}" id = "editCardForm">
     @csrf
     
     <label for = "icon">Icon</label>
@@ -57,8 +62,9 @@
     @enderror
     
     <label for = "notes">Notes</label>
-    <div class = "editor language-js"></div>
-    <input name = "notes" id = "notes" type = "hidden" />
+    <textarea name = "notes" required>{!! $card->notes !!}</textarea>
+    <!-- <div id = "editor"></div>
+    <input name = "notes" id = "notes" type = "hidden" /> -->
     @error('notes')
         <p role="alert">
             <strong>{{ $message }}</strong>
@@ -103,29 +109,17 @@
 </form>
 
 
-<script type="module">
-    // Code below from https://github.com/antonmedv/codejar/blob/master/index.html
-    
-    import { CodeJar } from 'https://medv.io/codejar/codejar.js'
-    
-    const editor = document.querySelector('.editor')
-    const highlight = editor => {
-        // highlight.js does not trim old tags,
-        // let's do it by this hack.
-        editor.textContent = editor.textContent
-        hljs.highlightBlock(editor)
-    }
-    const jar = CodeJar(editor, highlight)
-    
-    jar.updateCode("{{ $card->notes }}")
-    var notes = document.getElementById('notes')
-    notes.value = "{{ $card->notes }}"
-    
-    // Listen to updates
-    jar.onUpdate(code => {
-        notes.value = code
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+
+<script>
+    //import EditorJS from 'https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest'
+
+    const editor = new EditorJS({
+        /**
+         * Id of Element that should contain Editor instance
+         */
+        holder: 'editor'
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 
 @endsection

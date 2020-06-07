@@ -25,8 +25,9 @@
         <link href="/css/base.css" rel="stylesheet">
         <link href="/css/app.css" rel="stylesheet">
         <!-- deferred styles -->
-        <link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/css/utilities.css"></noscript>
+        <!--<link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/css/utilities.css"></noscript> -->
+        <link rel="stylesheet" href="/css/utilities.css">
 
         @yield('head')
     </head>
@@ -59,7 +60,7 @@
         <div id = "app">
 
             <!--
-                Div wrapping the <nav> bar
+                Main menu
             -->
             <div class = "nav-wrapper">
                 <nav>
@@ -86,7 +87,7 @@
                         Search bar
                     -->
                     <div>
-                        <a href = {{ url('/resources/search') }}>Search</a>
+                        <a href = {{ url('/resources/search') }}>Resources</a>
                     </div>
 
 
@@ -96,7 +97,8 @@
                     <div id = "user-menu">
                         <div>
                             @guest
-                                <span><a href="{{ route('login') }}">{{ __('Login') }}</a> / <a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
+                            <span><a href="{{ route('login') }}">{{ __('Login') }}</a></span>
+                            <span><a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
                             @else
                                 <a href = '{{ url("/u/" . Auth::user()->username) }}'><span>{{ Auth::user()->username }}</span></a>
                             @endguest
@@ -152,6 +154,6 @@
 
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script>
-        
+        @yield('scripts')
     </body>
 </html>

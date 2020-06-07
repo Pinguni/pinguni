@@ -5,30 +5,37 @@
 
 @section('hero')
 <x-hero :bg="$gui->bg" class="blank">
-    @slot('article', 'article hero-header')
+    @slot('article', 'hero-header')
     <x-slot name='h1'>
         {{ $gui->title }}
     </x-slot>
     
     {{ $gui->description }}
+    
     @guest
         <div class = "mb-12"></div>
     @else
+        @if (Auth::user()->role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $gui->id]) }}" class = "inline-block mt-3"><button>Edit</button></a>
+        @endif
+    
         @php
             $status = App\Help::userCardStatus(Auth::id(), $gui->id);
         @endphp
     
         @if ($status == 'inprogress')
-            <button class = "inprogress">In Progress</button>
+            <button class = "inprogress inline-block">In Progress</button>
         @else
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
                 <input name = "id" id = "id" type = "number" value = "{{ $gui->id }}" class = "hidden"/>
                 <input name = "status" id = "status" type = "text" value = "inprogress" class = "hidden"/>
-                <button type = "submit">Follow this guide</button>
+                <button type = "submit float-right">Follow this guide</button>
             </form>
         @endif
     @endguest
+    
+    
 </x-hero>
 @endsection
 
@@ -47,6 +54,12 @@
 <!--
     Pockets
 -->
+<section class = "article">
+    <div class = "box flex items-center">
+        <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button>Create Pocket</button></a>
+    </div>
+</section>
+
 @foreach ($gui->cards as $poc)
     <section class = "article">
         <div class = "box box-pocket">
@@ -54,7 +67,7 @@
             <p>{{ $poc->description }}</p>
             
             <!--
-                Snippets
+                Pages
             -->
             @foreach ($poc->cards as $pag)
                 <div class = "guide-pages">
@@ -63,6 +76,7 @@
                     </a>
                 </div>
             @endforeach
+            <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button>Create Page</button></a>
         </div>
     </section>
 @endforeach

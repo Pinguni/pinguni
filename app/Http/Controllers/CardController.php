@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Card;
+use App\CardsAndCards;
+use App\Help;
 
 class CardController extends Controller
 {
@@ -59,7 +61,17 @@ class CardController extends Controller
         $card->permalink = $request->permalink;
         $card->save();
         
-        return redirect()->back();
+        if ($request->parent_id != '')
+        {
+            $cardAndCard = new CardsAndCards;
+            $cardAndCard->parent_id = $request->parent_id;
+            $cardAndCard->child_id = $card->id;
+            $cardAndCard->save();
+        }
+        
+        $url = Help::cardUrl($card);
+        
+        return redirect($url);
     }
 
     /**
@@ -128,7 +140,9 @@ class CardController extends Controller
         $card->permalink = $request->permalink;
         $card->save();
         
-        return redirect()->back();
+        $url = Help::cardUrl($card);
+        
+        return redirect($url);
     }
 
     /**

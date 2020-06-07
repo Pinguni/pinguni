@@ -22,7 +22,9 @@ h2 {
     @apply font-bold text-xl leading-loose mb-2;
 }
 p, 
-li {
+li,
+p span,
+p a {
     @apply mb-3;
 }
 a {
