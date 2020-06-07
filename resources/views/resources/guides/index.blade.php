@@ -5,12 +5,13 @@
 
 @section('hero')
 <x-hero :bg="$gui->bg" class="blank">
-    @slot('article', 'article hero-header')
+    @slot('article', 'hero-header')
     <x-slot name='h1'>
         {{ $gui->title }}
     </x-slot>
     
     {{ $gui->description }}
+    
     @guest
         <div class = "mb-12"></div>
     @else
@@ -19,16 +20,26 @@
         @endphp
     
         @if ($status == 'inprogress')
-            <button class = "inprogress">In Progress</button>
+            <button class = "inprogress float-right">In Progress</button>
         @else
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
                 <input name = "id" id = "id" type = "number" value = "{{ $gui->id }}" class = "hidden"/>
                 <input name = "status" id = "status" type = "text" value = "inprogress" class = "hidden"/>
-                <button type = "submit">Follow this guide</button>
+                <button type = "submit float-right">Follow this guide</button>
             </form>
         @endif
     @endguest
+    
+    
+    @guest
+    @else
+        @if (Auth::user()->role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $gui->id]) }}"><button>Edit</button></a>
+        @endif
+    @endguest
+    
+    
 </x-hero>
 @endsection
 
