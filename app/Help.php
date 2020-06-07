@@ -95,7 +95,7 @@ class Help
     
     public static function notes($notes)
     {
-        if ($notes)
+        /* if ($notes)
         {
             $notes = json_decode($notes);
         }
@@ -106,7 +106,8 @@ class Help
             return $content;
         } else {
             return null;
-        }
+        } */
+        return $notes;
     }
     
     

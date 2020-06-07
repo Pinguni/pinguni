@@ -62,8 +62,11 @@ footer {
     @extend %section;
     @apply rounded h-auto;
 }
-.box-p {  /* if there is to be a background color for boxes */
+%box-p {  /* if there is to be a background color for boxes */
     @apply py-4 px-8;
+}
+.box-p {  
+    @extend %box-p;
 }
 .box-explain {
     @extend %container-border;
@@ -79,6 +82,10 @@ footer {
             @apply font-semibold text-lg text-left;
         }
     }
+}
+.box-pocket {
+    @extend %box-p;
+    @apply bg-light;
 }
 @media (min-width: $md)
 {
@@ -155,4 +162,5 @@ footer {
 }
 
 
-
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

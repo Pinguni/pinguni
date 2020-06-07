@@ -1,7 +1,9 @@
 <div class = "card-wrapper {{ App\Help::cardWidth($width) }}">
     <a href = "{{ App\Help::cardUrl($card) }}" target = "_blank">
-        
         <div class = "card {{ $height ?? '' }}">
+            <div class = "card-img-wrapper @if ($width == 'horizontal') {{ $height ?? '' }} @endif">
+                <img class = "{{ $hideImage ?? '' }}" src = "{{ $card->thumbnail }}" />
+            </div>
             <div class = "container">
                 @if ($card->type === 'link')
                     <p class = "type type-teal {{ $hideType ?? '' }}"><i class = "fas fa-link"></i>{{ $card->type }}</p>
@@ -16,12 +18,9 @@
                 @else
                     <p class = "type type-gray {{ $hideType ?? '' }}">{{ $card->type }}</p>
                 @endif
-                <div class = "card-img-wrapper @if ($width == 'horizontal') {{ $height ?? '' }} @endif">
-                    <img class = "{{ $hideImage ?? '' }}" src = "{{ $card->thumbnail }}" />
-                </div>
                 <div class = "content">
                     <p class = "title">{{ $card->title }}</p>
-                    <p class = "description {{ $hideDescription ?? '' }}">{{ $card->description }}</p>
+                    <p class = "description {{ $hideDescription ?? '' }}">{{ substr($card->description, 0, 100) }} . . .</p>
                 </div>
             </div>
         </div>
