@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Card;
+use App\Help;
 
 class CardController extends Controller
 {
@@ -59,7 +60,9 @@ class CardController extends Controller
         $card->permalink = $request->permalink;
         $card->save();
         
-        return redirect()->back();
+        $url = Help::cardUrl($card);
+        
+        return redirect($url);
     }
 
     /**
@@ -128,7 +131,9 @@ class CardController extends Controller
         $card->permalink = $request->permalink;
         $card->save();
         
-        return redirect()->back();
+        $url = Help::cardUrl($card);
+        
+        return redirect($url);
     }
 
     /**
