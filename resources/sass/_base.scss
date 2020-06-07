@@ -37,3 +37,7 @@ main {
         @apply w-full;
     }
 }
+
+%container-wrap {
+    @apply flex flex-wrap;
+}

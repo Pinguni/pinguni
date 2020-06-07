@@ -34,9 +34,11 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function createCard()
+    public function createCard($parent_id)
     {
-        return view('admin.create.card');
+        return view('admin.create.card', [
+            'parent_id' => $parent_id,
+        ]);
     }
     
     

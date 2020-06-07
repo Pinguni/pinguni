@@ -15,6 +15,8 @@
 <form method = "POST" action = "{{ route('storeCard') }}">
     @csrf
     
+    <input type = "hidden" name = "parent_id" value = "{{ $parent_id ?? '' }}" />
+    
     <label for = "icon">Icon</label>
     <input type = "text" name = "icon" placeholder = "icon" value="{{ old('icon') }}"/>
     @error('icon')

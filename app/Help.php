@@ -47,9 +47,9 @@ class Help
             $title = str_replace(' ', '-', strtolower($card->title));
             $url = "/resources/search/$title";
         }
-        else if ($card->type == 'course')
+        else if ($card->type == 'guide')
         {
-            $url = "/resources/courses/$card->permalink";
+            $url = "/resources/guides/$card->permalink";
         }
         else
         {
@@ -95,7 +95,7 @@ class Help
     
     public static function notes($notes)
     {
-        if ($notes)
+        /* if ($notes)
         {
             $notes = json_decode($notes);
         }
@@ -106,7 +106,8 @@ class Help
             return $content;
         } else {
             return null;
-        }
+        } */
+        return $notes;
     }
     
     

@@ -1,5 +1,5 @@
 #hero {
-    @apply bg-white h-auto bg-cover bg-fixed pb-6;
+    @apply bg-white h-auto bg-cover bg-fixed py-6;
     
     & > div {
         @extend %main;
@@ -16,10 +16,13 @@
         }
     }
 }
+.hero-header {
+    @apply mt-4 h-auto px-12 pt-6 pb-4 bg-white rounded-md w-full;
+}
 @media (min-width: $md) {
     #hero {
         & div > div {
-            @apply w-2/3;
+            /* @apply w-2/3; */
             
             h1 {
                 @apply text-5xl;

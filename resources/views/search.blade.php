@@ -187,4 +187,5 @@ Search {{ $word ?? '' }}
         }) 
     }
 </script>
+
 @endsection

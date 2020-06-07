@@ -3,9 +3,7 @@
  *  Imports
  *
  */
-@import url('https://fonts.googleapis.com/css2?family=Average+Sans&display=swap');  // Average Sans
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');  // Karla
-
+@import 'fonts';          // Fonts
 @import 'variables';      // Variables
 @import 'base';           // Base
 @import 'typography';     // Typography
@@ -15,6 +13,8 @@
 @import 'hero';           // Hero
 @import 'cards';          // Cards
 
+
+@import 'once/landing';
 
 
 /*
@@ -62,8 +62,11 @@ footer {
     @extend %section;
     @apply rounded h-auto;
 }
-.box-p {  /* if there is to be a background color for boxes */
+%box-p {  /* if there is to be a background color for boxes */
     @apply py-4 px-8;
+}
+.box-p {  
+    @extend %box-p;
 }
 .box-explain {
     @extend %container-border;
@@ -79,6 +82,10 @@ footer {
             @apply font-semibold text-lg text-left;
         }
     }
+}
+.box-pocket {
+    @extend %box-p;
+    @apply bg-light;
 }
 @media (min-width: $md)
 {
@@ -126,9 +133,6 @@ footer {
         @apply no-underline;
     }
 }
-.hero-header {
-    @apply mt-4 h-auto px-8 py-4 bg-white rounded-md;
-}
 .guide-pages {
     a {
         @apply font-semibold;
@@ -158,4 +162,5 @@ footer {
 }
 
 
-
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

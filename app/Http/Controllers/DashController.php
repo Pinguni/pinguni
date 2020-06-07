@@ -28,7 +28,7 @@ class DashController extends Controller
         if (!Auth::guest())
         {
             // Get user's cards progress
-            $cards = User::find(Auth::id())->cardsProgress()->where('cards.type', 'course')->get();  
+            $cards = User::find(Auth::id())->cardsProgress()->where('cards.type', 'guide')->get();  
             
             return view('dash.index', [
                 'cards' => $cards,
