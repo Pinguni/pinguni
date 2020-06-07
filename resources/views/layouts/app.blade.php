@@ -60,7 +60,7 @@
         <div id = "app">
 
             <!--
-                Div wrapping the <nav> bar
+                Main menu
             -->
             <div class = "nav-wrapper">
                 <nav>
@@ -97,7 +97,8 @@
                     <div id = "user-menu">
                         <div>
                             @guest
-                                <span><a href="{{ route('login') }}">{{ __('Login') }}</a> / <a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
+                            <span><a href="{{ route('login') }}">{{ __('Login') }}</a></span>
+                            <span><a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
                             @else
                                 <a href = '{{ url("/u/" . Auth::user()->username) }}'><span>{{ Auth::user()->username }}</span></a>
                             @endguest
@@ -153,6 +154,6 @@
 
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script>
-        <script type="text/javascript" src="/js/app.js"></script>
+        @yield('scripts')
     </body>
 </html>
