@@ -12,8 +12,7 @@ label {
 input[type=text],
 input[type=password],
 input[type=email],
-textarea,
-.editor {
+textarea{
     @apply w-2/3 px-2 mb-4 text-gray-600 border-2 border-gray-200;
 
     &:focus {
@@ -21,14 +20,6 @@ textarea,
     }
 }
 
-.editor {
-    @apply relative w-full h-64;
-    font-family: monospace;
-    font-size: 14px;
-    font-weight: 400;
-    min-height: 240px;
-    letter-spacing: normal;
-    line-height: 20px;
-    padding: 10px;
-    tab-size: 4;
+#editor {
+    @apply w-full;
 }
