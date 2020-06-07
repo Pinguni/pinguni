@@ -14,6 +14,8 @@
 @import 'cards';          // Cards
 
 
+@import 'once/landing';
+
 
 /*
  *  Scrollbar
@@ -123,9 +125,6 @@ footer {
     &:hover {
         @apply no-underline;
     }
-}
-.hero-header {
-    @apply mt-4 h-auto px-8 py-4 bg-white rounded-md;
 }
 .guide-pages {
     a {

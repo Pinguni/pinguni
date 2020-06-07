@@ -9,7 +9,6 @@ h4,
 h5,
 h6 {
     font-family: $font-fancy;
-    @apply text-dark;
 }
 h1 {
     @apply font-bold text-3xl leading-loose;
@@ -24,11 +23,12 @@ h2 {
 }
 p, 
 li,
-span {
-    @apply mb-3 text-base;
+p span,
+p a {
+    @apply mb-3;
 }
 a {
-    @apply text-indigo-600 text-base;
+    @apply text-indigo-600;
 }
 a:hover {
     @apply underline;
