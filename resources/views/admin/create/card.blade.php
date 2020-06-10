@@ -2,6 +2,11 @@
 
 @section('title', "Create Card | Admin")
 
+@section('head')
+    <link href = "/css/components/forms.css" rel = "stylesheet" />
+@endsection
+
+
 @section('hero')
 <x-hero bg="subtle_prism_indigo" class="blank">
     <x-slot name='h1'>

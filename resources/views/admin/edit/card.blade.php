@@ -3,8 +3,7 @@
 @section('title', "Edit Card #$card->id | Admin")
 
 @section('head')
-    <!-- Include stylesheet -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href = "/css/components/forms.css" rel = "stylesheet" />
 @endsection
 
 @section('hero')

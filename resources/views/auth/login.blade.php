@@ -2,11 +2,17 @@
 
 @section('title', 'Login')
 
+
+@section('head')
+    <link href = "/css/components/forms.css" rel = "stylesheet" />
+@endsection
+
+
 @section('content')
 
 <section class = "article">
     
-    <div class = "box box-p bg-white">
+    <div class = "box box-p">
         <h2>{{ __('Login') }}</h2>
 
         <form method="POST" action="{{ route('login') }}">

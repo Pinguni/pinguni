@@ -36,8 +36,8 @@
             -->
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
-                <input name = "id" id = "id" type = "number" value = "{{ $pag->id }}" class = "hidden"/>
-                <input name = "status" id = "status" type = "text" value = "inprogress" class = "hidden"/>
+                <input name = "id" id = "id" type = "hidden" value = "{{ $pag->id }}"/>
+                <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
                 <button type = "submit" class = "complete">Finished</button>
             </form>
         @else
@@ -46,8 +46,8 @@
             -->
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
-                <input name = "id" id = "id" type = "number" value = "{{ $pag->id }}" class = "hidden"/>
-                <input name = "status" id = "status" type = "text" value = "complete" class = "hidden"/>
+                <input name = "id" id = "id" type = "hidden" value = "{{ $pag->id }}"/>
+                <input name = "status" id = "status" type = "hidden" value = "complete"/>
                 <button type = "submit">Complete</button>
             </form>
         @endif

@@ -9,12 +9,8 @@
 @import 'typography';     // Typography
 @import 'buttons';        // Buttons
 @import 'navigation';     // Navigation
-@import 'forms';          // Forms
 @import 'hero';           // Hero
-@import 'cards';          // Cards
 
-
-@import 'once/landing';
 
 
 /*
@@ -49,25 +45,6 @@ footer {
  *  Page Components
  *
  */
-%section {
-    @apply mb-6 mt-8;
-}
-.section {
-    @extend %section;
-}
-%container-border {
-    @apply border-gray-200 border-2 rounded-md;
-}
-.box {
-    @extend %section;
-    @apply rounded h-auto;
-}
-%box-p {  /* if there is to be a background color for boxes */
-    @apply py-4 px-8;
-}
-.box-p {  
-    @extend %box-p;
-}
 .box-explain {
     @extend %container-border;
     @apply p-8 flex;
@@ -85,26 +62,12 @@ footer {
 }
 .box-pocket {
     @extend %box-p;
-    @apply bg-light;
+    @apply bg-gray-100;
 }
 @media (min-width: $md)
 {
     .box-explain {
         @apply flex;
-    }
-}
-.article {
-    margin: 0 auto;
-    @apply w-full;
-}
-@media (min-width: $md) {
-    .article {
-        @apply w-10/12;
-    }
-}
-@media (min-width: $lg) {
-    .article {
-        @apply w-8/12;
     }
 }
 .collection-header {
@@ -126,21 +89,14 @@ footer {
     @extend %container-wrap;
     @apply justify-between;
 }
-%no-decoration {
-    @apply text-black;
-    
-    &:hover {
-        @apply no-underline;
-    }
-}
 .guide-pages {
     a {
         @apply font-semibold;
         @extend %no-decoration;
         
         div {
-            @extend %container-border;
-            @apply px-4 pt-4 pb-1 duration-700 w-full mt-3;
+            //@extend %container-border;
+            @apply px-3 pt-3 pb-1 duration-700 w-full mb-4;
             
             &:hover {
                 @apply bg-gray-200;
@@ -156,7 +112,3 @@ footer {
 }
 
 
-
-#tagCrumbs p {
-    @apply inline-block mr-3 rounded px-2 bg-gray-100 text-black;
-}
