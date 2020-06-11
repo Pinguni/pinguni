@@ -16,6 +16,11 @@
     <div class = "box box-pocket">
         <h2>{{ $poc->title }}</h2>
         <p>{{ $poc->description }}</p>
+        @guest
+        @else
+            @if (Auth::user()->role == 'admin')
+                <a href = "{{ route('editCard', ['id' => $poc->id]) }}" class = "float-right"><button>Edit</button></a>
+            @endif
 
         <!--
             Snippets

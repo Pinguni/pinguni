@@ -18,8 +18,8 @@
     @guest
         <div class = "mb-12"></div>
     @else
-        @if (Auth::user()->role == 'admin')
-            <a href = "{{ route('editCard', ['id' => $gui->id]) }}" class = "inline-block mt-3"><button>Edit</button></a>
+        @if ($role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $gui->id]) }}"><button>Edit</button></a>
         @endif
     
         @php
@@ -81,7 +81,9 @@
                     </a>
                 </div>
             @endforeach
-            <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button>Create Page</button></a>
+            @if ($role == 'admin')
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
+            @endif
         </div>
     </section>
 @endforeach

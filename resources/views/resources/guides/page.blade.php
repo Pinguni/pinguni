@@ -51,6 +51,9 @@
                 <button type = "submit">Complete</button>
             </form>
         @endif
+        @if ($role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $pag->id]) }}"><button class = "edit">Edit</button></a>
+        @endif
     </div>
     
 </section>
