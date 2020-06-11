@@ -76,7 +76,7 @@
             -->
             @foreach ($poc->cards as $pag)
                 <div class = "guide-pages">
-                    <a href = '{{ url("/resources/guide/$gui->permalink/$poc->permalink/$pag->permalink") }}'>
+                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink/$pag->permalink") }}'>
                         <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
                     </a>
                 </div>
