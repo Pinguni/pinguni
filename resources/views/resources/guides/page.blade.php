@@ -12,6 +12,13 @@
         <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink") }}'>{{ $poc->title }}</a></p>
     </div>
     
+    <!--
+        Image
+    -->
+    <div class = "box">
+        <img src = "{{ $pag->bg }}" />
+    </div>
+    
     <!-- 
         Page Info
     -->
@@ -36,8 +43,8 @@
             -->
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
-                <input name = "id" id = "id" type = "number" value = "{{ $pag->id }}" class = "hidden"/>
-                <input name = "status" id = "status" type = "text" value = "inprogress" class = "hidden"/>
+                <input name = "id" id = "id" type = "hidden" value = "{{ $pag->id }}"/>
+                <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
                 <button type = "submit" class = "complete">Finished</button>
             </form>
         @else
@@ -46,10 +53,13 @@
             -->
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
-                <input name = "id" id = "id" type = "number" value = "{{ $pag->id }}" class = "hidden"/>
-                <input name = "status" id = "status" type = "text" value = "complete" class = "hidden"/>
+                <input name = "id" id = "id" type = "hidden" value = "{{ $pag->id }}"/>
+                <input name = "status" id = "status" type = "hidden" value = "complete"/>
                 <button type = "submit">Complete</button>
             </form>
+        @endif
+        @if ($role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $pag->id]) }}"><button class = "edit">Edit</button></a>
         @endif
     </div>
     

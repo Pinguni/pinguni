@@ -1,0 +1,83 @@
+@import '../variables';
+@import '../base';
+
+
+form {
+    @extend %container-wrap;
+    @extend %section;
+    
+    p[role=alert] {
+        @apply w-full ml-4 font-normal text-red-600;
+    }
+    
+    .wrap-3 {
+        @apply flex w-full;
+        
+        input {
+            @apply w-full;
+        }
+    }
+}
+@media (min-width: $lg) {
+    form {
+        .wrap-3 {
+            input {
+                &:first-child {
+                    @apply mr-4;
+                }
+                &:last-child {
+                    @apply ml-4;
+                }
+            }
+        }
+    }
+}
+label {
+    @apply w-1/3 font-semibold mb-4 /**/ hidden;
+}
+input[type=text],
+input[type=password],
+input[type=email],
+textarea{
+    @apply w-full /*w-2/3*/ px-2 mb-4 text-gray-600 rounded-md bg-gray-100;
+
+    &:focus {
+        @apply outline-none bg-gray-200;
+    }
+}
+input[placeholder],
+textarea[placeholder] {
+    //@apply capitalize;
+}
+
+#editor {
+    @apply w-full;
+}
+
+.note-editor {
+    @apply mb-6 w-full;
+    
+    &.note-frame {
+        border-width: 2px !important;
+        border-color: $light !important;
+        @apply rounded-none;
+    }
+    .note-toolbar,
+    .note-editable {
+        @apply bg-white;
+    }
+    button.note-btn {
+        @apply border-none;
+        
+        &:hover {
+            @apply border-none;
+        }
+    }
+    &.note-airframe .note-statusbar, 
+    &.note-frame .note-statusbar {
+        border-style: none !important;
+    }
+    .note-resizebar {
+        @apply bg-white;
+    }
+}

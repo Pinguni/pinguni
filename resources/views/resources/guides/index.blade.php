@@ -2,6 +2,9 @@
 
 @section('title', "$gui->title | Guides")
 
+@section('head')
+    <link href = "/css/components/buttons.css" rel = "stylesheet" />
+@endsection
 
 @section('hero')
 <x-hero :bg="$gui->bg" class="blank">
@@ -15,8 +18,8 @@
     @guest
         <div class = "mb-12"></div>
     @else
-        @if (Auth::user()->role == 'admin')
-            <a href = "{{ route('editCard', ['id' => $gui->id]) }}" class = "inline-block mt-3"><button>Edit</button></a>
+        @if ($role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $gui->id]) }}"><button>Edit</button></a>
         @endif
     
         @php
@@ -24,12 +27,12 @@
         @endphp
     
         @if ($status == 'inprogress')
-            <button class = "inprogress inline-block">In Progress</button>
+            <button class = "inprogress">In Progress</button>
         @else
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
-                <input name = "id" id = "id" type = "number" value = "{{ $gui->id }}" class = "hidden"/>
-                <input name = "status" id = "status" type = "text" value = "inprogress" class = "hidden"/>
+                <input name = "id" id = "id" type = "hidden" value = "{{ $gui->id }}"/>
+                <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
                 <button type = "submit float-right">Follow this guide</button>
             </form>
         @endif
@@ -55,8 +58,10 @@
     Pockets
 -->
 <section class = "article">
-    <div class = "box flex items-center">
-        <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button>Create Pocket</button></a>
+    <div class = "box">
+        @if ($role == 'admin')
+            <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button class = "clear">Create Pocket</button></a>
+        @endif
     </div>
 </section>
 
@@ -71,12 +76,14 @@
             -->
             @foreach ($poc->cards as $pag)
                 <div class = "guide-pages">
-                    <a href = '{{ url("/resources/guide/$gui->permalink/$poc->permalink/$pag->permalink") }}'>
+                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink/$pag->permalink") }}'>
                         <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
                     </a>
                 </div>
             @endforeach
-            <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button>Create Page</button></a>
+            @if ($role == 'admin')
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
+            @endif
         </div>
     </section>
 @endforeach

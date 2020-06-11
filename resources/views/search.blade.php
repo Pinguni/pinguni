@@ -5,6 +5,8 @@ Search {{ $word ?? '' }}
 @endsection
 
 @section('head')
+    <!-- Cards -->
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
     <!-- Infinite scroll package -->
     <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
 @endsection
@@ -74,18 +76,18 @@ Search {{ $word ?? '' }}
     <!--
         Card Container
     -->
-    <div class = "w-full md:pl-6 md:pr-2 md:w-3/4" id = "card-container">
+    <div id = "card-container">
         
         <!--
             Tag crumbs
         -->
-        <div id = "tagCrumbs" class = "mb-4"></div>
+        <div id = "tagCrumbs"></div>
         
         <!--
             Cards
         -->
-        <div id = "holder" class = "md:ml-6">
-            <div id = "card-wrap" class = "card-group-wrapper mt-2">
+        <div id = "holder">
+            <div id = "card-wrap" class = "card-group-wrapper">
                 @foreach ($cards as $card)
                     <x-card
                           width="full"

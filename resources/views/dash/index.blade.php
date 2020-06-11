@@ -2,6 +2,10 @@
 
 @section('title', 'Dashboard')
 
+@section('head')
+<link href = "/css/components/cards.css" rel = "stylesheet" />
+@endsection
+
 @section('hero')
 <x-hero bg="default" class="blank">
     @slot('class', 'short')

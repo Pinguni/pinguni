@@ -58,11 +58,16 @@ class ResourceController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function guide($guide)
-    {
+    {   
         $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
         
         return view('resources.guides.index', [
             'gui' => $gui,
+            'role' => $role,
         ]);
     }
     
@@ -95,10 +100,15 @@ class ResourceController extends Controller
         $poc = Card::ofVisibility('public')->where('permalink', $pocket)->first();
         $pag = Card::ofVisibility('public')->where('permalink', $page)->first();
         
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
         return view('resources.guides.page', [
             'gui' => $gui,
             'poc' => $poc,
             'pag' => $pag,
+            'role' => $role,
         ]);
     }
     

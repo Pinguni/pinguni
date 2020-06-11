@@ -2,6 +2,11 @@
 
 @section('title', "Home")
 
+@section('head')
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
+    <link href = "/css/once/landing.css" rel = "stylesheet" />
+@endsection
+
 @section('hero')
     <div id = "landing">
         <div class = "hero">

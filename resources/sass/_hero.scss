@@ -17,7 +17,7 @@
     }
 }
 .hero-header {
-    @apply mt-4 h-auto px-12 pt-6 pb-4 bg-white rounded-md w-full;
+    @apply mt-4 h-auto px-12 pt-6 pb-4 bg-white w-full;
 }
 @media (min-width: $md) {
     #hero {

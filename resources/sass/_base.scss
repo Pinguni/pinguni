@@ -38,6 +38,48 @@ main {
     }
 }
 
+
+.box {
+    @extend %section;
+    @apply h-auto;
+}
+%box-p {  /* if there is to be a background color for boxes */
+    @apply py-4 px-8;
+}
+.box-p {  
+    @extend %box-p;
+}
+%container-border {
+    @apply border-gray-200 border-2 rounded-md;
+}
 %container-wrap {
     @apply flex flex-wrap;
+}
+%section {
+    @apply mb-6 mt-8;
+}
+.section {
+    @extend %section;
+}
+%no-decoration {
+    @apply text-black;
+    
+    &:hover {
+        @apply no-underline;
+    }
+}
+
+.article {
+    margin: 0 auto;
+    @apply w-full;
+}
+@media (min-width: $md) {
+    .article {
+        @apply w-10/12;
+    }
+}
+@media (min-width: $lg) {
+    .article {
+        @apply w-9/12;
+    }
 }
