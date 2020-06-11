@@ -61,14 +61,6 @@
 <!--
     Pockets
 -->
-<section class = "article">
-    <div class = "box">
-        @if ($role == 'admin')
-            <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button class = "clear">Create Pocket</button></a>
-        @endif
-    </div>
-</section>
-
 <div id = "pockets">
 @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc)
     <section class = "article" data-id = "{{ $poc->id }}">
@@ -96,6 +88,15 @@
     </section>
 @endforeach
 </div>
+
+<section class = "article">
+    <div class = "box">
+        @if ($role == 'admin')
+            <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button class = "clear">Create Pocket</button></a>
+        @endif
+    </div>
+</section>
+
 @endsection
 
 

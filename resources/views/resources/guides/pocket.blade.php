@@ -19,15 +19,12 @@
     <div class = "box box-pocket">
         <h2>{{ $poc->title }}</h2>
         <p>{{ $poc->description }}</p>
-        @guest
-        @else
-            @if (Auth::user()->role == 'admin')
-                <a href = "{{ route('editCard', ['id' => $poc->id]) }}" class = "float-right"><button>Edit</button></a>
-            @endif
-        @endguest
+        @if ($role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $poc->id]) }}"><button>Edit</button></a>
+        @endif
         
         <!--
-            Snippets
+            Pages
         -->
         <div class = "guide-pages">
         @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
@@ -35,6 +32,11 @@
                 <div>@if ($role == 'admin') <span class = "handle"></span> @endif <p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
             </a>
         @endforeach
+        </div>
+        
+        @if ($role == 'admin')
+            <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
+        @endif
     </div>
 </section>
 

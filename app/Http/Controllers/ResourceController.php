@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Card;
 use App\Help;
+use App\CardsAndCards;
 
 class ResourceController extends Controller
 {
@@ -42,6 +44,19 @@ class ResourceController extends Controller
             return view('resources.link', [
                 'card' => $card,
             ]);
+        }
+        elseif ($card->type == 'pocket')  // if card is a pocket           | TODO:  Fix for pockets in multiple guides, add routes for standalone pockets
+        {
+            $guideH = CardsAndCards::where('child_id', $card->id)->first();
+            $guide = Card::find($guideH->parent_id);
+            return $this::guidePocket($guide->permalink, $card->permalink);
+        }
+        elseif ($card->type == 'page')  // if card is a page               | TODO:  Fix for pages in multiple pockets
+        {
+            $pocketH = CardsAndCards::where('child_id', $card->id)->first();
+            $pocket = Card::find($pocketH->parent_id);
+            $guide = Card::find(CardsAndCards::where('child_id', $pocket->id)->first()->parent_id);
+            return $this::guidePage($guide->permalink, $pocket->permalink, $card->permalink);
         }
         else  // if card is not a link but exists
         {
@@ -82,9 +97,14 @@ class ResourceController extends Controller
         $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
         $poc = Card::ofVisibility('public')->where('permalink', $pocket)->first();
         
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
         return view('resources.guides.pocket', [
             'gui' => $gui,
             'poc' => $poc,
+            'role' => $role,
         ]);
     }
     

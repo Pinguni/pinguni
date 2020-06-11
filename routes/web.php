@@ -78,9 +78,9 @@ Route::prefix('resources')->group(function() {
      *  Guide Routes
      */
     Route::prefix('guides')->group(function() {
-        Route::get('{guide}', 'ResourceController@guide');
-        Route::get('{guide}/{pocket}', 'ResourceController@guidePocket');
-        Route::get('{guide}/{pocket}/{page}', 'ResourceController@guidePage');
+        Route::get('{guide}', 'ResourceController@guide')->name('guide');
+        Route::get('{guide}/{pocket}', 'ResourceController@guidePocket')->name('guidePocket');
+        Route::get('{guide}/{pocket}/{page}', 'ResourceController@guidePage')->name('guidePage');
         //Route::get('{guide}/{pocket}/{page}/complete', 'UsersCardProgressController@guidePage');
     });
     
