@@ -33,6 +33,12 @@
     <div class = "box">
         {!! App\Help::notes($pag->notes) !!}
         
+    </div>
+    
+    <!--
+        Completion
+    -->
+    <div class = "box">
         @php
             $status = App\Help::userCardStatus(Auth::id(), $pag->id);
         @endphp
@@ -47,7 +53,7 @@
                 <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
                 <button type = "submit" class = "complete">Finished</button>
             </form>
-        @else
+        @elseif (isset($role))
             <!-- 
                 Completion Button
             -->

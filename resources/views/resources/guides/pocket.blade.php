@@ -21,7 +21,8 @@
             @if (Auth::user()->role == 'admin')
                 <a href = "{{ route('editCard', ['id' => $poc->id]) }}" class = "float-right"><button>Edit</button></a>
             @endif
-
+        @endguest
+        
         <!--
             Snippets
         -->
