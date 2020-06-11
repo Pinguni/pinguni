@@ -122,6 +122,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
             Route::post('/card/redirect', 'CardController@redirect')->name('redirectCard');
             Route::get('/card/{id}', 'AdminController@editCard')->name('editCard');
             Route::post('/card/{id}/post', 'CardController@update')->name('updateCard');
+            Route::post('/cards/reorder','CardController@reorder')->name('reorderCards'); 
         });
     });
 });

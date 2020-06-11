@@ -4,6 +4,10 @@
 
 @section('head')
     <link href = "/css/components/buttons.css" rel = "stylesheet" />
+
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 @endsection
 
 @section('hero')
@@ -65,28 +69,81 @@
     </div>
 </section>
 
-@foreach ($gui->cards as $poc)
-    <section class = "article">
+<div id = "pockets">
+@foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc)
+    <section class = "article" data-id = "{{ $poc->id }}">
         <div class = "box box-pocket">
-            <h2>{{ $poc->title }}</h2>
+            @if ($role == 'admin') <span class = "handle"></span> @endif
+            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink") }}'>
+                <h2>{{ $poc->title }}</h2>
+            </a>
             <p>{{ $poc->description }}</p>
             
             <!--
                 Pages
             -->
-            @foreach ($poc->cards as $pag)
-                <div class = "guide-pages">
+            <div class = "guide-pages">
+                @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
                     <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink/$pag->permalink") }}'>
                         <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
                     </a>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
             @if ($role == 'admin')
                 <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
             @endif
         </div>
     </section>
 @endforeach
+</div>
+@endsection
 
 
+@section('scripts')
+<style>
+    .highlight {
+        background: #f7e7d3;
+        min-height: 30px;
+        list-style-type: none;
+    }
+
+    .handle {
+        min-width: 18px;
+        background: #607D8B;
+        height: 15px;
+        display: inline-block;
+        cursor: move;
+        margin-right: 10px;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+
+    	function updateToDatabase(idString, parentId) {
+    	   $.ajaxSetup({ headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});
+    		
+    	   $.ajax({
+              url: '{{ route("reorderCards") }}',
+              method: 'POST',
+              data: { child_ids: idString, parent_id: parentId },
+              success: function() {
+                 alert('Successfully updated')
+               	 //do whatever after success
+              }
+           })
+    	}
+        
+        var target = $('#pockets');
+        target.sortable({
+            handle: '.handle',
+            placeholder: 'highlight',
+            axis: "y",
+            update: function (e, ui){
+               var sortData = target.sortable('toArray', { attribute: 'data-id'})
+               updateToDatabase(sortData.join(','), "{{ $gui->id }}")
+            }
+        })
+        
+    })
+</script>
 @endsection
