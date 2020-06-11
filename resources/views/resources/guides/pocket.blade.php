@@ -9,6 +9,10 @@
     <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 @endsection
 
+@section('hero')
+<x-hero :bg="$gui->bg" class="blank">
+</x-hero>
+@endsection
 
 @section('content')
 
@@ -17,11 +21,18 @@
         <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
     </div>
     <div class = "box box-pocket">
-        <h2>{{ $poc->title }}</h2>
-        <p>{{ $poc->description }}</p>
+        <!--
+            Edit Button
+        -->
         @if ($role == 'admin')
             <a href = "{{ route('editCard', ['id' => $poc->id]) }}"><button>Edit</button></a>
         @endif
+        
+        <!--
+            Pocket Information
+        -->
+        <h2>{{ $poc->title }}</h2>
+        <p>{{ $poc->description }}</p>
         
         <!--
             Pages
@@ -29,7 +40,8 @@
         <div class = "guide-pages">
         @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
             <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink/$pag->permalink") }}' data-id = "{{ $pag->id }}">
-                <div>@if ($role == 'admin') <span class = "handle"></span> @endif <p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                @if ($role == 'admin') <span class = "handle"></span> @endif
+                <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
             </a>
         @endforeach
         </div>

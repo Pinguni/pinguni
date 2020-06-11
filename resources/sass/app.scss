@@ -90,12 +90,13 @@ footer {
     @apply justify-between;
 }
 .guide-pages {
+    @apply w-full;
     a {
-        @apply font-semibold;
+        @apply font-semibold w-full;
         @extend %no-decoration;
         
         div {
-            @apply px-3 pt-3 pb-1 duration-700 w-full mb-4;
+            @apply px-3 pt-3 pb-1 duration-700 w-full;
             
             &:hover {
                 @apply bg-gray-200;
