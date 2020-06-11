@@ -20,7 +20,7 @@
                 @endif
                 <div class = "content">
                     <p class = "title">{{ $card->title }}</p>
-                    <p class = "description {{ $hideDescription ?? '' }}">{{ substr($card->description, 0, 100) }} . . .</p>
+                    <p class = "description {{ $hideDescription ?? '' }}">{{ $card->description }}</p>
                 </div>
             </div>
         </div>
