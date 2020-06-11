@@ -33,26 +33,27 @@ Search {{ $word ?? '' }}
         <br /> -->
 
         <p class = "menu-1-header">Resource Types</p>
-        <p class = "menu-1" onclick="getCards('topics')">Topics</p>
         <p class = "menu-1" onclick="getCards('guides')">Guides</p>
+        <p class = "menu-1" onclick="getCards('links')">Links</p>
         <p class = "menu-1" onclick="getCards('pockets')">Pockets</p>
-        <p class = "menu-1" onclick="getCards('link')">Links</p>
+        <p class = "menu-1" onclick="getCards('topics')">Topics</p>
         <!-- <p class = "menu-1" onclick="getCards('guides')">Guides</p> -->
 
         <br />
 
         <p class = "menu-1-header">Subjects</p>
         <p class = "menu-1" onclick="getCards('all subjects')">All Subjects</p>
-        <p class = "menu-1" onclick="getCards('math')">Math</p>
-        <p class = "menu-1" onclick="getCards('language arts')">Language Arts</p>
+        <p class = "menu-1" onclick="getCards('math')">Bible</p>
         <p class = "menu-1" onclick="getCards('foreign language')">Foreign Language</p>
+        <p class = "menu-1" onclick="getCards('language arts')">Language Arts</p>
+        <p class = "menu-1" onclick="getCards('math')">Math</p>
 
         <br />
 
         <p class = "menu-1-header">Other Types</p>
+        <p class = "menu-1" onclick="getCards('games')">Games</p>
         <p class = "menu-1" onclick="getCards('pdfs')">PDFs</p>
         <p class = "menu-1" onclick="getCards('textbooks')">Textbooks</p>
-        <p class = "menu-1" onclick="getCards('games')">Games</p>
 
         <br />
 
