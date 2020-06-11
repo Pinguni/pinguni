@@ -12,6 +12,13 @@
         <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink") }}'>{{ $poc->title }}</a></p>
     </div>
     
+    <!--
+        Image
+    -->
+    <div class = "box">
+        <img src = "{{ $pag->bg }}" />
+    </div>
+    
     <!-- 
         Page Info
     -->
