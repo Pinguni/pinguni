@@ -95,7 +95,6 @@ footer {
         @extend %no-decoration;
         
         div {
-            //@extend %container-border;
             @apply px-3 pt-3 pb-1 duration-700 w-full mb-4;
             
             &:hover {
@@ -110,5 +109,3 @@ footer {
 .page-description {
     @apply text-gray-700 text-sm;
 }
-
-

@@ -41,7 +41,7 @@ main {
 
 .box {
     @extend %section;
-    @apply rounded h-auto;
+    @apply h-auto;
 }
 %box-p {  /* if there is to be a background color for boxes */
     @apply py-4 px-8;
