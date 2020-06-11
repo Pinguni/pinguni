@@ -27,7 +27,6 @@
         <!-- deferred styles -->
         <!-- <link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/css/utilities.css"></noscript> -->
-        <!-- <link rel="stylesheet" href="/css/utilities.css"> -->
 
         @yield('head')
     </head>
