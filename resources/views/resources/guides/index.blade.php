@@ -66,7 +66,7 @@
     <section class = "article" data-id = "{{ $poc->id }}">
         <div class = "box box-pocket">
             @if ($role == 'admin') <span class = "handle"></span> @endif
-            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink") }}'>
+            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>
                 <h2>{{ $poc->title }}</h2>
             </a>
             <p>{{ $poc->description }}</p>
@@ -76,7 +76,7 @@
             -->
             <div class = "guide-pages">
                 @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
-                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink/$pag->permalink") }}'>
+                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
                         <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
                     </a>
                 @endforeach

@@ -63,7 +63,7 @@ Route::prefix('resources')->group(function() {
     /**
      *  Card Routes
      */
-    Route::get('view/{type}s/{permalink}', 'ResourceController@view')->name('viewResource');
+    Route::get('view/{type}s/{id}/{permalink}', 'ResourceController@view')->name('viewResource');
     Route::prefix('cards')->group(function() {
         Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
         Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
@@ -79,8 +79,8 @@ Route::prefix('resources')->group(function() {
      */
     Route::prefix('guides')->group(function() {
         Route::get('{guide}', 'ResourceController@guide')->name('guide');
-        Route::get('{guide}/{pocket}', 'ResourceController@guidePocket')->name('guidePocket');
-        Route::get('{guide}/{pocket}/{page}', 'ResourceController@guidePage')->name('guidePage');
+        Route::get('{guide}/{id}/{pocket}', 'ResourceController@guidePocket')->name('guidePocket');
+        Route::get('{guide}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@guidePage')->name('guidePage');
         //Route::get('{guide}/{pocket}/{page}/complete', 'UsersCardProgressController@guidePage');
     });
     

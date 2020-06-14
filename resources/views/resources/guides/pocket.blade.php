@@ -48,7 +48,7 @@
         -->
         <div class = "guide-pages">
         @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
-            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink/$pag->permalink") }}' data-id = "{{ $pag->id }}">
+            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}' data-id = "{{ $pag->id }}">
                 @if ($role == 'admin') <span class = "handle"></span> @endif
                 <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
             </a>

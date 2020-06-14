@@ -16,7 +16,7 @@
         Breadcrumbs
     -->
     <div class = "box">
-        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink") }}'>{{ $poc->title }}</a></p>
+        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a></p>
     </div>
     
     <!--
