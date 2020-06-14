@@ -111,6 +111,18 @@ class Help
     }
     
     
+    public static function getPageContent($id)
+    {   
+        return "https://cdn.jsdelivr.net/gh/Pinguni/pages@latest/pages/$id.html";
+    }
+    
+    
+    public static function getPageContributionUrl($id)
+    {   
+        return "https://github.com/Pinguni/pages/blob/master/pages/$id.html";
+    }
+    
+    
     public static function userCardStatus($user_id, $card_id)
     {
         $progress = UsersCardsProgress::where('user_id', $user_id)

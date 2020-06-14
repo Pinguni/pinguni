@@ -2,6 +2,13 @@
 
 @section('title', "$pag->title | $poc->title | $gui->title | Guides")
 
+
+@section('hero')
+<x-hero :bg="$gui->bg" class="blank">
+</x-hero>
+@endsection
+
+
 @section('content')
 <section class = "article">
     
@@ -24,16 +31,13 @@
     -->
     <div class = "box">
         <h2>{{ $pag->title }}</h2>
-        <p class = "page-description">{{ $pag->description }}</p>
+        <p class = "page-description"><a href = "{{ App\Help::getPageContributionUrl($pag->id) }}" target = "_blank">#{{ $pag->id }}</a> | {{ $pag->description }}</p>
     </div>
     
     <!--
         Page Content
     -->
-    <div class = "box">
-        {!! App\Help::notes($pag->notes) !!}
-        
-    </div>
+    <div class = "box" id = "content"></div>
     
     <!--
         Completion
@@ -70,4 +74,21 @@
     </div>
     
 </section>
+@endsection
+
+
+@section('scripts')
+<script>
+    $(window).ready(function() {
+        $.ajax({
+            url: "{{ App\Help::getPageContent($pag->id) }}",
+            method: "GET",
+            success: function(response) {
+                // put content into #content div
+                var content = document.getElementById("content")
+                content.innerHTML = response
+            }
+        })
+    });
+</script>
 @endsection
