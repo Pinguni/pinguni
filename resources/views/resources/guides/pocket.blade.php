@@ -17,9 +17,18 @@
 @section('content')
 
 <section class = "article">
+    
     <div class = "box">
         <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
     </div>
+    
+    <!--
+        Image
+    -->
+    <div class = "box">
+        <img src = "{{ $pag->bg }}" />
+    </div>
+    
     <div class = "box box-pocket">
         <!--
             Edit Button
