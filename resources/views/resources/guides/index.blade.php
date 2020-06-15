@@ -75,11 +75,19 @@
                 Pages
             -->
             <div class = "guide-pages">
-                @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
-                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
-                        <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
-                    </a>
-                @endforeach
+                @if ($role == 'admin')
+                    @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->get() as $pag)
+                        <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
+                            <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                        </a>
+                    @endforeach
+                @else
+                    @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
+                        <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
+                            <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                        </a>
+                    @endforeach
+                @endif
             </div>
             @if ($role == 'admin')
                 <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>

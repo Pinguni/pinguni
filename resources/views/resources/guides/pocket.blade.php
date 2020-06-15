@@ -9,10 +9,6 @@
     <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 @endsection
 
-@section('hero')
-<x-hero :bg="$gui->bg" class="blank">
-</x-hero>
-@endsection
 
 @section('content')
 
@@ -26,7 +22,7 @@
         Image
     -->
     <div class = "box">
-        <img src = "{{ $pag->bg }}" />
+        <img src = "{{ $poc->bg }}" />
     </div>
     
     <div class = "box box-pocket">
@@ -47,12 +43,19 @@
             Pages
         -->
         <div class = "guide-pages">
-        @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
-            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}' data-id = "{{ $pag->id }}">
-                @if ($role == 'admin') <span class = "handle"></span> @endif
-                <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
-            </a>
-        @endforeach
+            @if ($role == 'admin')
+                @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->get() as $pag)
+                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}' data-id = "{{ $pag->id }}">
+                        <span class = "handle"></span><div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                    </a>
+                @endforeach
+            @else
+                @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
+                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}' data-id = "{{ $pag->id }}">
+                        <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                    </a>
+                @endforeach
+            @endif
         </div>
         
         @if ($role == 'admin')

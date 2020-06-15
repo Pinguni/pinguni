@@ -3,12 +3,6 @@
 @section('title', "$pag->title | $poc->title | $gui->title | Guides")
 
 
-@section('hero')
-<x-hero :bg="$gui->bg" class="blank">
-</x-hero>
-@endsection
-
-
 @section('content')
 <section class = "article">
     
