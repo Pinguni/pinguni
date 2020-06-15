@@ -17,7 +17,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
 # Clone new folder
-RUN git clone https://github.com/Pinguni/pinguni.git
+RUN git clone -b develop https://github.com/Pinguni/pinguni.git
 
 # Set working directory to pinguni
 WORKDIR pinguni
