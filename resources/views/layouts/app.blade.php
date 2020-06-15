@@ -113,7 +113,7 @@
                             <a href = '{{ url("/dash") }}'>Dashboard</a>
                         </div>
                         <div>
-                            <a href = '{{ url("/") }}'>Community</a>
+                            <a href = "https://discord.gg/9vknCu4">Community</a>
                         </div>
                         @endguest
                     </div>

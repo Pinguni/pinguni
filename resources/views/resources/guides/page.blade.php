@@ -2,6 +2,7 @@
 
 @section('title', "$pag->title | $poc->title | $gui->title | Guides")
 
+
 @section('content')
 <section class = "article">
     
@@ -9,7 +10,7 @@
         Breadcrumbs
     -->
     <div class = "box">
-        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->permalink") }}'>{{ $poc->title }}</a></p>
+        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a></p>
     </div>
     
     <!--
@@ -24,15 +25,18 @@
     -->
     <div class = "box">
         <h2>{{ $pag->title }}</h2>
-        <p class = "page-description">{{ $pag->description }}</p>
+        <p class = "page-description"><a href = "{{ App\Help::getPageContributionUrl($pag->id) }}" target = "_blank">#{{ $pag->id }}</a> | {{ $pag->description }}</p>
     </div>
     
     <!--
         Page Content
     -->
+    <div class = "box" id = "content"></div>
+    
+    <!--
+        Completion
+    -->
     <div class = "box">
-        {!! App\Help::notes($pag->notes) !!}
-        
         @php
             $status = App\Help::userCardStatus(Auth::id(), $pag->id);
         @endphp
@@ -47,7 +51,7 @@
                 <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
                 <button type = "submit" class = "complete">Finished</button>
             </form>
-        @else
+        @elseif (isset($role))
             <!-- 
                 Completion Button
             -->
@@ -64,4 +68,21 @@
     </div>
     
 </section>
+@endsection
+
+
+@section('scripts')
+<script>
+    $(window).ready(function() {
+        $.ajax({
+            url: "{{ App\Help::getPageContent($pag->id) }}",
+            method: "GET",
+            success: function(response) {
+                // put content into #content div
+                var content = document.getElementById("content")
+                content.innerHTML = response
+            }
+        })
+    });
+</script>
 @endsection

@@ -53,7 +53,7 @@ class Help
         }
         else
         {
-            $url = "/resources/view/$card->type" . "s/$card->permalink";
+            $url = "/resources/view/$card->type" . "s/$card->id/$card->permalink";
         }
         
         return $url;
@@ -108,6 +108,19 @@ class Help
             return null;
         } */
         return $notes;
+    }
+    
+    
+    public static function getPageContent($id)
+    {   
+        return "https://cdn.jsdelivr.net/gh/Pinguni/pages@latest/pages/$id.html";
+        //return "https://pinguni.github.io/content/pages/$id.html";
+    }
+    
+    
+    public static function getPageContributionUrl($id)
+    {   
+        return "https://github.com/Pinguni/pages/blob/master/pages/$id.html";
     }
     
     

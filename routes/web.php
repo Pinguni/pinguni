@@ -63,7 +63,7 @@ Route::prefix('resources')->group(function() {
     /**
      *  Card Routes
      */
-    Route::get('view/{type}s/{permalink}', 'ResourceController@view')->name('viewResource');
+    Route::get('view/{type}s/{id}/{permalink}', 'ResourceController@view')->name('viewResource');
     Route::prefix('cards')->group(function() {
         Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
         Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
@@ -78,9 +78,9 @@ Route::prefix('resources')->group(function() {
      *  Guide Routes
      */
     Route::prefix('guides')->group(function() {
-        Route::get('{guide}', 'ResourceController@guide');
-        Route::get('{guide}/{pocket}', 'ResourceController@guidePocket');
-        Route::get('{guide}/{pocket}/{page}', 'ResourceController@guidePage');
+        Route::get('{guide}', 'ResourceController@guide')->name('guide');
+        Route::get('{guide}/{id}/{pocket}', 'ResourceController@guidePocket')->name('guidePocket');
+        Route::get('{guide}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@guidePage')->name('guidePage');
         //Route::get('{guide}/{pocket}/{page}/complete', 'UsersCardProgressController@guidePage');
     });
     
@@ -122,6 +122,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
             Route::post('/card/redirect', 'CardController@redirect')->name('redirectCard');
             Route::get('/card/{id}', 'AdminController@editCard')->name('editCard');
             Route::post('/card/{id}/post', 'CardController@update')->name('updateCard');
+            Route::post('/cards/reorder','CardController@reorder')->name('reorderCards'); 
         });
     });
 });
