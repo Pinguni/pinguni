@@ -114,6 +114,7 @@ class Help
     public static function getPageContent($id)
     {   
         return "https://cdn.jsdelivr.net/gh/Pinguni/pages@latest/pages/$id.html";
+        //return "https://pinguni.github.io/content/pages/$id.html";
     }
     
     
