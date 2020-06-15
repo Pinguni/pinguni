@@ -9,7 +9,7 @@ h4,
 h5,
 h6 {
     font-family: $font-fancy;
-    @apply font-bold leading-loose mb-2;
+    @apply font-bold leading-loose mb-2 mt-6;
 }
 h1 {
     @apply text-3xl mb-0;
@@ -49,9 +49,28 @@ i {
 }
 
 
+ol,
+ul {
+    @apply list-outside pl-4 ml-3;
+}
 ol {
     @apply list-decimal;
 }
-ol {
+ul {
     @apply list-disc;
+}
+
+
+// From https://stackoverflow.com/a/54924505
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

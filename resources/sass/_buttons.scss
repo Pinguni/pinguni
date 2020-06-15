@@ -45,7 +45,7 @@ button.complete {
 
 
 button.clear {
-    @apply w-full text-center text-black uppercase bg-gray-200;
+    @apply w-full text-center text-black uppercase bg-gray-200 mt-4;
     
     &:hover {
         @apply bg-gray-300;
