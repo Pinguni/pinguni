@@ -1,5 +1,8 @@
 {
     "/css/app.css": "/css/app.css",
     "/css/base.css": "/css/base.css",
-    "/css/utilities.css": "/css/utilities.css"
+    "/css/utilities.css": "/css/utilities.css",
+    "/css/components/cards.css": "/css/components/cards.css",
+    "/css/components/forms.css": "/css/components/forms.css",
+    "/css/once/landing.css": "/css/once/landing.css"
 }

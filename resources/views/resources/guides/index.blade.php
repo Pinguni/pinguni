@@ -2,6 +2,13 @@
 
 @section('title', "$gui->title | Guides")
 
+@section('head')
+    <link href = "/css/components/buttons.css" rel = "stylesheet" />
+
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
+@endsection
 
 @section('hero')
 <x-hero :bg="$gui->bg" class="blank">
@@ -15,8 +22,8 @@
     @guest
         <div class = "mb-12"></div>
     @else
-        @if (Auth::user()->role == 'admin')
-            <a href = "{{ route('editCard', ['id' => $gui->id]) }}" class = "inline-block mt-3"><button>Edit</button></a>
+        @if ($role == 'admin')
+            <a href = "{{ route('editCard', ['id' => $gui->id]) }}"><button>Edit</button></a>
         @endif
     
         @php
@@ -24,12 +31,12 @@
         @endphp
     
         @if ($status == 'inprogress')
-            <button class = "inprogress inline-block">In Progress</button>
+            <button class = "inprogress">In Progress</button>
         @else
             <form method = "POST" action = "{{ route('storeCardProgress') }}">
                 @csrf
-                <input name = "id" id = "id" type = "number" value = "{{ $gui->id }}" class = "hidden"/>
-                <input name = "status" id = "status" type = "text" value = "inprogress" class = "hidden"/>
+                <input name = "id" id = "id" type = "hidden" value = "{{ $gui->id }}"/>
+                <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
                 <button type = "submit float-right">Follow this guide</button>
             </form>
         @endif
@@ -54,32 +61,98 @@
 <!--
     Pockets
 -->
-<section class = "article">
-    <div class = "box flex items-center">
-        <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button>Create Pocket</button></a>
-    </div>
-</section>
-
-@foreach ($gui->cards as $poc)
-    <section class = "article">
+<div id = "pockets">
+@foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc)
+    <section class = "article" data-id = "{{ $poc->id }}">
         <div class = "box box-pocket">
-            <h2>{{ $poc->title }}</h2>
+            @if ($role == 'admin') <span class = "handle"></span> @endif
+            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>
+                <h2>{{ $poc->title }}</h2>
+            </a>
             <p>{{ $poc->description }}</p>
             
             <!--
                 Pages
             -->
-            @foreach ($poc->cards as $pag)
-                <div class = "guide-pages">
-                    <a href = '{{ url("/resources/guide/$gui->permalink/$poc->permalink/$pag->permalink") }}'>
-                        <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
-                    </a>
-                </div>
-            @endforeach
-            <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button>Create Page</button></a>
+            <div class = "guide-pages">
+                @if ($role == 'admin')
+                    @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->get() as $pag)
+                        <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
+                            <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                        </a>
+                    @endforeach
+                @else
+                    @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
+                        <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
+                            <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                        </a>
+                    @endforeach
+                @endif
+            </div>
+            @if ($role == 'admin')
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
+            @endif
         </div>
     </section>
 @endforeach
+</div>
+
+<section class = "article">
+    <div class = "box">
+        @if ($role == 'admin')
+            <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button class = "clear">Create Pocket</button></a>
+        @endif
+    </div>
+</section>
+
+@endsection
 
 
+@section('scripts')
+<style>
+    .highlight {
+        background: #f7e7d3;
+        min-height: 30px;
+        list-style-type: none;
+    }
+
+    .handle {
+        min-width: 18px;
+        background: #607D8B;
+        height: 15px;
+        display: inline-block;
+        cursor: move;
+        margin-right: 10px;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+
+    	function updateToDatabase(idString, parentId) {
+    	   $.ajaxSetup({ headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});
+    		
+    	   $.ajax({
+              url: '{{ route("reorderCards") }}',
+              method: 'POST',
+              data: { child_ids: idString, parent_id: parentId },
+              success: function() {
+                 alert('Successfully updated')
+               	 //do whatever after success
+              }
+           })
+    	}
+        
+        var target = $('#pockets');
+        target.sortable({
+            handle: '.handle',
+            placeholder: 'highlight',
+            axis: "y",
+            update: function (e, ui){
+               var sortData = target.sortable('toArray', { attribute: 'data-id'})
+               updateToDatabase(sortData.join(','), "{{ $gui->id }}")
+            }
+        })
+        
+    })
+</script>
 @endsection

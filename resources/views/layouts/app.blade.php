@@ -25,9 +25,8 @@
         <link href="/css/base.css" rel="stylesheet">
         <link href="/css/app.css" rel="stylesheet">
         <!-- deferred styles -->
-        <!--<link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <!-- <link rel="preload" href="/css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/css/utilities.css"></noscript> -->
-        <link rel="stylesheet" href="/css/utilities.css">
 
         @yield('head')
     </head>
@@ -114,7 +113,7 @@
                             <a href = '{{ url("/dash") }}'>Dashboard</a>
                         </div>
                         <div>
-                            <a href = '{{ url("/") }}'>Community</a>
+                            <a href = "https://discord.gg/9vknCu4">Community</a>
                         </div>
                         @endguest
                     </div>
@@ -145,7 +144,7 @@
                 <div>
                     <p>Copyright &copy; 2020 {{ env('APP_NAME') }}.</p>
                     <p>
-                        <a href = "https://laravel.com" target = "_blank">Laravel</a> | Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev" target = "_blank">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon" target = "_blank">www.flaticon.com</a> | <a href = "https://svgbackgrounds.com" target = "_blank">SVG Backgrounds</a>
+                        <a href = "https://laravel.com" target = "_blank">Laravel</a> <!--| Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev" target = "_blank">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon" target = "_blank">www.flaticon.com</a> -->| <a href="https://icons8.com">Icons by Icons8</a> | <a href = "https://svgbackgrounds.com" target = "_blank">SVG Backgrounds</a>
                     </p>
                 </div>
             </footer>

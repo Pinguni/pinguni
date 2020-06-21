@@ -155,4 +155,19 @@ class CardController extends Controller
     {
         //
     }
+    
+    
+    public function reorder(Request $request) 
+    {
+        if($request->has('child_ids')){
+            $arr = explode(',', $request->input('child_ids'));
+            
+            foreach($arr as $sortOrder => $id){
+                $card = CardsAndCards::where('parent_id', $request->parent_id)->where('child_id', $id)->first();
+                $card->sort = $sortOrder;
+                $card->save();
+            }
+            return ['success' => true, 'message' => 'Reordered'];
+        }
+    }
 }
