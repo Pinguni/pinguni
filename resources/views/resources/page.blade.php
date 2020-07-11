@@ -4,6 +4,9 @@
     {{ $card->title }} | Resources
 @endsection
 
+@section('head')
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
+@endsection
 
 @section('hero')
     
