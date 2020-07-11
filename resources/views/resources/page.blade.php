@@ -4,6 +4,9 @@
     {{ $card->title }} | Resources
 @endsection
 
+@section('head')
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
+@endsection
 
 @section('hero')
     
@@ -203,5 +206,12 @@
     </script>
 @endif
 
+<script src="https://utteranc.es/client.js"
+        repo="Pinguni/comments"
+        issue-term="url"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
 
 @endsection
