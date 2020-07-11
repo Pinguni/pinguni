@@ -11,7 +11,7 @@ RUN apt-get update -y && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN docker-php-ext-install pdo pdo_mysql
 
-ARG CACHE_DATE=2016-01-01
+ARG CACHE_DATE=2020-07-11
 #ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
 # Clone new folder
