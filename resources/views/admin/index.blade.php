@@ -2,6 +2,10 @@
 
 @section('title', 'Admin')
 
+@section('head')
+    <link href = "/css/components/forms.css" rel = "stylesheet" />
+@endsection
+
 @section('hero')
 <x-hero bg="subtle_prism_indigo" class="blank">
     @slot('class', 'short')
