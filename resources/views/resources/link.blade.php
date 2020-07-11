@@ -6,7 +6,6 @@
 
 
 @section('hero')
-    
     <x-hero :bg="$card->bg" class="blank">
         @slot('article', 'article course-header')
         <x-slot name="h1">
@@ -22,5 +21,15 @@
             @endif
         @endguest
     </x-hero>
+@endsection
 
+
+@section('content')
+<script src="https://utteranc.es/client.js"
+        repo="Pinguni/comments"
+        issue-term="url"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
 @endsection
