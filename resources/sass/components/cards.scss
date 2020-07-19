@@ -31,10 +31,10 @@
         }
         
         .container {
-            @apply w-full/*3/4*/ px-6 py-4;
+            @apply w-full/*3/4*/ px-6 py-4 relative;
             
             p.type {
-                @apply capitalize text-sm uppercase font-semibold rounded py-1 px-2 float-right;
+                @apply capitalize text-sm uppercase font-semibold rounded py-1 px-2 /*float-right*/;
                 
                 &.type-blue {
                     @apply text-blue-700 bg-blue-100;

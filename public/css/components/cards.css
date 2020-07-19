@@ -146,6 +146,7 @@ main {
   padding-right: 1.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  position: relative;
 }
 
 .card-wrapper .card .container p.type {
@@ -158,7 +159,6 @@ main {
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  float: right;
 }
 
 .card-wrapper .card .container p.type.type-blue {
