@@ -39,11 +39,14 @@ input[type=text],
 input[type=password],
 input[type=email],
 textarea{
-    @apply w-full /*w-2/3*/ px-2 mb-4 text-gray-600 rounded-md bg-gray-100;
+    @apply w-full /*w-2/3*/ px-4 py-1 mb-4 text-gray-600 rounded-full border-gray-200 border-2;
 
     &:focus {
-        @apply outline-none bg-gray-200;
+        @apply outline-none bg-gray-100;
     }
+}
+textarea {
+    @apply rounded-none;
 }
 input[placeholder],
 textarea[placeholder] {
@@ -59,7 +62,7 @@ textarea[placeholder] {
     
     &.note-frame {
         border-width: 2px !important;
-        border-color: $light !important;
+        border-color: theme('colors.gray.200') !important;
         @apply rounded-none;
     }
     .note-toolbar,
