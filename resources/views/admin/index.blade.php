@@ -26,7 +26,8 @@
     </form>
 </section>
 
-<section class = "box">
+<section class = "box box-button">
+    <a href = "{{ route('createRamblePrompt') }}"><button>Create Ramble Prompt</button></a>
 </section>
 
 @endsection

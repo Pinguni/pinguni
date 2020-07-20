@@ -2,13 +2,8 @@
 
 @section('title', 'Register')
 
-@section('hero')
-<x-hero bg="default" class="blank">
-    @slot('class', 'short')
-    <x-slot name='h1'>
-        Register
-    </x-slot>
-</x-hero>
+@section('head')
+    <link href = "/css/components/forms.css" rel = "stylesheet" />
 @endsection
 
 @section('content')

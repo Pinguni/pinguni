@@ -53,7 +53,7 @@ class Help
         }
         else
         {
-            $url = "/resources/view/$card->type" . "s/$card->id/$card->permalink";
+            $url = "/resources/$card->type" . "s/$card->id/$card->permalink";
         }
         
         return $url;

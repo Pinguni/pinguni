@@ -83,10 +83,17 @@
                     </div>
 
                     <!--
-                        Search bar
+                        Resources Hub
                     -->
                     <div>
-                        <a href = {{ url('/resources/search') }}>Resources</a>
+                        <a href = {{ url('/resources') }}>Resources</a>
+                    </div>
+                    
+                    <!--
+                        Journalling
+                    -->
+                    <div>
+                        <a href = {{ url('/journalling') }}>Journalling</a>
                     </div>
 
 
@@ -97,6 +104,7 @@
                         <div>
                             @guest
                             <span><a href="{{ route('login') }}">{{ __('Login') }}</a></span>
+                            <span><a href="{{ route('register') }}">{{ __('Register') }}</a></span>
                             <span><a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
                             @else
                                 <a href = '{{ url("/u/" . Auth::user()->username) }}'><span>{{ Auth::user()->username }}</span></a>

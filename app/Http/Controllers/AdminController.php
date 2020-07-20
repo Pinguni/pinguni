@@ -55,4 +55,16 @@ class AdminController extends Controller
             'card' => $card,
         ]);
     }
+    
+    
+    /**
+     * Show the create ramble prompt form.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function createRamblePrompt()
+    {
+        return view('admin.create.ramblePrompt', [
+        ]);
+    }
 }

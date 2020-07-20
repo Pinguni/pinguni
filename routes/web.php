@@ -63,7 +63,7 @@ Route::prefix('resources')->group(function() {
     /**
      *  Card Routes
      */
-    Route::get('view/{type}s/{id}/{permalink}', 'ResourceController@view')->name('viewResource');
+    Route::get('{type}s/{id}/{permalink}', 'ResourceController@view')->name('viewResource');
     Route::prefix('cards')->group(function() {
         Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
         Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
@@ -84,6 +84,17 @@ Route::prefix('resources')->group(function() {
         //Route::get('{guide}/{pocket}/{page}/complete', 'UsersCardProgressController@guidePage');
     });
     
+});
+
+
+/*
+ *
+ *  Journalling Routes
+ *
+ */
+Route::prefix('journalling')->group(function() {
+    
+    Route::get('/', 'JournallingController@index');
 });
 
 
@@ -114,9 +125,13 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::prefix('admin')->group(function() {
         Route::get('/', 'AdminController@index')->name('admin');
         Route::prefix('create')->group(function() {
+            // Cards
             Route::get('/card', 'AdminController@createCard')->name('createCard');
             Route::get('/card/parent/{parent_id}', 'AdminController@createCard')->name('createCardWithParent');
             Route::post('/card/store', 'CardController@store')->name('storeCard');
+            // Ramble Prompts
+            Route::get('/ramble-prompt', 'AdminController@createRamblePrompt')->name('createRamblePrompt');
+            Route::post('/ramble-prompt/store', 'RamblePromptController@store')->name('storeRamblePrompt');
         });
         Route::prefix('edit')->group(function() {
             Route::post('/card/redirect', 'CardController@redirect')->name('redirectCard');

@@ -13,6 +13,32 @@
 }
 
 
+/* glacial-indifference - latin */
+@font-face {
+  font-family: 'Glacial Indifference';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Glacial Indifference Regular'), local('GlacialIndifference-Regular'),
+       url('/fonts/GlacialIndifference-Regular.otf') format('opentype');
+}
+/* glacial-indifference-700 - latin */
+@font-face {
+  font-family: 'Glacial Indifference';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Glacial Indifference Bold'), local('GlacialIndifference-Bold'),
+       url('/fonts/GlacialIndifference-Bold.otf') format('opentype');
+}
+/* glacial-indifference-italic - latin */
+@font-face {
+  font-family: 'Glacial Indifference';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Glacial Indifference Italic'), local('GlacialIndifference-Italic'),
+       url('/fonts/GlacialIndifference-Italic.otf') format('opentype');
+}
+
+
 /* quattrocento-sans-regular - latin */
 @font-face {
   font-family: 'Quattrocento Sans';

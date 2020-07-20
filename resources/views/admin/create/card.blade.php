@@ -10,14 +10,6 @@
 @endsection
 
 
-@section('hero')
-<x-hero bg="subtle_prism_indigo" class="blank">
-    <x-slot name='h1'>
-        Create Card
-    </x-slot>
-</x-hero>
-@endsection
-
 @section('content')
 
 <form method = "POST" action = "{{ route('storeCard') }}">
