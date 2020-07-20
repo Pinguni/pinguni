@@ -89,21 +89,21 @@ form p[role=alert] {
   color: rgba(229, 62, 62, var(--text-opacity));
 }
 
-form .wrap-3 {
+form .wrap-3, form .wrap-2 {
   display: flex;
   width: 100%;
 }
 
-form .wrap-3 input {
+form .wrap-3 input, form .wrap-2 input {
   width: 100%;
 }
 
 @media (min-width: 1024px) {
-  form .wrap-3 input:first-child {
+  form .wrap-3 input:first-child, form .wrap-2 input:first-child {
     margin-right: 1rem;
   }
 
-  form .wrap-3 input:last-child {
+  form .wrap-3 input:last-child, form .wrap-2 input:last-child {
     margin-left: 1rem;
   }
 }

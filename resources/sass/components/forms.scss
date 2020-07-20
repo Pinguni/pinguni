@@ -10,7 +10,7 @@ form {
         @apply w-full ml-4 font-normal text-red-600;
     }
     
-    .wrap-3 {
+    .wrap-3, .wrap-2 {
         @apply flex w-full;
         
         input {
@@ -20,7 +20,7 @@ form {
 }
 @media (min-width: $lg) {
     form {
-        .wrap-3 {
+        .wrap-3, .wrap-2 {
             input {
                 &:first-child {
                     @apply mr-4;

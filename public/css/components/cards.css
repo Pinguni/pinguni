@@ -260,7 +260,6 @@ main {
   width: 100%;
   display: flex;
   height: auto;
-  border-top-width: 2px;
 }
 
 .card-wrapper.horizontal a .card .card-img-wrapper {

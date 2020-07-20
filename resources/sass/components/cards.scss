@@ -82,7 +82,7 @@
             @apply flex;
 
             .card {
-                @apply w-full flex h-auto border-t-2;
+                @apply w-full flex h-auto;
                 
                 .card-img-wrapper {
                     @apply w-/*1/4*/full rounded-none rounded-l-md h-full;
