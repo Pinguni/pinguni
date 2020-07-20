@@ -43,6 +43,12 @@
                   hideType="hidden"
                   :card="$resCard" >
             </x-card>
+            <x-card
+                  width="full"
+                  height="h-short"
+                  hideType="hidden"
+                  :card="$jouCard" >
+            </x-card>
         </div>
     </div>
 </section>
