@@ -18,6 +18,16 @@ class JournallingController extends Controller
     {
         $prompts = RamblePrompt::ofVisibility('public')->orderBy('created_at', 'DESC')->get();
         
+        if (!Auth::guest())
+        {
+            $answers = Ramble::orderBy('created_at', 'DESC')->get();
+            
+            return view('journalling.index', [
+                'prompts' => $prompts,
+                'answers' => $answers,
+            ]);
+        }
+        
         return view('journalling.index', [
             'prompts' => $prompts,
         ]);
