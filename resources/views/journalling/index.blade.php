@@ -50,6 +50,7 @@
                         </div>
                         <div class = "container">
                             <div class = "content">
+                                <p class = "description"><strong>{{ $answer->prompt->prompt }}</strong></p>
                                 <p class = "description">{!! $answer->content !!}</p>
                             </div>
                         </div>
