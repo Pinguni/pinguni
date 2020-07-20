@@ -11,8 +11,8 @@ RUN apt-get update -y && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN docker-php-ext-install pdo pdo_mysql
 
-#RUN curl -sL https://deb.nodesource.com/setup_13.x  | bash -
-#RUN apt-get -y install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_13.x  | bash -
+RUN apt-get -y install nodejs
 
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
@@ -24,6 +24,8 @@ WORKDIR pinguni
 
 # Install dependencies
 RUN composer install
+RUN npm install
+RUN npm run prod
 
 # Laravel cache
 CMD php artisan optimize:clear
