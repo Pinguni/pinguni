@@ -14,7 +14,8 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN curl -sL https://deb.nodesource.com/setup_13.x  | bash -
 RUN apt-get -y install nodejs
 
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+ARG CACHE_DATE=2020-07-11
+#ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
 # Clone new folder
 RUN git clone -b develop https://github.com/Pinguni/pinguni.git
