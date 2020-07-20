@@ -20,7 +20,7 @@ class JournallingController extends Controller
         
         if (!Auth::guest())
         {
-            $answers = Ramble::orderBy('created_at', 'DESC')->get();
+            $answers = Ramble::where('user', Auth::id())->orderBy('created_at', 'DESC')->get();
             
             return view('journalling.index', [
                 'prompts' => $prompts,
