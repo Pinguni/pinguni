@@ -83,10 +83,17 @@
                     </div>
 
                     <!--
-                        Search bar
+                        Resources Hub
                     -->
                     <div>
                         <a href = {{ url('/resources') }}>Resources</a>
+                    </div>
+                    
+                    <!--
+                        Journalling
+                    -->
+                    <div>
+                        <a href = {{ url('/journalling') }}>Journalling</a>
                     </div>
 
 
