@@ -87,6 +87,17 @@ Route::prefix('resources')->group(function() {
 });
 
 
+/*
+ *
+ *  Journalling Routes
+ *
+ */
+Route::prefix('journalling')->group(function() {
+    
+    Route::get('/', 'JournallingController@index');
+});
+
+
 
 /*
  *
@@ -114,9 +125,13 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::prefix('admin')->group(function() {
         Route::get('/', 'AdminController@index')->name('admin');
         Route::prefix('create')->group(function() {
+            // Cards
             Route::get('/card', 'AdminController@createCard')->name('createCard');
             Route::get('/card/parent/{parent_id}', 'AdminController@createCard')->name('createCardWithParent');
             Route::post('/card/store', 'CardController@store')->name('storeCard');
+            // Ramble Prompts
+            Route::get('/ramble-prompt', 'AdminController@createRamblePrompt')->name('createRamblePrompt');
+            Route::post('/ramble-prompt/store', 'RamblePromptController@store')->name('storeRamblePrompt');
         });
         Route::prefix('edit')->group(function() {
             Route::post('/card/redirect', 'CardController@redirect')->name('redirectCard');
