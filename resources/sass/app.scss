@@ -45,25 +45,6 @@ footer {
  *  Page Components
  *
  */
-.box-explain {
-    @extend %container-border;
-    @apply p-8 flex;
-    
-    img {
-        @apply w-24 h-24 rounded-full object-cover;
-        margin: 0 auto;
-    }
-    div {
-        @apply pl-6 w-full;
-        h3 {
-            @apply font-semibold text-lg text-left;
-        }
-    }
-}
-.box-pocket {
-    @extend %box-p;
-    @apply bg-gray-100;
-}
 @media (min-width: $md)
 {
     .box-explain {

@@ -64,6 +64,22 @@
     </div>
 </section>
 
+<!--
+    Resource Cards Pool
+-->
+<div class = "card-pool">
+    <h2>Extra Resources</h2>
+    <div class = "card-group-wrapper">
+        @foreach ($gui->pool()->ofVisibility('public')->get() as $card)
+            <x-card
+                  width="full"
+                  height="h-long"
+                  :card="$card" >
+            </x-card>
+        @endforeach
+    </div>
+</div>
+
 <script src="https://utteranc.es/client.js"
         repo="Pinguni/comments"
         issue-term="url"

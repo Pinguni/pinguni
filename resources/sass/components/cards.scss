@@ -1,7 +1,30 @@
 @import '../variables';
 @import '../base';
 
-
+.card-group-header {
+    @apply ml-2 mb-8;
+    
+    h2 {
+        @apply text-xl uppercase;
+    }
+}
+.card-group-wrapper {
+    @apply flex flex-wrap /*grid grid-cols-1*/ mt-2;
+}
+#card-container {
+    @apply w-full;
+}
+.card-pool {
+    @extend %box-pocket;
+    @apply mt-12 mb-8;
+    
+    h2 {
+        @apply text-3xl mb-4;
+    }
+    .card {
+        @apply bg-white;
+    }
+}
 .card-wrapper {
     @apply w-full px-2 -mt-2 flex;
     
@@ -98,19 +121,6 @@
             }
         }
     }
-}
-.card-group-header {
-    @apply ml-2 mb-8;
-    
-    h2 {
-        @apply text-xl uppercase;
-    }
-}
-.card-group-wrapper {
-    @apply flex flex-wrap /*grid grid-cols-1*/ mt-2;
-}
-#card-container {
-    @apply w-full;
 }
 @media (min-width: $md) {
     .card-wrapper {

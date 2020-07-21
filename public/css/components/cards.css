@@ -45,12 +45,51 @@ main {
   height: auto;
 }
 
-.box-p {
+.card-pool, .box-pocket, .box-p {
   /* if there is to be a background color for boxes */
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.box-explain {
+  padding: 2rem;
+  display: flex;
+}
+
+.box-explain img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0 auto;
+}
+
+.box-explain div {
+  padding-left: 1.5rem;
+  width: 100%;
+}
+
+.box-explain div h3 {
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-align: left;
+}
+
+.card-pool, .box-pocket {
+  --bg-opacity: 1;
+  background-color: #f7fafc;
+  background-color: rgba(247, 250, 252, var(--bg-opacity));
+}
+
+.box-explain {
+  --border-opacity: 1;
+  border-color: #edf2f7;
+  border-color: rgba(237, 242, 247, var(--border-opacity));
+  border-width: 2px;
+  border-radius: 0.375rem;
 }
 
 .section, .box {
@@ -83,6 +122,42 @@ main {
   .article {
     width: 75%;
   }
+}
+
+.card-group-header {
+  margin-left: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.card-group-header h2 {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.card-group-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+#card-container {
+  width: 100%;
+}
+
+.card-pool {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.card-pool h2 {
+  font-size: 1.875rem;
+  margin-bottom: 1rem;
+}
+
+.card-pool .card {
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
 .card-wrapper {
@@ -275,26 +350,6 @@ main {
 }
 
 .card-wrapper.horizontal a .card .container {
-  width: 100%;
-}
-
-.card-group-header {
-  margin-left: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.card-group-header h2 {
-  font-size: 1.25rem;
-  text-transform: uppercase;
-}
-
-.card-group-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-#card-container {
   width: 100%;
 }
 

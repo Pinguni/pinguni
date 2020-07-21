@@ -258,6 +258,37 @@ footer div, #hero > div, .nav-wrapper nav, main {
 }
 
 .box-explain {
+  padding: 2rem;
+  display: flex;
+}
+
+.box-explain img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0 auto;
+}
+
+.box-explain div {
+  padding-left: 1.5rem;
+  width: 100%;
+}
+
+.box-explain div h3 {
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-align: left;
+}
+
+.box-pocket {
+  --bg-opacity: 1;
+  background-color: #f7fafc;
+  background-color: rgba(247, 250, 252, var(--bg-opacity));
+}
+
+.box-explain {
   --border-opacity: 1;
   border-color: #edf2f7;
   border-color: rgba(237, 242, 247, var(--border-opacity));
@@ -304,7 +335,6 @@ footer div, #hero > div, .nav-wrapper nav, main {
 
 * {
   text-align: justify;
-  line-height: 2;
   letter-spacing: 0;
   font-family: "Glacial Indifference", sans-serif;
 }
@@ -759,37 +789,6 @@ footer div p {
  *  Page Components
  *
  */
-
-.box-explain {
-  padding: 2rem;
-  display: flex;
-}
-
-.box-explain img {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 9999px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin: 0 auto;
-}
-
-.box-explain div {
-  padding-left: 1.5rem;
-  width: 100%;
-}
-
-.box-explain div h3 {
-  font-weight: 600;
-  font-size: 1.125rem;
-  text-align: left;
-}
-
-.box-pocket {
-  --bg-opacity: 1;
-  background-color: #f7fafc;
-  background-color: rgba(247, 250, 252, var(--bg-opacity));
-}
 
 @media (min-width: 768px) {
   .box-explain {

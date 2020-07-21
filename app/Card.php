@@ -75,6 +75,14 @@ class Card extends Model
     }
     
     /**
+     * The cards in the pool that belong to the card.
+     */
+    public function pool()
+    {
+        return $this->belongsToMany('App\Card', 'card_pools', 'parent_id', 'child_id');
+    }
+    
+    /**
      *  Get the pocket associated with pocket cards.
      */
     public function pocket()
