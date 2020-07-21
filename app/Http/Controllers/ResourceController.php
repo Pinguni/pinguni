@@ -60,8 +60,13 @@ class ResourceController extends Controller
         }
         else  // if card is not a link but exists
         {
+            $role = null;
+            if (!Auth::guest())
+                $role = Auth::user()->role;
+            
             return view('resources.page', [
                 'card' => $card,
+                'role' => $role,
             ]);
         }
     }
