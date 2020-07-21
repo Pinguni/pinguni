@@ -79,7 +79,7 @@ class ResourceController extends Controller
      */
     public function guide($guide)
     {   
-        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
+        $gui = Card::ofVisibility('public')->where('type', 'guide')->where('permalink', $guide)->first();
         
         $role = null;
         if (!Auth::guest())
