@@ -2,6 +2,9 @@
 
 @section('title', "$pag->title | $poc->title | $gui->title | Guides")
 
+@section('head')
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
+@endsection
 
 @section('content')
 <section class = "article">
@@ -10,7 +13,7 @@
         Breadcrumbs
     -->
     <div class = "box">
-        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a></p>
+        <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a></p>
     </div>
     
     <!--

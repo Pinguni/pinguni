@@ -4,6 +4,8 @@
 
 
 @section('head')
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
+
     <!-- jQuery UI -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
@@ -15,7 +17,7 @@
 <section class = "article">
     
     <div class = "box">
-        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
+        <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
     </div>
     
     <!--
