@@ -99,7 +99,7 @@ class ResourceController extends Controller
      */
     public function guidePocket($guide, $id, $pocket)
     {
-        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
+        $gui = Card::ofVisibility('public')->where('type', 'guide')->where('permalink', $guide)->first();
         $poc = Card::ofVisibility('public')->where('id', $id)->first();
         
         $role = null;
@@ -121,7 +121,7 @@ class ResourceController extends Controller
      */
     public function guidePage($guide, $pocId, $pocket, $pagId, $page)
     {
-        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
+        $gui = Card::ofVisibility('public')->where('type', 'guide')->where('permalink', $guide)->first();
         $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
         $pag = Card::ofVisibility('public')->where('id', $pagId)->first();
         
