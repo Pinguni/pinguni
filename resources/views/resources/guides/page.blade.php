@@ -78,7 +78,7 @@
 <div class = "card-pool">
     <h2>Extra Resources</h2>
     <div class = "card-group-wrapper">
-        @foreach ($gui->pool()->ofVisibility('public')->get() as $card)
+        @foreach ($pag->pool()->ofVisibility('public')->get() as $card)
             <x-card
                   width="full"
                   height="h-long"
