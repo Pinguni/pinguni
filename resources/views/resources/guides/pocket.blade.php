@@ -17,7 +17,7 @@
 <section class = "article">
     
     <div class = "box">
-        <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
+        <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> ></p>
     </div>
     
     <!--

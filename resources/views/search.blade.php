@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Search {{ $word ?? '' }}
+    Search {{ $word ?? '' }}
 @endsection
 
 @section('head')
@@ -78,7 +78,7 @@ Search {{ $word ?? '' }}
     <!--
         Card Container
     -->
-    <div id = "card-container">
+    <div class = "sidebar-container">
         
         <!--
             Tag crumbs
@@ -102,7 +102,10 @@ Search {{ $word ?? '' }}
         </div>
     </div>
 </section>
+@endsection
 
+
+@section('scripts')
 
 <!--
     Infinite scroll for cards

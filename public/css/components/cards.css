@@ -140,10 +140,6 @@ main {
   margin-top: 0.5rem;
 }
 
-#card-container {
-  width: 100%;
-}
-
 .card-pool {
   margin-top: 3rem;
   margin-bottom: 2rem;
@@ -371,16 +367,6 @@ main {
 
   .card-wrapper.horizontal {
     width: 100%;
-  }
-
-  #card-container {
-    padding-left: 1.5rem;
-    padding-right: 0.5rem;
-    width: 75%;
-  }
-
-  #card-container #holder {
-    margin-left: 1.5rem;
   }
 }
 

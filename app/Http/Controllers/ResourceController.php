@@ -139,11 +139,35 @@ class ResourceController extends Controller
     
     
     /**
+     * Return page for guides page AJAX
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getPage($guiId, $pocId, $pagId)
+    {
+        $gui = Card::ofVisibility('public')->where('id', $guiId)->first();
+        $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
+        $pag = Card::ofVisibility('public')->where('id', $pagId)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.get.page', [
+            'gui' => $gui,
+            'poc' => $poc,
+            'pag' => $pag,
+            'role' => $role,
+        ]);
+    }
+    
+    
+    /**
      * Return cards for search page AJAX
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function cards(Request $request, $tags)
+    public function cards($tags)
     {
         $tags = explode(',', $tags);  // Separate tags by comma
         
