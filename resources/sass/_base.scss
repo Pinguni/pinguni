@@ -49,6 +49,9 @@ main {
 .box-p {  
     @extend %box-p;
 }
+.box-breadcrumbs {
+    @apply pt-0;
+}
 .box-explain {
     @extend %container-border;
     @apply p-8 flex;

@@ -53,6 +53,10 @@ main {
   padding-right: 2rem;
 }
 
+.box-breadcrumbs {
+  padding-top: 0;
+}
+
 .box-explain {
   padding: 2rem;
   display: flex;
