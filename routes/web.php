@@ -58,15 +58,24 @@ Route::prefix('resources')->group(function() {
      *  Search Routes
      */
     Route::get('search/{type?}', 'MainController@search');
-    Route::get('get/cards/{tags}', 'ResourceController@cards');
+    
+    /**
+     * Get Routes
+     */
+    Route::prefix('get')->group(function() {
+        Route::get('cards/{tags}', 'ResourceController@cards');
+        Route::get('page/{guiId}/{pocId}/{pagId}', 'ResourceController@getPage')->name('getPage');
+    });
     
     /**
      *  Card Routes
      */
     Route::get('{type}s/{id}/{permalink}', 'ResourceController@view')->name('viewResource');
-    Route::prefix('cards')->group(function() {
-        Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
-        Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
+    Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
+        Route::prefix('cards')->group(function() {
+            Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
+            Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
+        });
     });
     
     /**

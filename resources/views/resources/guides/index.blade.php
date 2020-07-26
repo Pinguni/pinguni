@@ -4,6 +4,7 @@
 
 @section('head')
     <link href = "/css/components/buttons.css" rel = "stylesheet" />
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
 
     <!-- jQuery UI -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -97,6 +98,10 @@
 @endforeach
 </div>
 
+
+<!--
+    Create Pocket Button
+-->
 <section class = "article">
     <div class = "box">
         @if ($role == 'admin')
@@ -105,6 +110,25 @@
     </div>
 </section>
 
+<!--
+    Resource Cards Pool
+-->
+<div class = "card-pool">
+    <h2>Extra Resources</h2>
+    <div class = "card-group-wrapper">
+        @foreach ($gui->pool()->ofVisibility('public')->get() as $card)
+            <x-card
+                  width="full"
+                  height="h-long"
+                  :card="$card" >
+            </x-card>
+        @endforeach
+    </div>
+</div>
+
+<!--
+    Utteranc.es Comments
+-->
 <script src="https://utteranc.es/client.js"
         repo="Pinguni/comments"
         issue-term="url"

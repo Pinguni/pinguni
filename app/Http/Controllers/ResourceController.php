@@ -60,8 +60,13 @@ class ResourceController extends Controller
         }
         else  // if card is not a link but exists
         {
+            $role = null;
+            if (!Auth::guest())
+                $role = Auth::user()->role;
+            
             return view('resources.page', [
                 'card' => $card,
+                'role' => $role,
             ]);
         }
     }
@@ -74,7 +79,7 @@ class ResourceController extends Controller
      */
     public function guide($guide)
     {   
-        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
+        $gui = Card::ofVisibility('public')->where('type', 'guide')->where('permalink', $guide)->first();
         
         $role = null;
         if (!Auth::guest())
@@ -94,7 +99,7 @@ class ResourceController extends Controller
      */
     public function guidePocket($guide, $id, $pocket)
     {
-        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
+        $gui = Card::ofVisibility('public')->where('type', 'guide')->where('permalink', $guide)->first();
         $poc = Card::ofVisibility('public')->where('id', $id)->first();
         
         $role = null;
@@ -116,7 +121,7 @@ class ResourceController extends Controller
      */
     public function guidePage($guide, $pocId, $pocket, $pagId, $page)
     {
-        $gui = Card::ofVisibility('public')->where('permalink', $guide)->first();
+        $gui = Card::ofVisibility('public')->where('type', 'guide')->where('permalink', $guide)->first();
         $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
         $pag = Card::ofVisibility('public')->where('id', $pagId)->first();
         
@@ -134,11 +139,35 @@ class ResourceController extends Controller
     
     
     /**
+     * Return page for guides page AJAX
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getPage($guiId, $pocId, $pagId)
+    {
+        $gui = Card::ofVisibility('public')->where('id', $guiId)->first();
+        $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
+        $pag = Card::ofVisibility('public')->where('id', $pagId)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.get.page', [
+            'gui' => $gui,
+            'poc' => $poc,
+            'pag' => $pag,
+            'role' => $role,
+        ]);
+    }
+    
+    
+    /**
      * Return cards for search page AJAX
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function cards(Request $request, $tags)
+    public function cards($tags)
     {
         $tags = explode(',', $tags);  // Separate tags by comma
         

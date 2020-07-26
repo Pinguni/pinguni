@@ -51,6 +51,9 @@
 .sidebar {
     @apply w-full bg-white;
 }
+.sidebar-container {
+    @apply w-full;
+}
 @media (min-width: $md) {
     .sidebar {
         @apply w-1/4 fixed overflow-scroll h-screen p-6 pl-10 -mt-8 -ml-20 mr-6;
@@ -63,6 +66,13 @@
     }
     .sidebar-whitespace {
         @apply w-1/4;
+    }
+    .sidebar-container {
+        @apply pl-6 pr-2 w-3/4 mt-0;
+        
+        #holder {
+            @apply ml-6;
+        }
     }
 }
 

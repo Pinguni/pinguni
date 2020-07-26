@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Search {{ $word ?? '' }}
+    Search {{ $word ?? '' }}
 @endsection
 
 @section('head')
@@ -78,7 +78,7 @@ Search {{ $word ?? '' }}
     <!--
         Card Container
     -->
-    <div id = "card-container">
+    <div class = "sidebar-container">
         
         <!--
             Tag crumbs
@@ -102,7 +102,10 @@ Search {{ $word ?? '' }}
         </div>
     </div>
 </section>
+@endsection
 
+
+@section('scripts')
 
 <!--
     Infinite scroll for cards
@@ -178,6 +181,9 @@ Search {{ $word ?? '' }}
                 // put cards into #holder div
                 var holder = document.getElementById("holder")
                 holder.innerHTML = response
+                /*console.log(response, "response")
+                // set page title
+                window.history.pushState( { "html": response.html }, "", url); */
 
                 // execute infinite scroll
                 $('.pagination').hide()
