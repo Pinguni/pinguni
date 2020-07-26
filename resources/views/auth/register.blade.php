@@ -16,7 +16,7 @@
         @csrf
 
         <label for="first_name">{{ __('First Name') }}</label>
-        <input id="first_name" type="text" class="@error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus />
+        <input id="first_name" type="text" class="@error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus placeholder="First Name" />
         @error('first_name')
             <p role="alert">
                 <strong>{{ $message }}</strong>
@@ -24,7 +24,7 @@
         @enderror
         
         <label for="last_name">{{ __('Last Name') }}</label>
-        <input id="last_name" type="text" class="@error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus />
+        <input id="last_name" type="text" class="@error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" placeholder="Last Name" />
         @error('last_name')
             <p role="alert">
                 <strong>{{ $message }}</strong>
@@ -32,7 +32,7 @@
         @enderror
 
         <label for="email">{{ __('E-Mail Address') }}</label>
-        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
         @error('email')
             <p role="alert">
                 <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
         @enderror
         
         <label for="username">{{ __('Username') }}</label>
-        <input id="username" type="text" class="@error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus />
+        <input id="username" type="text" class="@error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" placeholder="Username" />
         @error('username')
             <p role="alert">
                 <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
         @enderror
 
         <label for="password">{{ __('Password') }}</label>
-        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="new-password" />
+        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password" />
         @error('password')
             <p role="alert">
                 <strong>{{ $message }}</strong>
@@ -56,8 +56,9 @@
         @enderror
 
         <label for="password-confirm">{{ __('Confirm Password') }}</label>
-        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" />
-
+        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password" />
+        
+        <br />
         
         <button type="submit" class= "float-right">
             {{ __('Register') }}
