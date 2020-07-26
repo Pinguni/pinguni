@@ -1,5 +1,3 @@
-<title>$pag->title | $poc->title | $gui->title | Guides | Pinguni</title>
-
 <!--
     Breadcrumbs
 -->

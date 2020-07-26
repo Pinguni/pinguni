@@ -181,6 +181,9 @@
                 // put cards into #holder div
                 var holder = document.getElementById("holder")
                 holder.innerHTML = response
+                /*console.log(response, "response")
+                // set page title
+                window.history.pushState( { "html": response.html }, "", url); */
 
                 // execute infinite scroll
                 $('.pagination').hide()

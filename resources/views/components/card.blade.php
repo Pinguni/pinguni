@@ -1,5 +1,5 @@
 <div class = "card-wrapper {{ App\Help::cardWidth($width) }}">
-    <a href = "{{ App\Help::cardUrl($card) }}" target = "_blank">
+    <a href = "{{ App\Help::cardUrl($card) }}">
         <div class = "card {{ $height ?? '' }}">
             <div class = "card-img-wrapper @if ($width == 'horizontal') {{ $height ?? '' }} @endif">
                 <img class = "{{ $hideImage ?? '' }}" src = "{{ $card->thumbnail }}" />
