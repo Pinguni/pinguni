@@ -127,7 +127,7 @@
 </div>
 
 <!--
-    Utteranc.es Comments
+    Comments
 -->
 <script src="https://utteranc.es/client.js"
         repo="Pinguni/comments"

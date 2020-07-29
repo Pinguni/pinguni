@@ -158,14 +158,17 @@
         </div>
         <div class = "card-group-wrapper" id = "resources">
             @foreach ($card->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $child)
-                <div data-id = "{{ $child->id }}">
-                    @if (!Auth::guest()) @if (Auth::user()->role == 'admin') <span class = "handle"></span> @endif @endif
-                    <x-card
-                          width="full"
-                          height="h-long"
-                          :card="$child" >
-                    </x-card>
-                </div>
+                @if (!Auth::guest()) @if (Auth::user()->role == 'admin')
+                    <div data-id = "{{ $child->id }}"> <span class = "handle"></span> 
+                @endif @endif
+                        <x-card
+                              width="full"
+                              height="h-long"
+                              :card="$child" >
+                        </x-card>
+                @if (!Auth::guest()) @if (Auth::user()->role == 'admin')
+                    </div>
+                @endif @endif
             @endforeach
         </div>
     </section>

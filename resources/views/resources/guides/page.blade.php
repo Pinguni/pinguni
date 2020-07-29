@@ -22,10 +22,14 @@
 -->
 <aside class = "sidebar">
     <div class = "box">
-        @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc)
-            <p class = "menu-1-header">{{ $poc->title }}</p>
-                @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
-                    <p class = "menu-1" onclick="updatePage({{ $poc->id }}, {{ $pag->id }}, '{{ App\Help::cardUrl($pag) }}')">{{ $pag->title }}</p>
+        @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc2)
+            <p class = "menu-1-header">{{ $poc2->title }} 
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc2->id]) }}">
+                    <img class = "emoji" src="https://img.icons8.com/pastel-glyph/64/000000/plus.png"/>
+                </a>
+            </p>
+                @foreach ($poc2->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag2)
+                    <p class = "menu-1" onclick="updatePage({{ $poc2->id }}, {{ $pag2->id }}, '{{ $pag2->title }} | {{ $poc2->title }} | {{ $gui->title }} | Guides | Pinguni', '{{ App\Help::cardUrl($pag2) }}')">{{ $pag2->title }}</p>
                 @endforeach
             <br />
         @endforeach
@@ -37,7 +41,7 @@
 <!-- 
     Main section
 -->
-<section class = "section container-wrap">
+<section class = "section container-wrap article">
     
     <!-- 
         Sidebar whitespace div
@@ -53,7 +57,7 @@
         <!--
             Breadcrumbs
         -->
-        <div class = "box">
+        <div class = "box box-breadcrumbs">
             <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a> ></p>
         </div>
 
@@ -161,7 +165,7 @@
 
 <script>
     
-    function updatePage(pocId, pagId, pagUrl) 
+    function updatePage(pocId, pagId, pagTitle, pagUrl) 
     {
         console.log("clicked")
         
@@ -180,8 +184,8 @@
                 var holder = document.getElementById("holder")
                 holder.innerHTML = response
                 // set page title
-                document.title = response.pageTitle;
-                window.history.pushState( { "html": response.html, "pageTitle": response.pageTitle }, "", pagUrl);
+                document.title = pagTitle;
+                window.history.pushState( { "html": response.html, "pageTitle": pagTitle }, "", pagUrl);
             }
         }) 
     }
