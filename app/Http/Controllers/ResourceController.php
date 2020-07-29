@@ -17,7 +17,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        $collections = Card::where('type', 'main')->get();
+        $collections = Card::where('type', 'main')->ofVisibility('public')->get();
         
         return view('resources.index', [
             'collections' => $collections,
