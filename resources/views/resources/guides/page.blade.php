@@ -11,12 +11,6 @@
 
 @section('content')
 
-<style>
-    a:hover {
-        cursor:pointer;
-    }
-</style>
-
 <!--
     Sidebar
 -->
