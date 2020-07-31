@@ -14,7 +14,7 @@
 
 @section('content')
 
-<form method = "POST" action = "{{ route('updateCard', ['id' => $card->id]) }}" id = "editCardForm">
+<form method = "POST" action = "{{ route('updateCard', ['id' => $card->id]) }}" id = "editCardForm" class = "page">
     @csrf
     
     <aside class = "sidebar">
