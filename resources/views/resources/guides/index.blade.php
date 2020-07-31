@@ -11,136 +11,173 @@
     <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 @endsection
 
-@section('hero')
-<x-hero :bg="$gui->bg" class="blank">
-    @slot('article', 'hero-header')
-    <x-slot name='h1'>
-        {{ $gui->title }}
-    </x-slot>
-    
-    {{ $gui->description }}
-    
-    @guest
-        <div class = "mb-12"></div>
-    @else
-        @if ($role == 'admin')
-            <a href = "{{ route('editCard', ['id' => $gui->id]) }}"><button>Edit</button></a>
-        @endif
-    
-        @php
-            $status = App\Help::userCardStatus(Auth::id(), $gui->id);
-        @endphp
-    
-        @if ($status == 'inprogress')
-            <button class = "inprogress">In Progress</button>
-        @else
-            <form method = "POST" action = "{{ route('storeCardProgress') }}">
-                @csrf
-                <input name = "id" id = "id" type = "hidden" value = "{{ $gui->id }}"/>
-                <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
-                <button type = "submit float-right">Follow this guide</button>
-            </form>
-        @endif
-    @endguest
-    
-    
-</x-hero>
-@endsection
-
+@section('mainClass', 'full')
 
 @section('content')
 
 <!--
-    Card notes box
+    Sidebar
 -->
-<section class = "article">
+<aside class = "sidebar">
     <div class = "box">
-        {!! App\Help::notes($gui->notes) !!}
-    </div>
-</section>
-
-<!--
-    Pockets
--->
-<div id = "pockets">
-@foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc)
-    <section class = "article" data-id = "{{ $poc->id }}">
-        <div class = "box box-pocket">
-            @if ($role == 'admin') <span class = "handle"></span> @endif
-            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>
-                <h2>{{ $poc->title }}</h2>
-            </a>
-            <p>{{ $poc->description }}</p>
-            
-            <!--
-                Pages
-            -->
-            <div class = "guide-pages">
-                @if ($role == 'admin')
-                    @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->get() as $pag)
-                        <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
-                            <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
-                        </a>
-                    @endforeach
-                @else
-                    @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
-                        <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
-                            <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
-                        </a>
-                    @endforeach
-                @endif
-            </div>
-            @if ($role == 'admin')
-                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
-            @endif
-        </div>
-    </section>
-@endforeach
-</div>
-
-
-<!--
-    Create Pocket Button
--->
-<section class = "article">
-    <div class = "box">
-        @if ($role == 'admin')
-            <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button class = "clear">Create Pocket</button></a>
-        @endif
-    </div>
-</section>
-
-<!--
-    Resource Cards Pool
--->
-<div class = "card-pool">
-    <h2>Extra Resources</h2>
-    <div class = "card-group-wrapper">
-        @foreach ($gui->pool()->ofVisibility('public')->get() as $card)
-            <x-card
-                  width="full"
-                  height="h-long"
-                  :card="$card" >
-            </x-card>
+        @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc)
+            <p class = "menu-1-header">{{ $poc->title }} 
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}">
+                    <img class = "emoji" src="https://img.icons8.com/pastel-glyph/64/000000/plus.png"/>
+                </a>
+            </p>
+                @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
+                    <p class = "menu-1" onclick="updatePage({{ $poc->id }}, {{ $pag->id }}, '{{ $pag->title }} | {{ $poc->title }} | {{ $gui->title }} | Guides | Pinguni', '{{ App\Help::cardUrl($pag) }}')">{{ $pag->title }}</p>
+                @endforeach
+            <br />
         @endforeach
     </div>
-</div>
+</aside>
 
-<!--
-    Comments
--->
-<script src="https://utteranc.es/client.js"
-        repo="Pinguni/comments"
-        issue-term="url"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+
+
+<section class = "section container-wrap">
+    
+    <!-- 
+        Sidebar whitespace div
+    -->
+    <div class = "sidebar-whitespace"></div>
+    
+    
+    <div class = "sidebar-container">
+        <!--
+            Hero
+        -->
+        <x-hero :bg="$gui->bg" class="blank">
+            @slot('article', 'hero-header')
+            <x-slot name='h1'>
+                {{ $gui->title }}
+            </x-slot>
+
+            {{ $gui->description }}
+
+            @guest
+                <div class = "mb-12"></div>
+            @else
+                @if ($role == 'admin')
+                    <a href = "{{ route('editCard', ['id' => $gui->id]) }}"><button>Edit</button></a>
+                @endif
+
+                @php
+                    $status = App\Help::userCardStatus(Auth::id(), $gui->id);
+                @endphp
+
+                @if ($status == 'inprogress')
+                    <button class = "inprogress">In Progress</button>
+                @else
+                    <form method = "POST" action = "{{ route('storeCardProgress') }}">
+                        @csrf
+                        <input name = "id" id = "id" type = "hidden" value = "{{ $gui->id }}"/>
+                        <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
+                        <button type = "submit float-right">Follow this guide</button>
+                    </form>
+                @endif
+            @endguest
+        </x-hero>
+
+
+        <!--
+            Card notes box
+        -->
+        <section class = "article">
+            <div class = "box">
+                {!! App\Help::notes($gui->notes) !!}
+            </div>
+        </section>
+
+        <!--
+            Pockets
+        -->
+        <div id = "pockets">
+        @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc)
+            <section class = "article" data-id = "{{ $poc->id }}">
+                <div class = "box box-pocket">
+                    @if ($role == 'admin') <span class = "handle"></span> @endif
+                    <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>
+                        <h2>{{ $poc->title }}</h2>
+                    </a>
+                    <p>{{ $poc->description }}</p>
+
+                    <!--
+                        Pages
+                    -->
+                    <div class = "guide-pages">
+                        @if ($role == 'admin')
+                            @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->get() as $pag)
+                                <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
+                                    <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                                </a>
+                            @endforeach
+                        @else
+                            @foreach ($poc->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
+                                <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink/$pag->id/$pag->permalink") }}'>
+                                    <div><p>{!! App\Icon::get($pag->icon) !!} &nbsp; {{ $pag->title }}</p></div>
+                                </a>
+                            @endforeach
+                        @endif
+                    </div>
+                    @if ($role == 'admin')
+                        <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
+                    @endif
+                </div>
+            </section>
+        @endforeach
+        </div>
+
+
+        <!--
+            Create Pocket Button
+        -->
+        <section class = "article">
+            <div class = "box">
+                @if ($role == 'admin')
+                    <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}"><button class = "clear">Create Pocket</button></a>
+                @endif
+            </div>
+        </section>
+
+        <!--
+            Resource Cards Pool
+        -->
+        <div class = "card-pool">
+            <h2>Extra Resources</h2>
+            <div class = "card-group-wrapper">
+                @foreach ($gui->pool()->ofVisibility('public')->get() as $card)
+                    <x-card
+                          width="full"
+                          height="h-long"
+                          :card="$card" >
+                    </x-card>
+                @endforeach
+            </div>
+        </div>
+
+        <!--
+            Comments
+        -->
+        <script src="https://utteranc.es/client.js"
+                repo="Pinguni/comments"
+                issue-term="url"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+        
+    </div>
+</section>
+
+
 
 @endsection
 
 
 @section('scripts')
+
 <style>
     .highlight {
         background: #f7e7d3;

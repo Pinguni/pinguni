@@ -94,6 +94,10 @@ main {
     }
 }
 
+.spacer {
+    @apply h-4;
+}
+
 .article {
     margin: 0 auto;
     @apply w-full;

@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
-@section('title', "$pag->title | $poc->title | $gui->title | Guides")
+@section('title')
+@if(isset($pag->title))
+{{ $pag->title }} | {{ $poc->title }} | {{ $gui->title }} | Guides
+@else
+{{ $gui->title }} | Guides
+@endif
+@endsection
 
 @section('head')
     <link href = "/css/components/cards.css" rel = "stylesheet" />
 @endsection
+
 
 @section('mainClass', 'full')
 
@@ -34,7 +41,7 @@
 <!-- 
     Main section
 -->
-<section class = "section container-wrap article">
+<section class = "section container-wrap">
     
     <!-- 
         Sidebar whitespace div
@@ -55,24 +62,43 @@
 
 @section('scripts')
 
-<script>
-    $(window).ready(function() {
-        var url = '{{ url("/resources/get/page/$gui->id") }}'+"/"+{{ $poc->id }}+"/"+{{ $pag->id }};
-        
-        $.ajax({
-            url: url,
-            method: "GET",
-            success: function(response) {
-                // put content into #holder div
-                var holder = document.getElementById("holder")
-                holder.innerHTML = response
-            }
-        })
-    });
-</script>
+@if (isset($pag->id))
+    <script>
+        $(window).ready(function() {
+            var url = '{{ url("/resources/get/page/$gui->id") }}'+"/"+{{ $poc->id }}+"/"+{{ $pag->id }};
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    // put content into #holder div
+                    var holder = document.getElementById("holder")
+                    holder.innerHTML = response
+                }
+            })
+        });
+    </script>
+@else
+    <script>
+        $(window).ready(function() {
+            var url = '{{ url("/resources/get/guide/$gui->id") }}';
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    // put content into #holder div
+                    var holder = document.getElementById("holder")
+                    holder.innerHTML = response
+                }
+            })
+        });
+    </script>
+@endif
+
+
 
 <script>
-    
     function updatePage(pocId, pagId, pagTitle, pagUrl) 
     {
         console.log("clicked")
@@ -97,7 +123,6 @@
             }
         }) 
     }
-    
 </script>
 
 @endsection
