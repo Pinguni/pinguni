@@ -23,7 +23,7 @@
 <!--
     Page Content
 -->
-<div class = "box" id = "content"></div>
+<div class = "box" id = "content">{!! $pag->notes !!}</div>
 
 <!--
     Completion
