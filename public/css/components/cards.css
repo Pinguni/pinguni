@@ -88,6 +88,14 @@ main {
   background-color: rgba(247, 250, 252, var(--bg-opacity));
 }
 
+.box-content {
+  line-height: 2;
+}
+
+.box-page-title h2 {
+  font-size: 1.875rem;
+}
+
 .box-explain {
   --border-opacity: 1;
   border-color: #edf2f7;

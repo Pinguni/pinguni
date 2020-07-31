@@ -15,15 +15,15 @@
 <!-- 
     Page Info
 -->
-<div class = "box">
+<div class = "box box-page-title">
     <h2>{{ $pag->title }}</h2>
-    <p class = "page-description"><a href = "{{ App\Help::getPageContributionUrl($pag->id) }}" target = "_blank">#{{ $pag->id }}</a> | {{ $pag->description }}</p>
+    <p class = "page-description">{{ $pag->description }}</p>
 </div>
 
 <!--
     Page Content
 -->
-<div class = "box" id = "content">{!! $pag->notes !!}</div>
+<div class = "box box-content">{!! $pag->notes !!}</div>
 
 <!--
     Completion
