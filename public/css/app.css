@@ -392,14 +392,8 @@ footer div, #hero > div, .nav-wrapper nav, main {
   margin-top: 2rem;
 }
 
-.guide-pages a {
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
-}
-
-.guide-pages a:hover {
-  text-decoration: none;
+.spacer {
+  height: 1rem;
 }
 
 .article {
@@ -485,6 +479,7 @@ i {
 .emoji {
   width: 1rem;
   display: inline-block;
+  text-align: left;
 }
 
 ol,
@@ -710,6 +705,7 @@ button.edit {
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
+  padding-bottom: 2rem;
 }
 
 .sidebar-container {
@@ -811,13 +807,13 @@ button.edit {
   font-size: 2.25rem;
   line-height: 1.5;
   margin-bottom: 1rem;
-  text-align: left;
+  text-align: center;
 }
 
 #hero > div > div p {
   font-size: 1.125rem;
   line-height: 2;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-header {
@@ -922,12 +918,7 @@ footer div p {
   width: 100%;
 }
 
-.guide-pages a {
-  font-weight: 600;
-  width: 100%;
-}
-
-.guide-pages a div {
+.guide-pages div {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0.75rem;
@@ -936,13 +927,17 @@ footer div p {
   width: 100%;
 }
 
-.guide-pages a div:hover {
+.guide-pages div:hover {
   --bg-opacity: 1;
   background-color: #edf2f7;
   background-color: rgba(237, 242, 247, var(--bg-opacity));
 }
 
-.guide-pages a div .emoji {
+.guide-pages div p {
+  font-weight: 600;
+}
+
+.guide-pages div .emoji {
   margin-bottom: 0.25rem;
 }
 

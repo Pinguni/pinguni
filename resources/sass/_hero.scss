@@ -8,10 +8,10 @@
             @apply w-full;
             
             h1 {
-                @apply text-4xl leading-normal mb-4 text-left;
+                @apply text-4xl leading-normal mb-4 text-center;
             }
             p {
-                @apply text-lg leading-loose text-left;
+                @apply text-lg leading-loose text-center;
             }
         }
     }

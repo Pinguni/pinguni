@@ -17,7 +17,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        $collections = Card::where('type', 'main')->get();
+        $collections = Card::where('type', 'main')->ofVisibility('public')->get();
         
         return view('resources.index', [
             'collections' => $collections,
@@ -85,7 +85,7 @@ class ResourceController extends Controller
         if (!Auth::guest())
             $role = Auth::user()->role;
         
-        return view('resources.guides.index', [
+        return view('resources.guides.page', [
             'gui' => $gui,
             'role' => $role,
         ]);
@@ -133,6 +133,26 @@ class ResourceController extends Controller
             'gui' => $gui,
             'poc' => $poc,
             'pag' => $pag,
+            'role' => $role,
+        ]);
+    }
+    
+    
+    /**
+     * Return main guide page AJAX
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getGuide($id)
+    {   
+        $gui = Card::ofVisibility('public')->where('id', $id)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.get.guide', [
+            'gui' => $gui,
             'role' => $role,
         ]);
     }

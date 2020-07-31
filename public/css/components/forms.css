@@ -106,6 +106,10 @@ form, .section, .box {
   margin-top: 2rem;
 }
 
+.spacer {
+  height: 1rem;
+}
+
 .article {
   margin: 0 auto;
   width: 100%;
