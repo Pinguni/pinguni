@@ -48,7 +48,7 @@
         <div class = "container-wrap">
             @foreach ($cards as $card)
                 <x-card
-                      width="full"
+                      width="small"
                       height="h-short"
                       hideType="hidden"
                       :card="$card" >
@@ -94,7 +94,7 @@
                     p.innerHTML = note;                             // put note in p
                     
                     var notes = document.getElementById("notes")    // get #notes div
-                    notes.appendChild(div);                         // append div to #notes
+                    notes.prepend(div);                             // prepend div to #notes
                     document.getElementById(count).appendChild(p)   // append p to div
                     
                     note.value = null;                              // clear note value

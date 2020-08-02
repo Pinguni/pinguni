@@ -1,18 +1,28 @@
-.box-notes {
-  display: flex;
-}
-
 .box-notes .collection-header {
   display: none;
 }
 
 .box-notes .box-notes-notes {
-  width: 25%;
-  padding-right: 0.5rem;
+  width: 100%;
 }
 
 .box-notes .box-notes-side {
-  width: 75%;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .box-notes {
+    display: flex;
+  }
+
+  .box-notes .box-notes-notes {
+    width: 25%;
+  }
+
+  .box-notes .box-notes-side {
+    width: 75%;
+    padding-left: 1rem;
+  }
 }
 
 .notes-header {
@@ -21,6 +31,10 @@
 
 .notes {
   margin-bottom: 3rem;
+}
+
+.notes #note {
+  font-size: 0.875rem;
 }
 
 .notes div {
@@ -40,4 +54,5 @@
   --text-opacity: 1;
   color: #4a5568;
   color: rgba(74, 85, 104, var(--text-opacity));
+  text-align: left;
 }
