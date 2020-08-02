@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CardListPool extends Model
+class CardsAndLinkList extends Model
 {
     // table name
-    protected $table = 'card_list_pools';
+    protected $table = 'cards_and_link_lists';
 }
