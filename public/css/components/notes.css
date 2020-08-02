@@ -1,3 +1,28 @@
+.box-notes {
+  display: flex;
+}
+
+.box-notes .collection-header {
+  display: none;
+}
+
+.box-notes .box-notes-notes {
+  width: 25%;
+  padding-right: 0.5rem;
+}
+
+.box-notes .box-notes-side {
+  width: 75%;
+}
+
+.notes-header {
+  margin-bottom: 0;
+}
+
+.notes {
+  margin-bottom: 3rem;
+}
+
 .notes div {
   width: 100%;
   border-width: 2px;

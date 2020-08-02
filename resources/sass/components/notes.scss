@@ -1,4 +1,22 @@
+.box-notes {
+    @apply flex;
+    
+    .collection-header {
+        @apply hidden;
+    }
+    .box-notes-notes {
+        @apply w-1/4 pr-2;
+    }
+    .box-notes-side {
+        @apply w-3/4;
+    }
+}
+.notes-header {
+    @apply mb-0;
+}
 .notes {
+    @apply mb-12;
+    
     div {
         @apply w-full border-2 border-gray-200 pt-2 px-2 mb-2;
         

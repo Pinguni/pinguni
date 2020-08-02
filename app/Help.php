@@ -71,6 +71,8 @@ class Help
             case "article":
                 $wid = "lg:w-1/2 xl:w-1/3";
                 break; */
+            case "small":
+                $wid = "small";
             case "horizontal":
                 $wid = "horizontal";
                 break;

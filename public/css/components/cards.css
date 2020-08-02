@@ -381,7 +381,7 @@ main {
     }*/
   }
 
-  .card-wrapper.horizontal {
+  .card-wrapper.small, .card-wrapper.horizontal {
     width: 100%;
   }
 }
@@ -395,6 +395,10 @@ main {
 @media (min-width: 1280px) {
   .card-wrapper {
     width: 33.333333%;
+  }
+
+  .card-wrapper.small {
+    width: 50%;
   }
 }
 

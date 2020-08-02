@@ -19,40 +19,42 @@
 
 @section('content')
 
-<section class = "box">
-    <div class = "collection-header">
-        <h2>Notes</h2>
+<section class = "box box-notes">
+    <div class = "box-notes-notes">
+        <div class = "collection-header notes-header">
+            <h2>Notes</h2>
+        </div>
+        <input 
+            id = "note" 
+            type = "text" 
+            name = "note"
+            placeholder = "enter a note here..." 
+            onkeypress="runScript(event)"
+        />
+        <div class = "notes" id = "notes">
+            @foreach ($notes as $note)
+                <!-- TODO:  add checkmark box and trash icon -->
+                <div>
+                    <p>{{ $note->note }}</p>
+                </div>
+            @endforeach
+        </div>
     </div>
-    <input 
-        id = "note" 
-        type = "text" 
-        name = "note"
-        placeholder = "enter a note here..." 
-        onkeypress="runScript(event)"
-    />
-    <div class = "notes" id = "notes">
-        @foreach ($notes as $note)
-            <!-- TODO:  add checkmark box and trash icon -->
-            <div>
-                <p>{{ $note->note }}</p>
-            </div>
-        @endforeach
-    </div>
-</section>
-
-<section class = "box card-group">
-    <div class = "collection-header">
-        <h2>Guides Progress</h2>
-    </div>
-    <div class = "container-wrap">
-        @foreach ($cards as $card)
-            <x-card
-                  width="full"
-                  height="h-short"
-                  hideType="hidden"
-                  :card="$card" >
-            </x-card>
-        @endforeach
+    
+    <div class = "box-notes-side">
+        <div class = "collection-header">
+            <h2>Guides in Progress</h2>
+        </div>
+        <div class = "container-wrap">
+            @foreach ($cards as $card)
+                <x-card
+                      width="full"
+                      height="h-short"
+                      hideType="hidden"
+                      :card="$card" >
+                </x-card>
+            @endforeach
+        </div>
     </div>
 </section>
 
@@ -95,7 +97,7 @@
                     notes.appendChild(div);                         // append div to #notes
                     document.getElementById(count).appendChild(p)   // append p to div
                     
-                    note.value = '';                                // clear note value
+                    note.value = null;                              // clear note value
                 }
             })
         }

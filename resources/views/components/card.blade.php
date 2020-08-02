@@ -1,4 +1,4 @@
-<div class = "card-wrapper {{ App\Help::cardWidth($width) }}">
+<div class = "card-wrapper {{ $width ? '' }}">
     <a href = "{{ App\Help::cardUrl($card) }}">
         <div class = "card {{ $height ?? '' }}">
             <div class = "card-img-wrapper @if ($width == 'horizontal') {{ $height ?? '' }} @endif">
