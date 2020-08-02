@@ -83,6 +83,14 @@ class Card extends Model
     }
     
     /**
+     * The links that belong to the card.
+     */
+    public function links()
+    {
+        return $this->belongsToMany('App\Link', 'card_lists', 'parent_id', 'child_id');
+    }
+    
+    /**
      *  Get the pocket associated with pocket cards.
      */
     public function pocket()
