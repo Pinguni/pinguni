@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\User;
+use App\UserNote;
 use Illuminate\Http\Request;
 
 class DashController extends Controller
@@ -28,10 +29,20 @@ class DashController extends Controller
         if (!Auth::guest())
         {
             // Get user's cards progress
-            $cards = User::find(Auth::id())->cardsProgress()->where('cards.type', 'guide')->get();  
+            $cards = User::find(Auth::id())
+                           ->cardsProgress()
+                           ->where('cards.type', 'guide')
+                           ->orderBy('created_at', 'DESC')
+                           ->get(); 
+            
+            // Get user notes
+            $notes = UserNote::where('user_id', Auth::id())
+                               ->orderBy('created_at', 'DESC')
+                               ->get();
             
             return view('dash.index', [
                 'cards' => $cards,
+                'notes' => $notes,
             ]);
         }
         else {

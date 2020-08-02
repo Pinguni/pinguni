@@ -1,0 +1,9 @@
+.notes {
+    div {
+        @apply w-full border-2 border-gray-200 pt-2 px-2 mb-2;
+        
+        p {
+            @apply text-sm text-gray-700;
+        }
+    }
+}

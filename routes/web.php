@@ -35,6 +35,7 @@ Route::get('/', 'MainController@index')->name('home');
 Route::view('about', 'about');
 Route::get('search/{type?}', 'MainController@search');
 
+Route::post('/user-note/store', 'UserNoteController@store')->name('storeUserNote');
 
 
 /*
