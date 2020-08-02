@@ -824,6 +824,11 @@ button.edit {
   text-align: center;
 }
 
+#hero > div > div a {
+  width: 100%;
+  align-items: center;
+}
+
 .hero-header {
   margin-top: 1rem;
   height: auto;
