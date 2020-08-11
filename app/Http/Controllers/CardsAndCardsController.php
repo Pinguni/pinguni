@@ -2,23 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Link;
-use App\CardList;
-use Embed\Embed;
 use Illuminate\Http\Request;
+use CardsAndCards;
 
-class LinkController extends Controller
+class CardsAndCardsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -45,37 +33,25 @@ class LinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $parent)
     {
         $validatedData = $request->validate([
-            'url' => 'required|max:255',
+            'child_id' => 'required',
         ]);
         
-        $link = new Link;
-        $link->url = $request->url;
-        
-        $embed = new Embed();
-        $meta = $embed->get($request->url);
-        $link->title = $meta->title;
-        $link->description = $meta->description;
-        $link->image = $meta->image;
-        
-        $link->save();
-        
-        $item = new CardList;
-        $item->parent_id = $id;
-        $item->child_id = $link->id;
-        $item->type = "link";
-        return $item->save();
+        $rel = new CardsAndCards;
+        $rel->parent_id = $parent;
+        $rel->child_id = $request->child_id;
+        return $rel->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Link  $link
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Link $link)
+    public function show($id)
     {
         //
     }
@@ -83,10 +59,10 @@ class LinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Link  $link
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Link $link)
+    public function edit($id)
     {
         //
     }
@@ -95,10 +71,10 @@ class LinkController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Link  $link
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Link $link)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -106,10 +82,10 @@ class LinkController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Link  $link
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Link $link)
+    public function destroy($id)
     {
         //
     }

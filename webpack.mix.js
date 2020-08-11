@@ -45,7 +45,12 @@ mix//.js('resources/js/app.js', 'public/js')
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],
     })
-    .sass('resources/sass/components/notes.scss', 'public/css/components')    // Forms
+    .sass('resources/sass/components/notes.scss', 'public/css/components')    // Notes
+    .options({
+        processCssUrls: false,
+        postCss: [ tailwindcss('./tailwind.config.js') ],
+    })
+    .sass('resources/sass/components/links.scss', 'public/css/components')    // Links
     .options({
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],

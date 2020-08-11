@@ -6,6 +6,7 @@
 
 @section('head')
     <link href = "/css/components/cards.css" rel = "stylesheet" />
+    <link href = "/css/components/forms.css" rel = "stylesheet" />
 
     <!-- jQuery UI -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -50,6 +51,18 @@
 -->
 <section class = "box">
     {!! App\Help::notes($card->notes) !!}
+</section>
+
+
+<!-- 
+    Add child resources
+-->
+<section class = "box">
+    <form method="POST" action="{{ route('storeCardRelation', ['parent' => $card->id]) }}">
+        @csrf
+        <input type = "text" name = "child_id" placeholder = "child resource id" />
+        <button type = "submit">Add</button>
+    </form>
 </section>
 
 

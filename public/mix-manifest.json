@@ -4,5 +4,6 @@
     "/css/utilities.css": "/css/utilities.css",
     "/css/components/cards.css": "/css/components/cards.css",
     "/css/components/forms.css": "/css/components/forms.css",
+    "/css/components/links.css": "/css/components/links.css",
     "/css/once/landing.css": "/css/once/landing.css"
 }

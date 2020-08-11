@@ -35,7 +35,17 @@ Route::get('/', 'MainController@index')->name('home');
 Route::view('about', 'about');
 Route::get('search/{type?}', 'MainController@search');
 
+
+/*
+ *
+ *  Post Routes
+ *
+ */
 Route::post('/user-note/store', 'UserNoteController@store')->name('storeUserNote');
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
+    //Route::post('/link/store', 'LinkController@store')->name('storeLink');
+    Route::post('/link/store/{id}', 'LinkController@store')->name('storeLink');
+});
 
 
 /*

@@ -10,6 +10,8 @@
 
 @section('head')
     <link href = "/css/components/cards.css" rel = "stylesheet" />
+    <link href = "/css/components/forms.css" rel = "stylesheet" />
+    <link href = "/css/components/links.css" rel = "stylesheet" />
 @endsection
 
 
@@ -17,6 +19,12 @@
 
 
 @section('content')
+
+<style>
+    a:hover {
+        cursor: pointer;
+    }
+</style>
 
 <!--
     Sidebar
@@ -122,6 +130,47 @@
                 window.history.pushState( { "html": response.html, "pageTitle": pagTitle }, "", pagUrl);
             }
         }) 
+    }
+</script>
+
+
+<script>
+    let count = 0;
+    function runScript(e, id) {
+        if (e.key === "Enter") {
+            var link = $("#link").val()
+            var obj = { url: link }
+            console.log(obj)
+            
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ url("/link/store/") }}'+"/"+id,
+                method: "POST",
+                data: { url: link },
+                success: function (response) {
+                    console.log("It worked!")
+                    
+                    let a = document.createElement("a")              // create a
+                    a.classList.add("link")                          // add link class
+                    a.href = link                                    // set href url
+                    
+                    document.getElementById("links").appendChild(a)  // append a to #links
+                    
+                    /*let div = document.createElement("div")         // create div
+                    div.id = ++count;                               // assign ID to div
+                    let p = document.createElement("p")             // create p
+                    p.innerHTML = note;                             // put note in p
+                    
+                    var notes = document.getElementById("notes")    // get #notes div
+                    notes.prepend(div);                             // prepend div to #notes
+                    document.getElementById(count).appendChild(p)   // append p to div
+                    
+                    note.value = null;                              // clear note value */
+                }
+            })
+        }
     }
 </script>
 
