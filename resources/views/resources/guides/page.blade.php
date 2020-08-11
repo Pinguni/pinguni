@@ -33,15 +33,25 @@
     <div class = "box">
         @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc2)
             <p class = "menu-1-header">{{ $poc2->title }} 
-                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc2->id]) }}">
-                    <img class = "emoji" src="https://img.icons8.com/pastel-glyph/64/000000/plus.png"/>
-                </a>
-            </p>
+                @if($role == 'admin')
+                    <a href = "{{ route('createCardWithParent', ['parent_id' => $poc2->id]) }}">
+                        <img class = "emoji" src="https://img.icons8.com/pastel-glyph/64/000000/plus.png"/>
+                    </a>
+                @endif
+            </p>    
                 @foreach ($poc2->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag2)
                     <p class = "menu-1" onclick="updatePage({{ $poc2->id }}, {{ $pag2->id }}, '{{ $pag2->title }} | {{ $poc2->title }} | {{ $gui->title }} | Guides | Pinguni', '{{ App\Help::cardUrl($pag2) }}')">{{ $pag2->title }}</p>
                 @endforeach
             <br />
         @endforeach
+        @if ($role == 'admin')
+            <p class = "menu-1-header">
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $gui->id]) }}">
+                    Create Pocket
+                </a>
+            </p>
+        @endif
+        <br />
     </div>
 </aside>
 
@@ -105,12 +115,9 @@
 @endif
 
 
-
 <script>
     function updatePage(pocId, pagId, pagTitle, pagUrl) 
     {
-        console.log("clicked")
-        
         /**
          *  get the page with AJAX
          */

@@ -1,7 +1,7 @@
 <!--
     Breadcrumbs
 -->
-<div class = "box">
+<div class = "box box-breadcrumbs">
     <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a> ></p>
 </div>
 
@@ -104,10 +104,5 @@
     </div>
 </div>
 
-<script src="https://utteranc.es/client.js"
-        repo="Pinguni/comments"
-        issue-term="url"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+
+

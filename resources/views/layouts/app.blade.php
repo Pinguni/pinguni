@@ -160,7 +160,7 @@
         </div>
 
         <!-- Scripts -->
-        <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script>
+        <!-- <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script> -->
         @yield('scripts')
     </body>
 </html>

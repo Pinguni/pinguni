@@ -73,8 +73,12 @@ class Help
                 break; */
             case "small":
                 $wid = "small";
+                break;
             case "horizontal":
                 $wid = "horizontal";
+                break;
+            default:
+                $wid = '';
                 break;
         }
         return $wid;
