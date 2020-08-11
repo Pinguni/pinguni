@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use CardsAndCards;
+use App\CardsAndCards;
 
 class CardsAndCardsController extends Controller
 {
@@ -39,10 +39,14 @@ class CardsAndCardsController extends Controller
             'child_id' => 'required',
         ]);
         
-        $rel = new CardsAndCards;
-        $rel->parent_id = $parent;
-        $rel->child_id = $request->child_id;
-        return $rel->save();
+        if (!CardsAndCards::where('parent_id', $parent)->where('child_id', $request->child_id)->exists()) {
+            $rel = new CardsAndCards;
+            $rel->parent_id = $parent;
+            $rel->child_id = $request->child_id;
+            $rel->save();
+        }
+        
+        return redirect()->back();
     }
 
     /**

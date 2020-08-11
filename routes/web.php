@@ -87,6 +87,7 @@ Route::prefix('resources')->group(function() {
         Route::prefix('cards')->group(function() {
             Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
             Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
+            Route::post('relation/{parent}', 'CardsAndCardsController@store')->name('storeCardRelation');
         });
     });
     
