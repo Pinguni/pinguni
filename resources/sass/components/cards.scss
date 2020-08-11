@@ -133,7 +133,9 @@
                 @apply h-48;
             }
         }*/
-        
+        &.full {
+            @apply w-1/3;
+        }
         &.small,
         &.horizontal {
             @apply w-full;
@@ -148,9 +150,9 @@
 @media (min-width: $xl) {
     .card-wrapper {
         @apply w-1/3;
-    }
-    .card-wrapper.small {
-        @apply w-1/2;
+        &.small {
+            @apply w-1/2;
+        }
     }
 }
 

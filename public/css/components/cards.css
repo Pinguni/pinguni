@@ -381,6 +381,10 @@ main {
     }*/
   }
 
+  .card-wrapper.full {
+    width: 33.333333%;
+  }
+
   .card-wrapper.small, .card-wrapper.horizontal {
     width: 100%;
   }
