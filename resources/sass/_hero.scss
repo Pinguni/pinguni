@@ -1,5 +1,5 @@
 #hero {
-    @apply bg-white h-auto bg-cover bg-fixed py-6;
+    @apply bg-white h-auto bg-cover /*bg-fixed*/ py-6;
     
     & > div {
         @extend %main;
@@ -12,6 +12,9 @@
             }
             p {
                 @apply text-lg leading-loose text-center;
+            }
+            a {
+                @apply w-full items-center;
             }
         }
     }

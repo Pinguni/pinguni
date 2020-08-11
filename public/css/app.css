@@ -771,6 +771,7 @@ button.edit {
   padding-bottom: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  text-align: left;
 }
 
 .menu-1 {
@@ -802,7 +803,6 @@ button.edit {
   background-color: rgba(255, 255, 255, var(--bg-opacity));
   height: auto;
   background-size: cover;
-  background-attachment: fixed;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
@@ -929,6 +929,7 @@ footer div p {
 
 .guide-pages {
   width: 100%;
+  margin-top: 1rem;
 }
 
 .guide-pages div {
