@@ -10,9 +10,11 @@ class MainController extends Controller
     public function index()
     {
         $resCard = Card::find(14);
+        $jouCard = Card::find(78);
         
         return view('index', [
             'resCard' => $resCard,
+            'jouCard' => $jouCard,
         ]);
     }
     

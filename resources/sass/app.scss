@@ -45,25 +45,6 @@ footer {
  *  Page Components
  *
  */
-.box-explain {
-    @extend %container-border;
-    @apply p-8 flex;
-    
-    img {
-        @apply w-24 h-24 rounded-full object-cover;
-        margin: 0 auto;
-    }
-    div {
-        @apply pl-6 w-full;
-        h3 {
-            @apply font-semibold text-lg text-left;
-        }
-    }
-}
-.box-pocket {
-    @extend %box-p;
-    @apply bg-gray-100;
-}
 @media (min-width: $md)
 {
     .box-explain {
@@ -91,19 +72,18 @@ footer {
 }
 .guide-pages {
     @apply w-full;
-    a {
-        @apply font-semibold w-full;
-        @extend %no-decoration;
-        
-        div {
-            @apply px-3 pt-3 pb-1 duration-700 w-full;
-            
-            &:hover {
-                @apply bg-gray-200;
-            }
-            .emoji {
-                @apply mb-1;
-            }
+    
+    div {
+        @apply px-3 pt-3 pb-1 duration-700 w-full;
+
+        &:hover {
+            @apply bg-gray-200;
+        }
+        p {
+            @apply font-semibold;
+        }
+        .emoji {
+            @apply mb-1;
         }
     }
 }

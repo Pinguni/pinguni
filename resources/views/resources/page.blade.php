@@ -6,6 +6,10 @@
 
 @section('head')
     <link href = "/css/components/cards.css" rel = "stylesheet" />
+
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 @endsection
 
 @section('hero')
@@ -152,14 +156,19 @@
             <h2>All Resources</h2>
             <p>All materials associated with {{ $card->title }}.</p>
         </div>
-        <div class = "card-group-wrapper">
+        <div class = "card-group-wrapper" id = "resources">
             @foreach ($card->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $child)
-                <x-card
-                      width="full"
-                      height="h-long"
-                      hideDescription="hidden"
-                      :card="$child" >
-                </x-card>
+                @if (!Auth::guest()) @if (Auth::user()->role == 'admin')
+                    <div data-id = "{{ $child->id }}"> <span class = "handle"></span> 
+                @endif @endif
+                        <x-card
+                              width="full"
+                              height="h-long"
+                              :card="$child" >
+                        </x-card>
+                @if (!Auth::guest()) @if (Auth::user()->role == 'admin')
+                    </div>
+                @endif @endif
             @endforeach
         </div>
     </section>
@@ -214,4 +223,54 @@
         async>
 </script>
 
+@endsection
+
+
+@section('scripts')
+<style>
+    .highlight {
+        background: #f7e7d3;
+        min-height: 30px;
+        list-style-type: none;
+    }
+
+    .handle {
+        min-width: 18px;
+        background: #607D8B;
+        height: 15px;
+        display: inline-block;
+        cursor: move;
+        margin-right: 10px;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+
+    	function updateToDatabase(idString, parentId) {
+    	   $.ajaxSetup({ headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});
+    		
+    	   $.ajax({
+              url: '{{ route("reorderCards") }}',
+              method: 'POST',
+              data: { child_ids: idString, parent_id: parentId },
+              success: function() {
+                 alert('Successfully updated')
+               	 //do whatever after success
+              }
+           })
+    	}
+        
+        var target = $('#resources');
+        target.sortable({
+            handle: '.handle',
+            placeholder: 'highlight',
+            axis: "y",
+            update: function (e, ui){
+               var sortData = target.sortable('toArray', { attribute: 'data-id'})
+               updateToDatabase(sortData.join(','), "{{ $card->id }}")
+            }
+        })
+        
+    })
+</script>
 @endsection

@@ -4,18 +4,47 @@
 
 
 @section('head')
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
+
     <!-- jQuery UI -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 @endsection
 
+@section('mainClass', 'full')
 
 @section('content')
 
-<section class = "article">
+<!--
+    Sidebar
+-->
+<aside class = "sidebar">
+    <div class = "box">
+        @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc2)
+            <p class = "menu-1-header">{{ $poc2->title }} 
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc2->id]) }}">
+                    <img class = "emoji" src="https://img.icons8.com/pastel-glyph/64/000000/plus.png"/>
+                </a>
+            </p>
+                @foreach ($poc2->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag)
+                    <p class = "menu-1" onclick="updatePage({{ $poc2->id }}, {{ $pag->id }}, '{{ $pag->title }} | {{ $poc2->title }} | {{ $gui->title }} | Guides | Pinguni', '{{ App\Help::cardUrl($pag) }}')">{{ $pag->title }}</p>
+                @endforeach
+            <br />
+        @endforeach
+    </div>
+</aside>
+
+
+<section class = "section container-wrap article">
+    
+    <!-- 
+        Sidebar whitespace div
+    -->
+    <div class = "sidebar-whitespace"></div>
+    
     
     <div class = "box">
-        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
+        <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> ></p>
     </div>
     
     <!--
@@ -62,6 +91,31 @@
             <a href = "{{ route('createCardWithParent', ['parent_id' => $poc->id]) }}"><button class = "clear">Create Page</button></a>
         @endif
     </div>
+    
+    <!--
+        Resource Cards Pool
+    -->
+    <div class = "card-pool">
+        <h2>Extra Resources</h2>
+        <div class = "card-group-wrapper">
+            @foreach ($poc->pool()->ofVisibility('public')->get() as $card)
+                <x-card
+                      width="full"
+                      height="h-long"
+                      :card="$card" >
+                </x-card>
+            @endforeach
+        </div>
+    </div>
+    
+    <script src="https://utteranc.es/client.js"
+            repo="Pinguni/comments"
+            issue-term="url"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
 </section>
 
 <script src="https://utteranc.es/client.js"

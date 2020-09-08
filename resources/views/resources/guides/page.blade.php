@@ -1,96 +1,127 @@
 @extends('layouts.app')
 
-@section('title', "$pag->title | $poc->title | $gui->title | Guides")
+@section('title')
+@if(isset($pag->title))
+{{ $pag->title }} | {{ $poc->title }} | {{ $gui->title }} | Guides
+@else
+{{ $gui->title }} | Guides
+@endif
+@endsection
+
+@section('head')
+    <link href = "/css/components/cards.css" rel = "stylesheet" />
+@endsection
+
+
+@section('mainClass', 'full')
 
 
 @section('content')
-<section class = "article">
-    
-    <!--
-        Breadcrumbs
-    -->
+
+<!--
+    Sidebar
+-->
+<aside class = "sidebar">
     <div class = "box">
-        <p><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a></p>
+        @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc2)
+            <p class = "menu-1-header">{{ $poc2->title }} 
+                <a href = "{{ route('createCardWithParent', ['parent_id' => $poc2->id]) }}">
+                    <img class = "emoji" src="https://img.icons8.com/pastel-glyph/64/000000/plus.png"/>
+                </a>
+            </p>
+                @foreach ($poc2->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $pag2)
+                    <p class = "menu-1" onclick="updatePage({{ $poc2->id }}, {{ $pag2->id }}, '{{ $pag2->title }} | {{ $poc2->title }} | {{ $gui->title }} | Guides | Pinguni', '{{ App\Help::cardUrl($pag2) }}')">{{ $pag2->title }}</p>
+                @endforeach
+            <br />
+        @endforeach
     </div>
-    
-    <!--
-        Image
-    -->
-    <div class = "box">
-        <img src = "{{ $pag->bg }}" />
-    </div>
+</aside>
+
+
+<!-- 
+    Main section
+-->
+<section class = "section container-wrap">
     
     <!-- 
-        Page Info
+        Sidebar whitespace div
     -->
-    <div class = "box">
-        <h2>{{ $pag->title }}</h2>
-        <p class = "page-description"><a href = "{{ App\Help::getPageContributionUrl($pag->id) }}" target = "_blank">#{{ $pag->id }}</a> | {{ $pag->description }}</p>
-    </div>
+    <div class = "sidebar-whitespace"></div>
     
-    <!--
-        Page Content
+    
+    <!-- 
+        Page
     -->
-    <div class = "box" id = "content"></div>
-    
-    <!--
-        Completion
-    -->
-    <div class = "box">
-        @php
-            $status = App\Help::userCardStatus(Auth::id(), $pag->id);
-        @endphp
-    
-        @if ($status == 'complete')
-            <!--
-                Already Finished button
-            -->
-            <form method = "POST" action = "{{ route('storeCardProgress') }}">
-                @csrf
-                <input name = "id" id = "id" type = "hidden" value = "{{ $pag->id }}"/>
-                <input name = "status" id = "status" type = "hidden" value = "inprogress"/>
-                <button type = "submit" class = "complete">Finished</button>
-            </form>
-        @elseif (isset($role))
-            <!-- 
-                Completion Button
-            -->
-            <form method = "POST" action = "{{ route('storeCardProgress') }}">
-                @csrf
-                <input name = "id" id = "id" type = "hidden" value = "{{ $pag->id }}"/>
-                <input name = "status" id = "status" type = "hidden" value = "complete"/>
-                <button type = "submit">Complete</button>
-            </form>
-        @endif
-        @if ($role == 'admin')
-            <a href = "{{ route('editCard', ['id' => $pag->id]) }}"><button class = "edit">Edit</button></a>
-        @endif
-    </div>
+    <div class = "sidebar-container" id = "holder"></div>
     
 </section>
 
-<script src="https://utteranc.es/client.js"
-        repo="Pinguni/comments"
-        issue-term="url"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
 @endsection
 
 
 @section('scripts')
+
+@if (isset($pag->id))
+    <script>
+        $(window).ready(function() {
+            var url = '{{ url("/resources/get/page/$gui->id") }}'+"/"+{{ $poc->id }}+"/"+{{ $pag->id }};
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    // put content into #holder div
+                    var holder = document.getElementById("holder")
+                    holder.innerHTML = response
+                }
+            })
+        });
+    </script>
+@else
+    <script>
+        $(window).ready(function() {
+            var url = '{{ url("/resources/get/guide/$gui->id") }}';
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    // put content into #holder div
+                    var holder = document.getElementById("holder")
+                    holder.innerHTML = response
+                }
+            })
+        });
+    </script>
+@endif
+
+
+
 <script>
-    $(window).ready(function() {
+    function updatePage(pocId, pagId, pagTitle, pagUrl) 
+    {
+        console.log("clicked")
+        
+        /**
+         *  get the page with AJAX
+         */
+        var url = '{{ url("/resources/get/page/$gui->id") }}'+"/"+pocId+"/"+pagId;
+        
+        console.log(url)
+        
         $.ajax({
-            url: "{{ App\Help::getPageContent($pag->id) }}",
+            url: url,
             method: "GET",
             success: function(response) {
-                // put content into #content div
-                var content = document.getElementById("content")
-                content.innerHTML = response
+                // put page into #holder div
+                var holder = document.getElementById("holder")
+                holder.innerHTML = response
+                // set page title
+                document.title = pagTitle;
+                window.history.pushState( { "html": response.html, "pageTitle": pagTitle }, "", pagUrl);
             }
-        })
-    });
+        }) 
+    }
 </script>
+
 @endsection

@@ -1,17 +1,41 @@
 @import '../variables';
 @import '../base';
 
-
+.card-group-header {
+    @apply ml-2 mb-8;
+    
+    h2 {
+        @apply text-2xl uppercase;
+    }
+}
+.card-group-wrapper {
+    @apply flex flex-wrap /*grid grid-cols-1*/ mt-2;
+    
+    div {
+        //@apply w-1/3;
+    }
+}
+.card-pool {
+    @extend %box-pocket;
+    @apply mt-12 mb-8;
+    
+    h2 {
+        @apply text-3xl mb-4;
+    }
+    .card {
+        @apply bg-white;
+    }
+}
 .card-wrapper {
-    @apply w-full px-2 -mt-2;
+    @apply w-full px-2 -mt-2 flex;
     
     &:hover .card {
-        @apply bg-gray-200;
+        @apply /*bg-gray-200*/ shadow-xl;
     }
     
     a {
         @extend %no-decoration;
-        @apply flex;  //
+        @apply flex;
         
         &:hover {
             @apply text-black;
@@ -19,22 +43,22 @@
     }
     
     .card {
-        @extend %container-border;
-        @apply mb-12 duration-700 overflow-hidden h-auto /*border-t-0*/ w-full flex;
+        /*@extend %container-border;*/
+        @apply mb-12 duration-700 overflow-hidden h-auto w-full flex-1 shadow-md;
         
         .card-img-wrapper {
-            @apply h-/*32*/full /*w-full*/w-1/4 rounded-none rounded-l-md /**/ overflow-hidden bg-gray-200 p-0 mb-2 mt-0 mx-0;
+            @apply h-32/*full*/ w-full/*w-1/4*/ rounded-none /*rounded-t-md*/ overflow-hidden bg-gray-200 p-0 mb-2 mt-0 mx-0;
 
             img {
-                @apply w-full object-cover /*h-32*/h-full;
+                @apply w-full object-cover h-full;
             }
         }
         
         .container {
-            @apply w-/*full*/3/4 px-6 py-4;
+            @apply w-full/*3/4*/ px-6 py-4 relative;
             
             p.type {
-                @apply capitalize text-sm uppercase font-semibold rounded py-1 px-2 float-right;
+                @apply capitalize text-sm uppercase font-semibold rounded py-1 px-2 /*float-right*/;
                 
                 &.type-blue {
                     @apply text-blue-700 bg-blue-100;
@@ -82,10 +106,10 @@
             @apply flex;
 
             .card {
-                @apply w-full flex h-auto border-t-2;
+                @apply w-full flex h-auto;
                 
                 .card-img-wrapper {
-                    @apply w-1/4 rounded-none rounded-l-md h-full;
+                    @apply w-/*1/4*/full rounded-none rounded-l-md h-full;
 
                     img {
                         @apply h-full;
@@ -93,27 +117,15 @@
                 }
 
                 .container {
-                    @apply w-3/4;
+                    @apply w-/*3/4*/full;
                 }
             }
         }
     }
 }
-.card-group-header {
-    @apply ml-2 mb-4;
-    
-    h2 {
-        @apply text-xl uppercase;
-    }
-}
-.card-group-wrapper {
-    @apply grid grid-cols-1 mt-2;
-}
-#card-container {
-    @apply w-full;
-}
 @media (min-width: $md) {
     .card-wrapper {
+        @apply w-1/2;
         /*.card {
             &.h-long {
                 height: 300px;
@@ -130,19 +142,17 @@
             @apply w-full;
         }
     }
-    #card-container {
-        @apply pl-6 pr-2 w-3/4;
-        
-        #holder {
-            @apply ml-6;
-        }
+}
+@media (min-width: $lg) {
+    .card-wrapper {
+        @apply w-1/2;
     }
 }
-/*@media (min-width: $lg) {
-    .card-group-wrapper {
-        @apply grid-cols-2;
+@media (min-width: $xl) {
+    .card-wrapper {
+        @apply w-1/3;
     }
-} */
+}
 
 #tagCrumbs {
     @apply mb-4;

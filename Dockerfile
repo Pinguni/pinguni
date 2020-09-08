@@ -11,7 +11,10 @@ RUN apt-get update -y && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN docker-php-ext-install pdo pdo_mysql
 
-ARG CACHE_DATE=2020-07-11
+RUN curl -sL https://deb.nodesource.com/setup_13.x  | bash -
+RUN apt-get -y install nodejs
+
+ARG CACHE_DATE=2020-07-30
 #ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
 # Clone new folder
@@ -22,6 +25,8 @@ WORKDIR pinguni
 
 # Install dependencies
 RUN composer install
+RUN npm install
+RUN npm run prod
 
 # Laravel cache
 CMD php artisan optimize:clear

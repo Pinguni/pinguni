@@ -24,7 +24,7 @@
     <div class = "container-wrap">
         @foreach ($cards as $card)
             <x-card
-                  width="horizontal"
+                  width="full"
                   height="h-short"
                   hideType="hidden"
                   :card="$card" >
@@ -33,11 +33,11 @@
     </div>
 </section>
 
-<section class = "box card-group">
+<!-- <section class = "box card-group">
     <div class = "card-group-header">
         <h2>Pockets Progress</h2>
     </div>
-</section>
+</section> -->
 
 @endsection
 

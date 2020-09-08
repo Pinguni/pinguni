@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Search {{ $word ?? '' }}
+    Search {{ $word ?? '' }}
 @endsection
 
 @section('head')
@@ -45,6 +45,7 @@ Search {{ $word ?? '' }}
         <p class = "menu-1" onclick="getCards('all subjects')">All Subjects</p>
         <p class = "menu-1" onclick="getCards('art')">Art</p>
         <p class = "menu-1" onclick="getCards('bible')">Bible</p>
+        <p class = "menu-1" onclick="getCards('history')">History</p>
         <p class = "menu-1" onclick="getCards('foreign language')">Foreign Language</p>
         <p class = "menu-1" onclick="getCards('language arts')">Language Arts</p>
         <p class = "menu-1" onclick="getCards('math')">Math</p>
@@ -78,7 +79,7 @@ Search {{ $word ?? '' }}
     <!--
         Card Container
     -->
-    <div id = "card-container">
+    <div class = "sidebar-container">
         
         <!--
             Tag crumbs
@@ -102,7 +103,10 @@ Search {{ $word ?? '' }}
         </div>
     </div>
 </section>
+@endsection
 
+
+@section('scripts')
 
 <!--
     Infinite scroll for cards
@@ -178,6 +182,9 @@ Search {{ $word ?? '' }}
                 // put cards into #holder div
                 var holder = document.getElementById("holder")
                 holder.innerHTML = response
+                /*console.log(response, "response")
+                // set page title
+                window.history.pushState( { "html": response.html }, "", url); */
 
                 // execute infinite scroll
                 $('.pagination').hide()
