@@ -77,7 +77,7 @@ Route::prefix('resources')->group(function() {
         Route::get('cards/{tags}', 'ResourceController@cards');
         Route::get('page/{guiId}/{pocId}/{pagId}', 'ResourceController@getPage')->name('getPage');
         Route::get('guide/{id}', 'ResourceController@getGuide')->name('getGuide');
-        Route::get('course/{id}', 'ResourceController@getGuide')->name('getCourse');
+        //Route::get('course/{id}', 'ResourceController@getGuide')->name('getCourse');
     });
     
     /**
@@ -111,10 +111,9 @@ Route::prefix('resources')->group(function() {
      *  Course Routes
      */
     Route::prefix('courses')->group(function() {
-        Route::get('{guide}', 'ResourceController@guide')->name('course');
-        Route::get('{guide}/{id}/{pocket}', 'ResourceController@guidePocket')->name('coursePocket');
-        Route::get('{guide}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@guidePage')->name('coursePage');
-        //Route::get('{guide}/{pocket}/{page}/complete', 'UsersCardProgressController@guidePage');
+        Route::get('{course}', 'ResourceController@guide')->name('course');
+        Route::get('{course}/{id}/{pocket}', 'ResourceController@coursePocket')->name('coursePocket');
+        Route::get('{course}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@coursePage')->name('coursePage');
     });
     
 });

@@ -136,10 +136,76 @@ class ResourceController extends Controller
             'role' => $role,
         ]);
     }
+
+
+    /**
+     * Return main course page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function course($course)
+    {   
+        $gui = Card::ofVisibility('public')->where('type', 'course')->where('permalink', $course)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.guides.page', [
+            'gui' => $gui,
+            'role' => $role,
+        ]);
+    }
     
     
     /**
-     * Return main guide page AJAX
+     * Return course pocket page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function coursePocket($course, $id, $pocket)
+    {
+        $gui = Card::ofVisibility('public')->where('type', 'course')->where('permalink', $course)->first();
+        $poc = Card::ofVisibility('public')->where('id', $id)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.guides.pocket', [
+            'gui' => $gui,
+            'poc' => $poc,
+            'role' => $role,
+        ]);
+    }
+    
+    
+    /**
+     * Return course page page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function coursePage($course, $pocId, $pocket, $pagId, $page)
+    {
+        $gui = Card::ofVisibility('public')->where('type', 'course')->where('permalink', $course)->first();
+        $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
+        $pag = Card::ofVisibility('public')->where('id', $pagId)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.guides.page', [
+            'gui' => $gui,
+            'poc' => $poc,
+            'pag' => $pag,
+            'role' => $role,
+        ]);
+    }
+    
+    
+    /**
+     * Return main guide/course page AJAX
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -159,7 +225,7 @@ class ResourceController extends Controller
     
     
     /**
-     * Return page for guides page AJAX
+     * Return page for guides/courses page AJAX
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
