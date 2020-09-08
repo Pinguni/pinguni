@@ -51,6 +51,10 @@ class Help
         {
             $url = "/resources/guides/$card->permalink";
         }
+        else if ($card->type == 'course')
+        {
+            $url = "/resources/courses/$card->permalink";
+        }
         else
         {
             $url = "/resources/$card->type" . "s/$card->id/$card->permalink";

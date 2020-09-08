@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "$poc->title | $gui->title | Guides")
+@section('title', "$poc->title | $gui->title")
 
 
 @section('head')

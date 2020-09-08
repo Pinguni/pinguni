@@ -16,6 +16,8 @@
                         <p class = "type type-orange {{ $hideType ?? '' }}"><i class = "fas fa-sticky-note"></i>{{ $card->type }}</p>
                     @elseif ($card->type === 'guide')
                         <p class = "type type-indigo {{ $hideType ?? '' }}"><i class = "fas fa-book"></i>{{ $card->type }}</p>
+                    @elseif ($card->type === 'course')
+                        <p class = "type type-indigo {{ $hideType ?? '' }}"><i class = "fas fa-book"></i>{{ $card->type }}</p>
                     @else
                         <p class = "type type-gray {{ $hideType ?? '' }}">{{ $card->type }}</p>
                     @endif

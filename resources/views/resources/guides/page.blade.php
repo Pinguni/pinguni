@@ -2,9 +2,9 @@
 
 @section('title')
 @if(isset($pag->title))
-{{ $pag->title }} | {{ $poc->title }} | {{ $gui->title }} | Guides
+{{ $pag->title }} | {{ $poc->title }} | {{ $gui->title }}
 @else
-{{ $gui->title }} | Guides
+{{ $gui->title }}
 @endif
 @endsection
 
