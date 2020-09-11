@@ -82,7 +82,7 @@ main {
   text-align: left;
 }
 
-.card-pool, .box-pocket {
+.box-pocket {
   --bg-opacity: 1;
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));
@@ -159,17 +159,6 @@ main {
 .card-pool {
   margin-top: 3rem;
   margin-bottom: 2rem;
-}
-
-.card-pool h2 {
-  font-size: 1.875rem;
-  margin-bottom: 1rem;
-}
-
-.card-pool .card {
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
 .card-wrapper {

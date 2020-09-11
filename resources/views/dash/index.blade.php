@@ -97,7 +97,7 @@
                     notes.prepend(div);                             // prepend div to #notes
                     document.getElementById(count).appendChild(p)   // append p to div
                     
-                    note.value = null;                              // clear note value
+                    note.value = '';                                // clear note value
                 }
             })
         }

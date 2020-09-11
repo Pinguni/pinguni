@@ -9,6 +9,8 @@
     <link href = "/css/components/cards.css" rel = "stylesheet" />
     <!-- Infinite scroll package -->
     <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous"></script>
 @endsection
 
 @section('mainClass', 'full')
