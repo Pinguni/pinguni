@@ -104,8 +104,7 @@
                         <div>
                             @guest
                             <span><a href="{{ route('login') }}">{{ __('Login') }}</a></span>
-                            <span><a href="{{ route('register') }}">{{ __('Register') }}</a></span>
-                            <span><a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
+                            <span><a href = "https://forms.gle/ronezGsAT4JmCKERA" class = "-ml-2">Apply</a></span>
                             @else
                                 <a href = '{{ url("/u/" . Auth::user()->username) }}'><span>{{ Auth::user()->username }}</span></a>
                             @endguest
