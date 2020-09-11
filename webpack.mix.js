@@ -55,6 +55,11 @@ mix//.js('resources/js/app.js', 'public/js')
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],
     })
+    .sass('resources/sass/components/comments.scss', 'public/css/components')    // Comments
+    .options({
+        processCssUrls: false,
+        postCss: [ tailwindcss('./tailwind.config.js') ],
+    })
     // Once
     .sass('resources/sass/once/landing.scss', 'public/css/once')              // Landing Page
     .options({

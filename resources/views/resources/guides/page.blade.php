@@ -12,6 +12,10 @@
     <link href = "/css/components/cards.css" rel = "stylesheet" />
     <link href = "/css/components/forms.css" rel = "stylesheet" />
     <link href = "/css/components/links.css" rel = "stylesheet" />
+    <link href = "/css/components/comments.css" rel = "stylesheet" />
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous"></script>
 @endsection
 
 
@@ -178,6 +182,70 @@
                 }
             })
         }
+    }
+</script>
+
+<script>
+    let count2 = 0;
+    function addComment() {
+        const user_id = $("#user_id").val()
+        const card_id = $("#card_id").val()
+        const comment = $("#comment").val()
+        
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ url("/resources/comments/store") }}',
+            method: "POST",
+            data: { 
+                user_id: user_id, 
+                card_id: card_id, 
+                comment: comment 
+            },
+            success: function (response) {                
+                let div = document.createElement("div")         // create div
+                div.id = ++count2 + '-com';
+                div.classList.add("comment")
+
+                let divInner = document.createElement("div")    // create inner div
+                divInner.id = count2 + '-inner';
+                let pU = document.createElement("p")            // create p.user
+                pU.classList.add("user")
+                //pU.innerHTML = " Auth::user()->username "
+                let pT = document.createElement("p")            // create p.time
+                pT.classList.add("time")
+                pT.innerHTML = "{{ date('M j') }}"
+                let p = document.createElement("p")             // create p.comment
+                p.classList.add("comment")
+                p.innerHTML = comment
+
+                var comments = document.getElementById("comments")      // get #comments div
+                comments.prepend(div);                                  // prepend div to #comments
+
+                document.getElementById(count2 + '-com').appendChild(divInner)    // append divInner to div
+                document.getElementById(count2 + '-com').appendChild(p)           // append p to div
+
+                document.getElementById(count2 + '-inner').appendChild(pU)        // append pU to divInner
+                document.getElementById(count2 + '-inner').appendChild(pT)        // append pT to divInner
+
+                $("#comment").val('')                                   // clear #comment value
+            }
+        })
+    }
+    function destroyComment(id) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ url("/resources/comments/destroy") }}' + '/' + id,
+            type: "DELETE",
+            success: function (response) {                
+                var comment = document.getElementById("comment-" + id)      // remove deleted comment
+                comment.remove()
+            }
+        })
     }
 </script>
 

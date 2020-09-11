@@ -104,5 +104,10 @@
     </div>
 </div>
 
-
-
+<!--
+    Comments
+-->
+<x-comments
+    :comments="$pag->comments()->orderBy('created_at', 'DESC')->get()"
+    :card-id="$pag->id" >
+</x-comments>

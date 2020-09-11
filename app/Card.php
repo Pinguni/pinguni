@@ -89,6 +89,14 @@ class Card extends Model
     {
         return $this->belongsToMany('App\Link', 'card_lists', 'parent_id', 'child_id');
     }
+
+    /**
+     * The comments that belong to the card.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\CardComment', 'card_id', 'id');
+    }
     
     /**
      *  Get the pocket associated with pocket cards.

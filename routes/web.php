@@ -115,7 +115,14 @@ Route::prefix('resources')->group(function() {
         Route::get('{course}/{id}/{pocket}', 'ResourceController@coursePocket')->name('coursePocket');
         Route::get('{course}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@coursePage')->name('coursePage');
     });
-    
+
+    /**
+     *  Comment Resource Routes
+     */
+    Route::prefix('comments')->group(function() {
+        Route::post('/store', 'CardCommentController@store')->name('storeComment');
+        Route::delete('/destroy/{id}', 'CardCommentController@destroy')->name('destroyComment');
+    });
 });
 
 
