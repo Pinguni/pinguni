@@ -82,6 +82,8 @@
 
 
 @section('scripts')
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous"></script>
 
 @if (isset($pag->id))
     <script>
