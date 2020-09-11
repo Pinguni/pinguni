@@ -91,6 +91,10 @@ body {
   border-radius: 0.5rem;
 }
 
+.box-pocket a:hover {
+  text-decoration: none;
+}
+
 .box-content {
   line-height: 2;
 }
