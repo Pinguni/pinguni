@@ -50,7 +50,7 @@
             @enderror
 
             <!-- <p class = "menu-1-header">Title</p> -->
-            <input type = "text" name = "title" placeholder = "title" required value="{{ old('title') }}"/>
+            <input type = "text" name = "title" placeholder = "title" required value="{{ old('title') }}" autofocus/>
             @error('title')
                 <p role="alert">
                     <strong>{{ $message }}</strong>
