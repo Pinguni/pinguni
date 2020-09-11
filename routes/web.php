@@ -58,6 +58,19 @@ Route::get('/u/{username}', 'UserController@profile');
 
 /*
  *
+ *  MyPath Routes
+ *
+ */
+Route::prefix('path')->group(function() {
+
+    Route::get('/', 'PathController@index');
+
+});
+
+
+
+/*
+ *
  *  Resource Routes
  *
  */
