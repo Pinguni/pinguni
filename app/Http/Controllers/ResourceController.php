@@ -47,9 +47,16 @@ class ResourceController extends Controller
         }
         elseif ($card->type == 'pocket')  // if card is a pocket           | TODO:  Add routes for standalone pockets
         {
-            $guideH = CardsAndCards::where('child_id', $id)->first();
-            $guide = Card::find($guideH->parent_id);
-            return $this::guidePocket($guide->permalink, $card->id, $card->permalink);
+            $parentH = CardsAndCards::where('child_id', $id)->first();
+            $parent = Card::find($parentH->parent_id);
+            if ($parent->type == 'guide')
+            {
+                return $this::guidePocket($parent->permalink, $card->id, $card->permalink);
+            }
+            else if ($parent->type == 'course')
+            {
+                return $this::coursePocket($parent->permalink, $card->id, $card->permalink);
+            }
         }
         elseif ($card->type == 'page')  // if card is a page
         {

@@ -112,7 +112,7 @@ Route::prefix('resources')->group(function() {
      *  Course Routes
      */
     Route::prefix('courses')->group(function() {
-        Route::get('{course}', 'ResourceController@guide')->name('course');
+        Route::get('{course}', 'ResourceController@course')->name('course');
         Route::get('{course}/{id}/{pocket}', 'ResourceController@coursePocket')->name('coursePocket');
         Route::get('{course}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@coursePage')->name('coursePage');
     });
