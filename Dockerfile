@@ -18,7 +18,7 @@ ARG CACHE_DATE=2020-09-10
 #ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
 # Clone new folder
-RUN git clone -b develop https://github.com/Pinguni/pinguni.git
+RUN git clone https://github.com/Pinguni/pinguni.git
 
 # Set working directory to pinguni
 WORKDIR pinguni
