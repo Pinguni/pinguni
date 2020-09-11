@@ -14,8 +14,12 @@
     <link href = "/css/components/links.css" rel = "stylesheet" />
     <link href = "/css/components/comments.css" rel = "stylesheet" />
 
-    <!-- FontAwesome -->
-    <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous"></script>
+    <!-- Parallax -->
+    <script src = "/js/parallax/parallax.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 @endsection
 
 
@@ -27,6 +31,19 @@
 <style>
     a:hover {
         cursor: pointer;
+    }
+    .highlight {
+        background: #f7e7d3;
+        min-height: 30px;
+        list-style-type: none;
+    }
+    .handle {
+        min-width: 18px;
+        background: #607D8B;
+        height: 15px;
+        display: inline-block;
+        cursor: move;
+        margin-right: 10px;
     }
 </style>
 
@@ -101,6 +118,24 @@
             })
         });
     </script>
+@elseif (isset($poc->id))
+    <script>
+        $(window).ready(function() {
+            var url = '{{ url("/resources/get/pocket/$gui->id") }}'+"/"+{{ $poc->id }};
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    // put content into #holder div
+                    var holder = document.getElementById("holder")
+                    holder.innerHTML = response
+                    // set draggable
+                    setTarget(".guide-pages", {{ $poc->id }})
+                }
+            })
+        });
+    </script>
 @else
     <script>
         $(window).ready(function() {
@@ -113,11 +148,42 @@
                     // put content into #holder div
                     var holder = document.getElementById("holder")
                     holder.innerHTML = response
+                    // set draggable
+                    setTarget("#pockets", {{ $gui->id }})
                 }
             })
         });
     </script>
 @endif
+
+
+<script>
+    function updateToDatabase(idString, parentId) {
+        $.ajaxSetup({ headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});
+        
+        $.ajax({
+            url: '{{ route("reorderCards") }}',
+            method: 'POST',
+            data: { child_ids: idString, parent_id: parentId },
+            success: function() {
+                alert('Successfully updated')
+                //do whatever after success
+            }
+        })
+    }
+    function setTarget(target, id) {
+        var target = $(target);
+        target.sortable({
+            handle: '.handle',
+            placeholder: 'highlight',
+            axis: "y",
+            update: function (e, ui) {
+                var sortData = target.sortable('toArray', { attribute: 'data-id'})
+                updateToDatabase(sortData.join(','), id)
+            }
+        })
+    }
+</script>
 
 
 <script>
