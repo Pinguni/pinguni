@@ -2,7 +2,7 @@
 
 .box-notes {
     .collection-header {
-        @apply hidden;
+        //@apply hidden;
     }
     .box-notes-notes {
         @apply w-full;
@@ -19,7 +19,7 @@
             @apply w-1/4;
         }
         .box-notes-side {
-            @apply w-3/4 pl-4;
+            @apply w-3/4 pl-20;
         }
     }
 }

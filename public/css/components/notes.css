@@ -1,7 +1,3 @@
-.box-notes .collection-header {
-  display: none;
-}
-
 .box-notes .box-notes-notes {
   width: 100%;
 }
@@ -21,7 +17,7 @@
 
   .box-notes .box-notes-side {
     width: 75%;
-    padding-left: 1rem;
+    padding-left: 5rem;
   }
 }
 
