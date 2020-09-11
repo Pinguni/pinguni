@@ -76,6 +76,7 @@ Route::prefix('resources')->group(function() {
     Route::prefix('get')->group(function() {
         Route::get('cards/{tags}', 'ResourceController@cards');
         Route::get('page/{guiId}/{pocId}/{pagId}', 'ResourceController@getPage')->name('getPage');
+        Route::get('pocket/{guiId}/{pocId}', 'ResourceController@getPocket')->name('getPocket');
         Route::get('guide/{id}', 'ResourceController@getGuide')->name('getGuide');
         //Route::get('course/{id}', 'ResourceController@getGuide')->name('getCourse');
     });

@@ -69,7 +69,7 @@ main {
 }
 %box-pocket {
     @extend %box-p;
-    @apply bg-gray-100;
+    @apply pb-8 border-2 border-light rounded-lg;
 }
 .box-pocket {
     @extend %box-pocket;

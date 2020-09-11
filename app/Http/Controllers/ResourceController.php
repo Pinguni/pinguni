@@ -106,7 +106,7 @@ class ResourceController extends Controller
         if (!Auth::guest())
             $role = Auth::user()->role;
         
-        return view('resources.guides.pocket', [
+        return view('resources.guides.page', [
             'gui' => $gui,
             'poc' => $poc,
             'role' => $role,
@@ -172,7 +172,7 @@ class ResourceController extends Controller
         if (!Auth::guest())
             $role = Auth::user()->role;
         
-        return view('resources.guides.pocket', [
+        return view('resources.guides.page', [
             'gui' => $gui,
             'poc' => $poc,
             'role' => $role,
@@ -219,6 +219,28 @@ class ResourceController extends Controller
         
         return view('resources.get.guide', [
             'gui' => $gui,
+            'role' => $role,
+        ]);
+    }
+
+
+    /**
+     * Return pocket page AJAX
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getPocket($guiId, $pocId)
+    {   
+        $gui = Card::ofVisibility('public')->where('id', $guiId)->first();
+        $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.get.pocket', [
+            'gui' => $gui,
+            'poc' => $poc,
             'role' => $role,
         ]);
     }

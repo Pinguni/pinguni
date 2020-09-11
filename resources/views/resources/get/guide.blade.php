@@ -1,5 +1,5 @@
 <style>
-    ,guide-pages div:hover {
+    .guide-pages div:hover {
         cursor: pointer;
     }
 </style>
@@ -59,7 +59,9 @@
     <section class = "article" data-id = "{{ $poc->id }}">
         <div class = "box box-pocket">
             @if ($role == 'admin') <span class = "handle"></span> @endif
-            <h2>{{ $poc->title }}</h2>
+            <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>
+                <h2>{{ $poc->title }}</h2>
+            </a>
             <p>{{ $poc->description }}</p>
 
             <!--
@@ -115,10 +117,3 @@
 <!--
     Comments
 -->
-<script src="https://utteranc.es/client.js"
-        repo="Pinguni/comments"
-        issue-term="url"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
