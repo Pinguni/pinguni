@@ -1,7 +1,15 @@
 <!-- 
+    Parallax 
+-->
+<script src = "/js/parallax/parallax.min.js"></script>
+<!-- 
     Page Hero 
 -->
-<section id = "hero" style = 'background-image: url("{{ $bg }}")' class = "{{ $class ?? '' }}">
+<section id = "hero" 
+         class = "{{ $class ?? '' }} parallax-window"
+         data-parallax = "scroll" 
+         data-image-src = "{{ $bg }}"
+>
     <div>
         @if (isset($h1) && isset($slot))
             <div class = "{{ $article ?? '' }} hero-header">

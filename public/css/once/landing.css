@@ -255,12 +255,6 @@ body {
   width: 100%;
 }
 
-.suite {
-  --bg-opacity: 1;
-  background-color: #CFDEE7;
-  background-color: rgba(207, 222, 231, var(--bg-opacity));
-}
-
 .suite .box-suite {
   margin-top: 8rem;
 }
