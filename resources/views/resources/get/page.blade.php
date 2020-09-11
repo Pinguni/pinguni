@@ -1,7 +1,7 @@
 <!--
     Breadcrumbs
 -->
-<div class = "box">
+<div class = "box box-breadcrumbs">
     <p>>&nbsp; <a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a> > <a href = '{{ url("/resources/guides/$gui->permalink/$poc->id/$poc->permalink") }}'>{{ $poc->title }}</a> ></p>
 </div>
 
@@ -15,15 +15,44 @@
 <!-- 
     Page Info
 -->
-<div class = "box">
+<div class = "box box-page-title">
     <h2>{{ $pag->title }}</h2>
-    <p class = "page-description"><a href = "{{ App\Help::getPageContributionUrl($pag->id) }}" target = "_blank">#{{ $pag->id }}</a> | {{ $pag->description }}</p>
+    <p class = "page-description">{{ $pag->description }}</p>
 </div>
 
 <!--
     Page Content
 -->
-<div class = "box" id = "content"></div>
+<div class = "box box-content">{!! $pag->notes !!}</div>
+
+<!--
+    Links
+-->
+<div class = "box" id = "links">
+    <h2>Links</h2>
+    @if ($role == 'admin')
+        <input 
+            id = "link" 
+            type = "text" 
+            name = "link"
+            placeholder = "add link..." 
+            onkeypress="runScript(event, {{ $pag->id }})"
+        />
+    @endif
+    @foreach ($pag->links()->get() as $link)
+        <a class = "link" href = "{{ $link->url }}" target="_blank">
+            <div>
+                <div class = "content">
+                    <p class = "title">@if ($role == 'admin'){{ $link->id }} |@endif {{ $link->title }}</p>
+                    <p class = "description">{{ $link->description }}</p>
+                </div>
+                <div class = "image-wrapper">
+                    <img src = "{{ $link->image }}" />
+                </div>
+            </div>
+        </a>
+    @endforeach
+</div>
 
 <!--
     Completion
@@ -75,10 +104,10 @@
     </div>
 </div>
 
-<script src="https://utteranc.es/client.js"
-        repo="Pinguni/comments"
-        issue-term="url"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+<!--
+    Comments
+-->
+<x-comments
+    :comments="$pag->comments()->orderBy('created_at', 'DESC')->get()"
+    :card-id="$pag->id" >
+</x-comments>

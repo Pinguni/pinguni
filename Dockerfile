@@ -14,7 +14,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN curl -sL https://deb.nodesource.com/setup_13.x  | bash -
 RUN apt-get -y install nodejs
 
-ARG CACHE_DATE=2020-07-30
+ARG CACHE_DATE=2020-09-10
 #ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
 # Clone new folder

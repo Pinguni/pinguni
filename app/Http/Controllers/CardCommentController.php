@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\CardComment;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,17 @@ class CardCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'card_id' => 'required',
+            'user_id' => 'required',
+            'comment' => 'required',
+        ]);
+
+        $comment = new CardComment;
+        $comment->card_id = $request->card_id;
+        $comment->user_id = $request->user_id;
+        $comment->comment = $request->comment;
+        return $comment->save();
     }
 
     /**
@@ -75,11 +86,17 @@ class CardCommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CardComment  $cardComment
+     * @param  \App\CardComment  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CardComment $cardComment)
+    public function destroy($id)
     {
-        //
+        if (Auth::check()) 
+        {
+            $comment = CardComment::find($id);
+            if (Auth::user()->role == 'admin' || Auth::id() == $comment->user_id) {
+                return $comment->delete();
+            }
+        }
     }
 }

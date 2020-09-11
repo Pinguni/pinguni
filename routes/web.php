@@ -36,6 +36,17 @@ Route::view('about', 'about');
 Route::get('search/{type?}', 'MainController@search');
 
 
+/*
+ *
+ *  Post Routes
+ *
+ */
+Route::post('/user-note/store', 'UserNoteController@store')->name('storeUserNote');
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
+    //Route::post('/link/store', 'LinkController@store')->name('storeLink');
+    Route::post('/link/store/{id}', 'LinkController@store')->name('storeLink');
+});
+
 
 /*
  *
@@ -43,6 +54,19 @@ Route::get('search/{type?}', 'MainController@search');
  *
  */
 Route::get('/u/{username}', 'UserController@profile');
+
+
+/*
+ *
+ *  MyPath Routes
+ *
+ */
+Route::prefix('path')->group(function() {
+
+    Route::get('/', 'PathController@index');
+
+});
+
 
 
 /*
@@ -65,7 +89,9 @@ Route::prefix('resources')->group(function() {
     Route::prefix('get')->group(function() {
         Route::get('cards/{tags}', 'ResourceController@cards');
         Route::get('page/{guiId}/{pocId}/{pagId}', 'ResourceController@getPage')->name('getPage');
+        Route::get('pocket/{guiId}/{pocId}', 'ResourceController@getPocket')->name('getPocket');
         Route::get('guide/{id}', 'ResourceController@getGuide')->name('getGuide');
+        //Route::get('course/{id}', 'ResourceController@getGuide')->name('getCourse');
     });
     
     /**
@@ -76,6 +102,7 @@ Route::prefix('resources')->group(function() {
         Route::prefix('cards')->group(function() {
             Route::post('store', 'UsersCardsProgressController@store')->name('storeCardProgress');
             Route::post('update', 'UsersCardsProgressController@update')->name('updateCardProgress');
+            Route::post('relation/{parent}', 'CardsAndCardsController@store')->name('storeCardRelation');
         });
     });
     
@@ -93,7 +120,23 @@ Route::prefix('resources')->group(function() {
         Route::get('{guide}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@guidePage')->name('guidePage');
         //Route::get('{guide}/{pocket}/{page}/complete', 'UsersCardProgressController@guidePage');
     });
-    
+
+    /**
+     *  Course Routes
+     */
+    Route::prefix('courses')->group(function() {
+        Route::get('{course}', 'ResourceController@course')->name('course');
+        Route::get('{course}/{id}/{pocket}', 'ResourceController@coursePocket')->name('coursePocket');
+        Route::get('{course}/{pocId}/{pocket}/{pagId}/{page}', 'ResourceController@coursePage')->name('coursePage');
+    });
+
+    /**
+     *  Comment Resource Routes
+     */
+    Route::prefix('comments')->group(function() {
+        Route::post('/store', 'CardCommentController@store')->name('storeComment');
+        Route::delete('/destroy/{id}', 'CardCommentController@destroy')->name('destroyComment');
+    });
 });
 
 

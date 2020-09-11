@@ -1,0 +1,39 @@
+@import '../variables';
+@import '../base';
+
+.comments {
+    @extend %box-p;
+    @apply w-full;
+    button {
+        @apply float-right mt-0;
+    }
+    textarea {
+        @apply py-6 mb-0;
+    }
+    div.comment {
+        @apply w-full border-2 border-light py-6 px-6 pb-10 mb-4;
+
+        &:first-child {
+            @apply mt-24;
+        }
+        div {
+            @apply flex w-full block mb-12;
+            .user {
+                @apply font-semibold float-left;
+            }
+            .time {
+                @apply text-gray-500 float-right;
+            }
+        }
+        .comment {
+            @apply w-full block;
+        }
+        .icons {
+            @apply flex mb-0 float-right w-auto;
+
+            i {
+                @apply text-gray-500;
+            }
+        }
+    }
+}

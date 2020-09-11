@@ -1,4 +1,4 @@
-<div class = "card-wrapper {{ App\Help::cardWidth($width) }}">
+<div class = "card-wrapper {{ $width ?? '' }}">
     <a href = "{{ App\Help::cardUrl($card) }}">
         <div class = "card {{ $height ?? '' }}">
             <div class = "card-img-wrapper @if ($width == 'horizontal') {{ $height ?? '' }} @endif">
@@ -15,6 +15,8 @@
                     @elseif ($card->type === 'snippet')
                         <p class = "type type-orange {{ $hideType ?? '' }}"><i class = "fas fa-sticky-note"></i>{{ $card->type }}</p>
                     @elseif ($card->type === 'guide')
+                        <p class = "type type-indigo {{ $hideType ?? '' }}"><i class = "fas fa-book"></i>{{ $card->type }}</p>
+                    @elseif ($card->type === 'course')
                         <p class = "type type-indigo {{ $hideType ?? '' }}"><i class = "fas fa-book"></i>{{ $card->type }}</p>
                     @else
                         <p class = "type type-gray {{ $hideType ?? '' }}">{{ $card->type }}</p>

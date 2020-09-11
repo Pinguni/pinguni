@@ -1,0 +1,204 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-size: cover;
+  background-attachment: fixed;
+  /*background-color: #FAFAFA; */
+}
+
+main {
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  main {
+    width: 83.333333%;
+  }
+}
+
+@media (min-width: 640px) {
+  .full {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .full {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .full {
+    width: 100%;
+  }
+}
+
+.box {
+  height: auto;
+}
+
+.comments, .box-pocket, .box-p {
+  /* if there is to be a background color for boxes */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.box-breadcrumbs {
+  padding-top: 0;
+}
+
+.box-explain {
+  padding: 2rem;
+  display: flex;
+}
+
+.box-explain img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0 auto;
+}
+
+.box-explain div {
+  padding-left: 1.5rem;
+  width: 100%;
+}
+
+.box-explain div h3 {
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-align: left;
+}
+
+.box-pocket {
+  padding-bottom: 2rem;
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #CFDEE7;
+  border-color: rgba(207, 222, 231, var(--border-opacity));
+  border-radius: 0.5rem;
+}
+
+.box-content {
+  line-height: 2;
+}
+
+.box-page-title h2 {
+  font-size: 1.875rem;
+}
+
+.box-explain {
+  --border-opacity: 1;
+  border-color: #edf2f7;
+  border-color: rgba(237, 242, 247, var(--border-opacity));
+  border-width: 2px;
+  border-radius: 0.375rem;
+}
+
+.section, .box {
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.spacer {
+  height: 1rem;
+}
+
+.article {
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .article {
+    width: 83.333333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article {
+    width: 75%;
+  }
+}
+
+.comments {
+  width: 100%;
+}
+
+.comments button {
+  float: right;
+  margin-top: 0;
+}
+
+.comments textarea {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 0;
+}
+
+.comments div.comment {
+  width: 100%;
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #CFDEE7;
+  border-color: rgba(207, 222, 231, var(--border-opacity));
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.comments div.comment:first-child {
+  margin-top: 6rem;
+}
+
+.comments div.comment div {
+  display: flex;
+  width: 100%;
+  display: block;
+  margin-bottom: 3rem;
+}
+
+.comments div.comment div .user {
+  font-weight: 600;
+  float: left;
+}
+
+.comments div.comment div .time {
+  --text-opacity: 1;
+  color: #a0aec0;
+  color: rgba(160, 174, 192, var(--text-opacity));
+  float: right;
+}
+
+.comments div.comment .comment {
+  width: 100%;
+  display: block;
+}
+
+.comments div.comment .icons {
+  display: flex;
+  margin-bottom: 0;
+  float: right;
+  width: auto;
+}
+
+.comments div.comment .icons i {
+  --text-opacity: 1;
+  color: #a0aec0;
+  color: rgba(160, 174, 192, var(--text-opacity));
+}

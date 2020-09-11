@@ -51,6 +51,10 @@ class Help
         {
             $url = "/resources/guides/$card->permalink";
         }
+        else if ($card->type == 'course')
+        {
+            $url = "/resources/courses/$card->permalink";
+        }
         else
         {
             $url = "/resources/$card->type" . "s/$card->id/$card->permalink";
@@ -71,8 +75,14 @@ class Help
             case "article":
                 $wid = "lg:w-1/2 xl:w-1/3";
                 break; */
+            case "small":
+                $wid = "small";
+                break;
             case "horizontal":
                 $wid = "horizontal";
+                break;
+            default:
+                $wid = '';
                 break;
         }
         return $wid;

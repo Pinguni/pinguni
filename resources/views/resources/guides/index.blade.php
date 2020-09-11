@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "$gui->title | Guides")
+@section('title', "$gui->title")
 
 @section('head')
     <link href = "/css/components/buttons.css" rel = "stylesheet" />

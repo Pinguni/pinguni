@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Link;
+use App\CardList;
+use Embed\Embed;
 use Illuminate\Http\Request;
 
 class LinkController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +45,28 @@ class LinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'url' => 'required|max:255',
+        ]);
+        
+        $link = new Link;
+        $link->url = $request->url;
+        
+        $embed = new Embed();
+        $meta = $embed->get($request->url);
+        $link->title = $meta->title;
+        $link->description = $meta->description;
+        $link->image = $meta->image;
+        
+        $link->save();
+        
+        $item = new CardList;
+        $item->parent_id = $id;
+        $item->child_id = $link->id;
+        $item->type = "link";
+        return $item->save();
     }
 
     /**

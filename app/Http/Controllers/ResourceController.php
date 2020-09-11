@@ -47,9 +47,16 @@ class ResourceController extends Controller
         }
         elseif ($card->type == 'pocket')  // if card is a pocket           | TODO:  Add routes for standalone pockets
         {
-            $guideH = CardsAndCards::where('child_id', $id)->first();
-            $guide = Card::find($guideH->parent_id);
-            return $this::guidePocket($guide->permalink, $card->id, $card->permalink);
+            $parentH = CardsAndCards::where('child_id', $id)->first();
+            $parent = Card::find($parentH->parent_id);
+            if ($parent->type == 'guide')
+            {
+                return $this::guidePocket($parent->permalink, $card->id, $card->permalink);
+            }
+            else if ($parent->type == 'course')
+            {
+                return $this::coursePocket($parent->permalink, $card->id, $card->permalink);
+            }
         }
         elseif ($card->type == 'page')  // if card is a page
         {
@@ -106,7 +113,7 @@ class ResourceController extends Controller
         if (!Auth::guest())
             $role = Auth::user()->role;
         
-        return view('resources.guides.pocket', [
+        return view('resources.guides.page', [
             'gui' => $gui,
             'poc' => $poc,
             'role' => $role,
@@ -136,10 +143,76 @@ class ResourceController extends Controller
             'role' => $role,
         ]);
     }
+
+
+    /**
+     * Return main course page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function course($course)
+    {   
+        $gui = Card::ofVisibility('public')->where('type', 'course')->where('permalink', $course)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.guides.page', [
+            'gui' => $gui,
+            'role' => $role,
+        ]);
+    }
     
     
     /**
-     * Return main guide page AJAX
+     * Return course pocket page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function coursePocket($course, $id, $pocket)
+    {
+        $gui = Card::ofVisibility('public')->where('type', 'course')->where('permalink', $course)->first();
+        $poc = Card::ofVisibility('public')->where('id', $id)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.guides.page', [
+            'gui' => $gui,
+            'poc' => $poc,
+            'role' => $role,
+        ]);
+    }
+    
+    
+    /**
+     * Return course page page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function coursePage($course, $pocId, $pocket, $pagId, $page)
+    {
+        $gui = Card::ofVisibility('public')->where('type', 'course')->where('permalink', $course)->first();
+        $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
+        $pag = Card::ofVisibility('public')->where('id', $pagId)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.guides.page', [
+            'gui' => $gui,
+            'poc' => $poc,
+            'pag' => $pag,
+            'role' => $role,
+        ]);
+    }
+    
+    
+    /**
+     * Return main guide/course page AJAX
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -156,10 +229,32 @@ class ResourceController extends Controller
             'role' => $role,
         ]);
     }
+
+
+    /**
+     * Return pocket page AJAX
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getPocket($guiId, $pocId)
+    {   
+        $gui = Card::ofVisibility('public')->where('id', $guiId)->first();
+        $poc = Card::ofVisibility('public')->where('id', $pocId)->first();
+        
+        $role = null;
+        if (!Auth::guest())
+            $role = Auth::user()->role;
+        
+        return view('resources.get.pocket', [
+            'gui' => $gui,
+            'poc' => $poc,
+            'role' => $role,
+        ]);
+    }
     
     
     /**
-     * Return page for guides page AJAX
+     * Return page for guides/courses page AJAX
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

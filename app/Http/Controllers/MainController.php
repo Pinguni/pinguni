@@ -9,12 +9,14 @@ class MainController extends Controller
 {   
     public function index()
     {
-        $resCard = Card::find(14);
-        $jouCard = Card::find(78);
+        $resCard = Card::find(14);       // Resource Hub
+        $jouCard = Card::find(78);       // Journalling
+        $mypCard = Card::find(109);      // MyPath
         
         return view('index', [
             'resCard' => $resCard,
             'jouCard' => $jouCard,
+            'mypCard' => $mypCard,
         ]);
     }
     

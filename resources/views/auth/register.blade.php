@@ -15,22 +15,6 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <label for="first_name">{{ __('First Name') }}</label>
-        <input id="first_name" type="text" class="@error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus placeholder="First Name" />
-        @error('first_name')
-            <p role="alert">
-                <strong>{{ $message }}</strong>
-            </p>
-        @enderror
-        
-        <label for="last_name">{{ __('Last Name') }}</label>
-        <input id="last_name" type="text" class="@error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" placeholder="Last Name" />
-        @error('last_name')
-            <p role="alert">
-                <strong>{{ $message }}</strong>
-            </p>
-        @enderror
-
         <label for="email">{{ __('E-Mail Address') }}</label>
         <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
         @error('email')

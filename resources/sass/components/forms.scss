@@ -17,6 +17,10 @@ form {
             @apply w-full;
         }
     }
+    
+    &.page {
+        @apply m-0 w-full block -mt-8;
+    }
 }
 @media (min-width: $lg) {
     form {

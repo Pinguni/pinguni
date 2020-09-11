@@ -1,0 +1,57 @@
+.link {
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.link > div {
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #edf2f7;
+  border-color: rgba(237, 242, 247, var(--border-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.link > div:hover {
+  --bg-opacity: 1;
+  background-color: #edf2f7;
+  background-color: rgba(237, 242, 247, var(--bg-opacity));
+  transition-duration: 700ms;
+}
+
+.link > div .content {
+  width: 100%;
+  padding-right: 1rem;
+}
+
+.link > div .content .title {
+  font-weight: 600;
+}
+
+.link > div .content .description {
+  font-size: 0.875rem;
+}
+
+.link > div .image-wrapper {
+  height: 100%;
+  width: 25%;
+  margin: 0;
+  display: none;
+}
+
+.link > div .image-wrapper img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}

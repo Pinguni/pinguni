@@ -104,8 +104,7 @@
                         <div>
                             @guest
                             <span><a href="{{ route('login') }}">{{ __('Login') }}</a></span>
-                            <span><a href="{{ route('register') }}">{{ __('Register') }}</a></span>
-                            <span><a href = "https://forms.gle/YedgjA9XQvYo37pa9" class = "-ml-2">Apply</a></span>
+                            <span><a href = "https://forms.gle/ronezGsAT4JmCKERA" class = "-ml-2">Apply</a></span>
                             @else
                                 <a href = '{{ url("/u/" . Auth::user()->username) }}'><span>{{ Auth::user()->username }}</span></a>
                             @endguest
@@ -118,11 +117,14 @@
                         </div>
                         @endif
                         <div>
-                            <a href = '{{ url("/dash") }}'>Dashboard</a>
+                            <a href = '{{ url("/path") }}'>MyPath</a>
                         </div>
                         <div>
-                            <a href = "https://discord.gg/9vknCu4">Community</a>
+                            <a href = '{{ url("/dash") }}'>Dashboard</a>
                         </div>
+                        <!--<div>
+                            <a href = "https://discord.gg/9vknCu4">Community</a>
+                        </div>-->
                         @endguest
                     </div>
                 </nav>
@@ -152,7 +154,7 @@
                 <div>
                     <p>Copyright &copy; 2020 {{ env('APP_NAME') }}.</p>
                     <p>
-                        <a href = "https://laravel.com" target = "_blank">Laravel</a> <!--| Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev" target = "_blank">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon" target = "_blank">www.flaticon.com</a> -->| <a href="https://icons8.com">Icons by Icons8</a> | <a href = "https://svgbackgrounds.com" target = "_blank">SVG Backgrounds</a>
+                        <a href = "https://laravel.com" target = "_blank">Laravel</a> <!--| Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev" target = "_blank">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon" target = "_blank">www.flaticon.com</a> -->| <a href="https://icons8.com" target = "_blank">Icons by Icons8</a> | <a href = "https://fontawesome.com" target = "_blank">FontAwesome</a> | <a href = "https://svgbackgrounds.com" target = "_blank">SVG Backgrounds</a>
                     </p>
                 </div>
             </footer>
@@ -160,7 +162,7 @@
         </div>
 
         <!-- Scripts -->
-        <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script>
+        <!-- <script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous" defer></script> -->
         @yield('scripts')
     </body>
 </html>
