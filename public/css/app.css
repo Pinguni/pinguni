@@ -769,12 +769,19 @@ button.edit {
 
 .menu-1,
 .menu-1-header {
-  text-transform: uppercase;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   text-align: left;
+}
+
+.menu-1-header {
+  text-transform: uppercase;
+  --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity));
+  font-weight: 700;
 }
 
 .menu-1 {
@@ -790,14 +797,6 @@ button.edit {
   color: rgba(90, 103, 216, var(--text-opacity));
   border-radius: 0.25rem;
   cursor: pointer;
-}
-
-.menu-1-header {
-  font-size: 0.875rem;
-  --text-opacity: 1;
-  color: #4a5568;
-  color: rgba(74, 85, 104, var(--text-opacity));
-  font-weight: 700;
 }
 
 #hero {

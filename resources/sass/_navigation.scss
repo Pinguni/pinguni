@@ -78,15 +78,16 @@
 
 .menu-1,
 .menu-1-header {
-    @apply uppercase py-1 px-3 text-left;
+    @apply py-1 px-3 text-left;
+}
+.menu-1-header {
+    @apply uppercase text-gray-700 font-bold;;
 }
 .menu-1 {
     @apply duration-500 text-black;
-}
-.menu-1:hover {
-    @apply text-indigo-600 rounded;
-    cursor: pointer;
-}
-.menu-1-header {
-    @apply text-sm text-gray-700 font-bold;
+
+    &:hover {
+        @apply text-indigo-600 rounded;
+        cursor: pointer;
+    }
 }
