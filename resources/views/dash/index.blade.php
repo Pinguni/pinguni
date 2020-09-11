@@ -9,7 +9,7 @@
 @endsection
 
 @section('hero')
-<x-hero bg="default" class="blank">
+<x-hero bg="https://i.ibb.co/6g84HPF/vintagecarwheel.jpg" class="blank">
     @slot('class', 'short')
     <x-slot name='h1'>
         Dashboard
@@ -46,7 +46,21 @@
             <h2>Guides in Progress</h2>
         </div>
         <div class = "container-wrap">
-            @foreach ($cards as $card)
+            @foreach ($guides as $card)
+                <x-card
+                      width="small"
+                      height="h-short"
+                      hideType="hidden"
+                      :card="$card" >
+                </x-card>
+            @endforeach
+        </div>
+        <hr />
+        <div class = "collection-header">
+            <h2>Courses in Progress</h2>
+        </div>
+        <div class = "container-wrap">
+            @foreach ($courses as $card)
                 <x-card
                       width="small"
                       height="h-short"
@@ -69,6 +83,10 @@
 
 
 @section('scripts')
+<!-- 
+    FontAwesome 
+-->
+<script src="https://kit.fontawesome.com/224691c555.js" crossorigin="anonymous"></script>
 
 <script>
     let count = 0;
