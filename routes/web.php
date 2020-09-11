@@ -26,19 +26,25 @@ use Illuminate\Support\Facades\Route;
  *  Main Routes
  *
  */
-/*
- *  Routes for authentication
- */
-Auth::routes();
-
 Route::get('/', 'MainController@index')->name('home');
 Route::view('about', 'about');
 Route::get('search/{type?}', 'MainController@search');
+/*
+ *  Authentication Routes
+ */
+Auth::routes();
+/*
+ *  Policy Routes
+ */
+Route::prefix('policies')->group(function() {
+    Route::view('/cookie', 'policies.cookie')->name('cookiePolicy');
+    Route::view('/privacy', 'policies.privacy')->name('privacyPolicy');
+});
 
 
 /*
  *
- *  Post Routes
+ *  Random Post Routes
  *
  */
 Route::post('/user-note/store', 'UserNoteController@store')->name('storeUserNote');

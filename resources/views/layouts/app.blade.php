@@ -20,6 +20,21 @@
                 $('.preloader').fadeOut('slow');
             });
         </script>
+        <!-- Termly Cookie Banner -->
+        @if(env('APP_ENV') == 'production')
+            <script>
+                (function () {
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = 'https://app.termly.io/embed.min.js';
+                s.id = '22369f4d-a95c-4511-9708-98c27b0fa7f0';
+                s.setAttribute("data-name", "termly-embed-banner");
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+                })();
+            </script>
+        @endif
 
         <!-- Styles -->
         <link href="/css/base.css" rel="stylesheet">
@@ -152,10 +167,21 @@
             -->
             <footer>
                 <div>
-                    <p>Copyright &copy; 2020 {{ env('APP_NAME') }}.</p>
-                    <p>
-                        <a href = "https://laravel.com" target = "_blank">Laravel</a> <!--| Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev" target = "_blank">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon" target = "_blank">www.flaticon.com</a> -->| <a href="https://icons8.com" target = "_blank">Icons by Icons8</a> | <a href = "https://fontawesome.com" target = "_blank">FontAwesome</a> | <a href = "https://svgbackgrounds.com" target = "_blank">SVG Backgrounds</a>
-                    </p>
+                    <div>
+                        <p>Copyright &copy; 2020 {{ env('APP_NAME') }}.</p>
+                        <p><a href = "https://laravel.com" target = "_blank">Laravel</a></p>
+                        <!--| Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev" target = "_blank">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon" target = "_blank">www.flaticon.com</a> -->
+                        <p><a href="https://icons8.com" target = "_blank">Icons by Icons8</a></p>
+                        <p><a href = "https://fontawesome.com" target = "_blank">FontAwesome</a></p>
+                        <p><a href = "https://svgbackgrounds.com" target = "_blank">SVG Backgrounds</a></p>
+                    </div>
+                    <div>
+                        <p class = "title">Policies</p>
+                        <p><a href = "{{ route('cookiePolicy') }}">Cookie Policy</a></p>
+                        <p><a href = "{{ route('privacyPolicy') }}">Privacy Policy</a></p>
+                        <p><a href = "https://www.websitepolicies.com/policies/view/ciidmcLC" target = "_blank">Terms and Conditions</a></p>
+                        <p><a href = "https://www.websitepolicies.com/policies/view/SVbxvwZ9" target = "_blank">Acceptable Use Policy</a></p>
+                    </div>
                 </div>
             </footer>
 
