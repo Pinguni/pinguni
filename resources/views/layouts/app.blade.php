@@ -117,11 +117,14 @@
                         </div>
                         @endif
                         <div>
-                            <a href = '{{ url("/dash") }}'>Dashboard</a>
+                            <a href = '{{ url("/path") }}'>MyPath</a>
                         </div>
                         <div>
-                            <a href = "https://discord.gg/9vknCu4">Community</a>
+                            <a href = '{{ url("/dash") }}'>Dashboard</a>
                         </div>
+                        <!--<div>
+                            <a href = "https://discord.gg/9vknCu4">Community</a>
+                        </div>-->
                         @endguest
                     </div>
                 </nav>
