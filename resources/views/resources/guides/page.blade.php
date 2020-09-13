@@ -52,6 +52,7 @@
 -->
 <aside class = "sidebar">
     <div class = "box">
+        <p class = "menu-1-header title"><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
         @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc2)
             <p class = "menu-1-header">{{ $poc2->title }} 
                 @if($role == 'admin')
