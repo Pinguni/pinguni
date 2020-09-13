@@ -30,11 +30,18 @@ body::-webkit-scrollbar-thumb {
 footer {
     @apply bg-black;
     
-    div {
+    & > div {
         @extend %main;
-        
+        @apply flex;
+
+        div {
+            @apply w-1/2;
+            .title {
+                @apply font-semibold;
+            }
+        }
         p {
-            @apply text-center text-sm text-gray-100;
+            @apply text-sm text-gray-100;
         }  
     }
 }

@@ -294,7 +294,7 @@ body {
   /*background-color: #FAFAFA; */
 }
 
-footer div, #hero > div, .nav-wrapper nav, main {
+footer > div, #hero > div, .nav-wrapper nav, main {
   margin: 0 auto;
   width: 100%;
   padding-left: 5rem;
@@ -304,7 +304,7 @@ footer div, #hero > div, .nav-wrapper nav, main {
 }
 
 @media (min-width: 1024px) {
-  footer div, #hero > div, .nav-wrapper nav, main {
+  footer > div, #hero > div, .nav-wrapper nav, main {
     width: 83.333333%;
   }
 }
@@ -375,6 +375,10 @@ footer div, #hero > div, .nav-wrapper nav, main {
   border-color: #CFDEE7;
   border-color: rgba(207, 222, 231, var(--border-opacity));
   border-radius: 0.5rem;
+}
+
+.box-pocket a:hover {
+  text-decoration: none;
 }
 
 .box-content {
@@ -894,8 +898,19 @@ footer {
   background-color: rgba(0, 0, 0, var(--bg-opacity));
 }
 
-footer div p {
-  text-align: center;
+footer > div {
+  display: flex;
+}
+
+footer > div div {
+  width: 50%;
+}
+
+footer > div div .title {
+  font-weight: 600;
+}
+
+footer > div p {
   font-size: 0.875rem;
   --text-opacity: 1;
   color: #f7fafc;

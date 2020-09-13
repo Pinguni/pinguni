@@ -73,6 +73,9 @@ main {
 }
 .box-pocket {
     @extend %box-pocket;
+    a:hover {
+        @apply no-underline;
+    }
 }
 .box-content {
     @apply leading-loose;
