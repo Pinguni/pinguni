@@ -5,13 +5,13 @@
         @apply no-underline;
     }
     & > div {
-        @apply border-2 border-gray-200 py-2 px-4 pt-4 flex mb-4;
+        @apply border-2 border-gray-200 flex mb-4;
         
         &:hover {
             @apply bg-gray-200 duration-700;
         }
         .content {
-            @apply w-full pr-4;
+            @apply w-3/4 pr-4 py-2 px-4 pt-4;
             
             .title {
                 @apply font-semibold;
@@ -21,10 +21,10 @@
             }
         }
         .image-wrapper {
-            @apply h-full w-1/4 m-0 hidden;
+            @apply h-full w-1/4 m-0 p-0;
             
             img {
-                @apply object-cover h-full w-full;
+                @apply object-cover;
             }
         }
     }

@@ -235,8 +235,7 @@
                     a.classList.add("link")                          // add link class
                     a.href = link                                    // set href url
                     
-                    document.getElementById("links").appendChild(a)  // append a to #links
-                    
+                    //let div = document.createElement("div")
                     /*let div = document.createElement("div")         // create div
                     div.id = ++count;                               // assign ID to div
                     let p = document.createElement("p")             // create p
@@ -246,7 +245,9 @@
                     notes.prepend(div);                             // prepend div to #notes
                     document.getElementById(count).appendChild(p)   // append p to div
                     
-                    note.value = null;                              // clear note value */
+                    note.value = '';                                // clear note value */
+
+                    document.getElementById("links").appendChild(a)  // append a to #links
                 }
             })
         }
