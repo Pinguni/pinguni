@@ -63,11 +63,15 @@
     }
     .pull-left {
         @apply pr-8;
+
+        h2, p {
+            @apply text-left;
+        }
     }
     .pull-right {
-        @apply pl-8;
+        @apply pl-8 text-right;
 
-        h2 {
+        h2, p {
             @apply text-right;
         }
     }

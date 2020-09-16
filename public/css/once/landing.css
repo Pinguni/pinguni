@@ -238,11 +238,16 @@ body {
   padding-right: 2rem;
 }
 
-.box-pull .pull-right {
-  padding-left: 2rem;
+.box-pull .pull-left h2, .box-pull .pull-left p {
+  text-align: left;
 }
 
-.box-pull .pull-right h2 {
+.box-pull .pull-right {
+  padding-left: 2rem;
+  text-align: right;
+}
+
+.box-pull .pull-right h2, .box-pull .pull-right p {
   text-align: right;
 }
 
