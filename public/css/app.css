@@ -370,11 +370,6 @@ footer > div, #hero > div, .nav-wrapper nav, main {
 
 .box-pocket {
   padding-bottom: 2rem;
-  border-width: 2px;
-  --border-opacity: 1;
-  border-color: #CFDEE7;
-  border-color: rgba(207, 222, 231, var(--border-opacity));
-  border-radius: 0.5rem;
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));

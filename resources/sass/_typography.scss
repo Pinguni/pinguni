@@ -61,7 +61,7 @@ ul {
 }
 
 progress {
-    @apply h-1 mb-2 rounded-full;
+    @apply h-1 mb-2 rounded-full w-full;
 
     &[value] {
         &::-webkit-progress-bar {
