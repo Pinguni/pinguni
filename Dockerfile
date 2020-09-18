@@ -30,6 +30,7 @@ RUN npm run prod
 
 # Laravel cache
 CMD php artisan optimize:clear
+CMD php artisan optimize
 CMD php artisan view:cache
 CMD php artisan route:cache
 CMD php artisan config:cache
