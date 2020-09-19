@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Card;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class MainController extends Controller
 {   
     public function index()
     {
-        $resCard = Card::find(14);       // Resource Hub
-        $jouCard = Card::find(78);       // Journalling
-        $mypCard = Card::find(109);      // MyPath
+        $cacheKey = 'homepage.cards';
+
+        $cards = Cache::remember($cacheKey, now()->addHours(24 * 7), function() {
+            $cards = Card::where('tags', 'LIKE', '%homepage%')
+                          ->get();
+            return $cards;
+        });
         
         return view('index', [
-            'resCard' => $resCard,
-            'jouCard' => $jouCard,
-            'mypCard' => $mypCard,
+            'cards' => $cards,
         ]);
     }
     

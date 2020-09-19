@@ -17,7 +17,7 @@
     >
         <div class = "hero">
             <!-- <img src = "/img/flippedbook.svg" /> -->
-            <h1>Chart Your Own Learning Journey</h1>
+            <h1>Chart Your Own Journey</h1>
             <div class = "content">
                 <p>Whether you're in high school, college, gap year, or beyond, we have something for you.</p>
                 <a href = "https://forms.gle/ronezGsAT4JmCKERA"><button>Apply</button></a>
@@ -119,24 +119,14 @@
             <p>Explore all the tools Pinguni has to offer.</p>
         </div> -->
         <div class = "card-group-wrapper">
-            <x-card
-                  width="full"
-                  height="h-short"
-                  hideType="hidden"
-                  :card="$mypCard" >
-            </x-card>
-            <x-card
-                  width="full"
-                  height="h-short"
-                  hideType="hidden"
-                  :card="$resCard" >
-            </x-card>
-            <x-card
-                  width="full"
-                  height="h-short"
-                  hideType="hidden"
-                  :card="$jouCard" >
-            </x-card>
+            @foreach ($cards as $card)
+                <x-card
+                    width="full"
+                    height="h-short"
+                    hideType="hidden"
+                    :card="$card" >
+                </x-card>
+            @endforeach
         </div>
     </div>
 </section>
