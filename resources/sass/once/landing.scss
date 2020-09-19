@@ -29,7 +29,7 @@
                 margin: 0 auto;
                 
                 &:hover {
-                    @apply duration-700 bg-gray-100;
+                    @apply duration-700 bg-gray-100 no-underline;
                 }
             }
         }

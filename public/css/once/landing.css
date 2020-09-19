@@ -188,6 +188,7 @@ body {
   --bg-opacity: 1;
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));
+  text-decoration: none;
 }
 
 /* SVG Waves from https://www.shapedivider.app/ */
