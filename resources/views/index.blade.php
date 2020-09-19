@@ -17,10 +17,10 @@
     >
         <div class = "hero">
             <!-- <img src = "/img/flippedbook.svg" /> -->
-            <h1>Chart Your Own Course</h1>
+            <h1>Chart Your Own Journey</h1>
             <div class = "content">
-                <p>Join our community of lifelong learners.</p>
-                <button href = "https://forms.gle/ronezGsAT4JmCKERA">Apply</button>
+                <p>Whether you're a dropout, in high school, college, gap year, or beyond, we have something for you.</p>
+                <a href = "https://forms.gle/ronezGsAT4JmCKERA"><button>Apply</button></a>
             </div>
         </div>
         <!-- SVG Waves from https://www.shapedivider.app/ -->
@@ -44,7 +44,7 @@
             <div class = "collection-header">
                 <h2>Do What Works For You</h2>
                 <p>Traditional schooling is expensive, restraining, and takes a long time.</p>
-                <p><strong>Wouldn't it be better to have the freedom to create your own "Personal College" route?</strong>  All that's required is determination, hard work, and an open mind.</p>
+                <p><strong>Wouldn't it be better to have the freedom to create your own personal growth route?</strong>  All that's required is determination, hard work, and an open mind.</p>
             </div>
         </div>
         <div class = "pull-right">
@@ -119,24 +119,14 @@
             <p>Explore all the tools Pinguni has to offer.</p>
         </div> -->
         <div class = "card-group-wrapper">
-            <x-card
-                  width="full"
-                  height="h-short"
-                  hideType="hidden"
-                  :card="$mypCard" >
-            </x-card>
-            <x-card
-                  width="full"
-                  height="h-short"
-                  hideType="hidden"
-                  :card="$resCard" >
-            </x-card>
-            <x-card
-                  width="full"
-                  height="h-short"
-                  hideType="hidden"
-                  :card="$jouCard" >
-            </x-card>
+            @foreach ($cards as $card)
+                <x-card
+                    width="full"
+                    height="h-short"
+                    hideType="hidden"
+                    :card="$card" >
+                </x-card>
+            @endforeach
         </div>
     </div>
 </section>

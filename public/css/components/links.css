@@ -13,11 +13,6 @@
   --border-opacity: 1;
   border-color: #edf2f7;
   border-color: rgba(237, 242, 247, var(--border-opacity));
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
   display: flex;
   margin-bottom: 1rem;
 }
@@ -30,8 +25,13 @@
 }
 
 .link > div .content {
-  width: 100%;
+  width: 75%;
   padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
 }
 
 .link > div .content .title {
@@ -46,12 +46,10 @@
   height: 100%;
   width: 25%;
   margin: 0;
-  display: none;
+  padding: 0;
 }
 
 .link > div .image-wrapper img {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 100%;
-  width: 100%;
 }

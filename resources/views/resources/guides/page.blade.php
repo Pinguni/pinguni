@@ -52,6 +52,7 @@
 -->
 <aside class = "sidebar">
     <div class = "box">
+        <p class = "menu-1-header title"><a href = "{{ App\Help::cardUrl($gui) }}">{{ $gui->title }}</a></p>
         @foreach ($gui->cards()->orderBy('cards_and_cards.sort')->ofVisibility('public')->get() as $poc2)
             <p class = "menu-1-header">{{ $poc2->title }} 
                 @if($role == 'admin')
@@ -80,7 +81,7 @@
 <!-- 
     Main section
 -->
-<section class = "section container-wrap">
+<section class = "section container-wrap" id = "main">
     
     <!-- 
         Sidebar whitespace div
@@ -206,6 +207,8 @@
                 // set page title
                 document.title = pagTitle;
                 window.history.pushState( { "html": response.html, "pageTitle": pagTitle }, "", pagUrl);
+                // jump to top of page
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             }
         }) 
     }
@@ -234,8 +237,7 @@
                     a.classList.add("link")                          // add link class
                     a.href = link                                    // set href url
                     
-                    document.getElementById("links").appendChild(a)  // append a to #links
-                    
+                    //let div = document.createElement("div")
                     /*let div = document.createElement("div")         // create div
                     div.id = ++count;                               // assign ID to div
                     let p = document.createElement("p")             // create p
@@ -245,7 +247,9 @@
                     notes.prepend(div);                             // prepend div to #notes
                     document.getElementById(count).appendChild(p)   // append p to div
                     
-                    note.value = null;                              // clear note value */
+                    note.value = '';                                // clear note value */
+
+                    document.getElementById("links").appendChild(a)  // append a to #links
                 }
             })
         }

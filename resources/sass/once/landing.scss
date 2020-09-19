@@ -29,7 +29,7 @@
                 margin: 0 auto;
                 
                 &:hover {
-                    @apply duration-700 bg-gray-100;
+                    @apply duration-700 bg-gray-100 no-underline;
                 }
             }
         }
@@ -63,16 +63,20 @@
     }
     .pull-left {
         @apply pr-8;
+
+        h2, p {
+            @apply text-left;
+        }
     }
     .pull-right {
-        @apply pl-8;
+        @apply pl-8 text-right;
 
-        h2 {
+        h2, p {
             @apply text-right;
         }
     }
     .img-wrapper {
-        @apply w-full h-64 rounded-lg shadow-sm overflow-hidden mt-12;
+        @apply w-full h-64 shadow-sm overflow-hidden mt-12;
 
         img {
             @apply object-cover h-64 w-full;

@@ -60,6 +60,16 @@ ul {
     @apply list-disc;
 }
 
+progress {
+    @apply h-1 mb-2 rounded-full w-full;
+
+    &[value] {
+        &::-webkit-progress-bar {
+            @apply shadow-inner bg-light;
+        }
+    }
+}
+
 
 // From https://stackoverflow.com/a/54924505
 .video-container {

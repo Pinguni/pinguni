@@ -68,6 +68,15 @@ class CardController extends Controller
             $cardAndCard->child_id = $card->id;
             $cardAndCard->save();
         }
+
+        // TODO:  update pocket and course/guide progress_max
+        $parentCard = Card::find($request->parent_id);
+        if ($parentCard !== null)
+        {
+            $notes = json_decode($parentCard->notes);
+            // keep going
+        }
+        // ==================================
         
         $url = Help::cardUrl($card);
         

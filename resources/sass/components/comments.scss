@@ -1,14 +1,15 @@
 @import '../variables';
 @import '../base';
 
+textarea {
+    @apply py-6 mb-0;
+}
+
 .comments {
     @extend %box-p;
     @apply w-full;
     button {
         @apply float-right mt-0;
-    }
-    textarea {
-        @apply py-6 mb-0;
     }
     div.comment {
         @apply w-full border-2 border-light py-6 px-6 pb-10 mb-4;
