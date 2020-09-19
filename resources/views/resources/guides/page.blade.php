@@ -81,7 +81,7 @@
 <!-- 
     Main section
 -->
-<section class = "section container-wrap">
+<section class = "section container-wrap" id = "main">
     
     <!-- 
         Sidebar whitespace div
@@ -207,6 +207,8 @@
                 // set page title
                 document.title = pagTitle;
                 window.history.pushState( { "html": response.html, "pageTitle": pagTitle }, "", pagUrl);
+                // jump to top of page
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             }
         }) 
     }
