@@ -19,7 +19,7 @@
             <!-- <img src = "/img/flippedbook.svg" /> -->
             <h1>Chart Your Own Journey</h1>
             <div class = "content">
-                <p>Whether you're in high school, college, gap year, or beyond, we have something for you.</p>
+                <p>Whether you're a dropout, in high school, college, gap year, or beyond, we have something for you.</p>
                 <a href = "https://forms.gle/ronezGsAT4JmCKERA"><button>Apply</button></a>
             </div>
         </div>

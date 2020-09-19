@@ -76,7 +76,7 @@
         }
     }
     .img-wrapper {
-        @apply w-full h-64 rounded-lg shadow-sm overflow-hidden mt-12;
+        @apply w-full h-64 shadow-sm overflow-hidden mt-12;
 
         img {
             @apply object-cover h-64 w-full;
